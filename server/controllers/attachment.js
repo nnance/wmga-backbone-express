@@ -1,6 +1,6 @@
 var fs 		= require('fs'),
-	AWS 	= require('aws-sdk'),
-	config 	= require('../../config/config');
+	AWS 	= require('aws-sdk');
+	// config 	= require('../../config/config');
 
 exports.saveAttachment = function(req, res){
 	console.log('controller/attachment post: ' + req.files[0].path );
@@ -27,7 +27,7 @@ exports.saveAttachment = function(req, res){
 				res.send({
 					path: 'https://s3-us-west-2.amazonaws.com/wmga/' + req.files[0].name,
 					fileName: req.files[0].name
-				});			
+				});
 			}
 		});
 	});

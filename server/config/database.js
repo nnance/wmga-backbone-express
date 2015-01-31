@@ -25,6 +25,14 @@ var databaseConfig = function(app) {
     mongoose.set('debug', true);
   }
 
+  // load models
+  var modelsPath = __dirname + '/../models';
+  fs.readdirSync(modelsPath).forEach(function (file) {
+    if (file.indexOf('.js') >= 0) {
+      require(modelsPath + '/' + file);
+    }
+  });
+
   return db;
 };
 
