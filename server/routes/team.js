@@ -4,7 +4,7 @@
 
 'use strict';
 
-var Team = require('../app/controllers/team');
+var Team = require('../controllers/team');
 
 var routes = function(app) {
   app.get('/rest/teams', Team.getList);

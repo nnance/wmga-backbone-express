@@ -4,7 +4,7 @@
 
 'use strict';
 
-var User = require('../app/controllers/user');
+var User = require('../controllers/user');
 
 var routes = function(app) {
   app.get('/rest/users', User.getList);
