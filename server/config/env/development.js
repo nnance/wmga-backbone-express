@@ -5,7 +5,10 @@
 
 // Development specific configuration
 var devConfig = {
-  logLevel: 'dev'
+  logLevel: 'dev',
+  database: {
+    debug: true
+  }
 };
 
 module.exports = devConfig;

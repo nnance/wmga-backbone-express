@@ -1,12 +1,14 @@
 var mongoose = require('mongoose'),
 	User = mongoose.model('User'),
 	_ = require('lodash'),
+	settings = require('../config/env/default'),
 	passwordHash = require('password-hash'),
 	mandrill = require('mandrill-api'),
-	mandrill_client = new mandrill.Mandrill('Q1mfCekulLqLCVsXC_xhJw'),
 	twilio = require('twilio'),
-	twilio_client = twilio('AC8d2a5bfa963c7aa6285c31eac5bbf94f','14061985923777850bb0513f00c59420'),
 	excludeList = '-password -passwordHash';
+
+var mandrill_client = new mandrill.Mandrill(settings.mandrillKey);
+var twilio_client = twilio(settings.twilio.acct, settings.twilio.key);
 
 exports.getList = function(req, res){
 	console.log('controller/user getList: ' + (req.query && req.query.email ? req.query.email : ''));

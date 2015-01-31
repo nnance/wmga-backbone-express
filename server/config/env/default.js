@@ -44,7 +44,8 @@ var defaults = {
       },
       // Attempt to reconnect if connection is lost
       auto_reconnect: true
-    }
+    },
+    debug: false
   },
   root: path.normalize(__dirname + '/../../..'),
   staticAssets: 'client',
@@ -67,6 +68,11 @@ var defaults = {
       hsts: false,
       xssProtection: true
     }
+  },
+  mandrillKey: 'Q1mfCekulLqLCVsXC_xhJw',
+  twilio: {
+    acct: 'AC8d2a5bfa963c7aa6285c31eac5bbf94f',
+    key: '14061985923777850bb0513f00c59420'
   }
 };
 

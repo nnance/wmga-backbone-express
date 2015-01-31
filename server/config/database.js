@@ -14,16 +14,9 @@ require('colors');
 
 var databaseConfig = function(app) {
 
-  // Get current server environment
-  var env = app.get('env');
-
   // Connect to database
   mongoose.connect(settings.database.url, settings.database.options);
-
-  if ('development' === env) {
-    // Log database actions
-    mongoose.set('debug', true);
-  }
+  mongoose.set('debug', settings.database.debug);
 
   // load models
   var modelsPath = __dirname + '/../models';
