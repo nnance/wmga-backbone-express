@@ -5,6 +5,7 @@
 'use strict';
 
 var tests = [
+  'backbone.localstorage',
   'backbone.viewmanager',
   'backbone.datetime',
   'backbone.filestyle'
@@ -28,7 +29,7 @@ requirejs.config({
     'jquery': 'client/bower_components/jquery/dist/jquery',
     'underscore': 'client/bower_components/underscore/underscore',
     'backbone': 'client/bower_components/backbone/backbone',
-    'backbone.localstorage': 'client/bower_components/backbone.localstorage/backbone.localstorage',
+    'backbone.localstorage': 'client/bower_components/backbone.localstorage/backbone.localStorage',
     'backbone.validation': 'client/bower_components/backbone.validation/src/backbone-validation',
     'moment': 'client/bower_components/moment/moment',
     'bootstrap.datetimepicker': 'client/bower_components/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker',

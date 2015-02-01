@@ -1,7 +1,7 @@
 define(function(require) {
   'use strict';
 
-  var EventsModel = require('../models/events-model');
+  var EventsModel = require('client/scripts/models/events-model');
 
   var Events = Backbone.Collection.extend({
 
