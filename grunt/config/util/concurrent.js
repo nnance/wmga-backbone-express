@@ -12,10 +12,6 @@ var taskConfig = function(grunt) {
       'sass:dist',
       'jst:dist',
       'requirejs'
-    ],
-    docs: [
-      'jsdoc:dist',
-      'styleguide:dist'
     ]
   });
 
