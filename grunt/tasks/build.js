@@ -21,9 +21,6 @@ var taskConfig = function(grunt) {
     'uglify',
     'clean:tmp'
   ]);
-  grunt.registerTask('heroku:production', 'Build production on heroku', [
-    'build'
-  ]);
 };
 
 module.exports = taskConfig;

@@ -1,0 +1,32 @@
+dependencies:
+  pre:
+    - npm install
+    - npm install bower -g
+    - npm install grunt -g
+    - gem install compass
+    - bower install --allow-root
+  post:
+    - grunt build
+
+test:
+  override:
+    - npm test
+  post:
+    - sed -i -e 's/\dist//' .gitignore
+    - git config user.name "circleci"
+    - git config user.email "nick@unbornconcepts.com"
+    - git add -A
+    - git commit -m "build"
+
+deployment:
+  staging:
+    branch: master
+    commands:
+      - git push -f git@heroku.com:$wmga-backbone-express.git $master:master
+
+machine:
+  node:
+    version: v0.10.24
+
+  ruby:
+    version: 1.9.3-p448
