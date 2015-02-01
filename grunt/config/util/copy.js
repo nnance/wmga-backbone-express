@@ -5,16 +5,6 @@
 var taskConfig = function(grunt) {
 
   grunt.config.set('copy', {
-    server: {
-      files: [{
-         expand: true,
-          cwd: '<%= yeogurt.client %>/',
-          dest: '<%= yeogurt.tmp %>',
-          src: [
-            'styles/styleguide.md'
-          ]
-        }]
-    },
     dist: {
       files: [{
         expand: true,
@@ -22,8 +12,6 @@ var taskConfig = function(grunt) {
         dest: '<%= yeogurt.dist %>/client/',
         src: [
           'bower_components/requirejs/require.js',
-          'styles/styleguide.md',
-          'docs/styleguide/public/images',
           'styles/fonts/**/*.{woff,otf,ttf,eot,svg}',
           'images/**/*.{webp}',
           '!*.js',

@@ -2,7 +2,6 @@ node_modules
 *.log
 dist
 client/bower_components
-client/docs
 .tmp
 .grunt
 server/config/secrets.js

@@ -19,13 +19,10 @@ var taskConfig = function(grunt) {
     grunt.task.run([
       'clean:tmp',
       'env:all',
-      'copy:server',
       'injector',
       'wiredep',
       'jst:server',
       'sass:server',
-      'styleguide:server',
-      'jsdoc:server',
       'autoprefixer:server'
     ]);
 
@@ -39,13 +36,7 @@ var taskConfig = function(grunt) {
       'open'
     ]);
 
-    
-    if (target === 'docs') {
-      return grunt.task.run(['listen:docs']);
-    }
-
     return grunt.task.run(['watch']);
-    
   });
 };
 
