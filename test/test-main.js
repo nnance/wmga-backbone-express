@@ -6,6 +6,7 @@
 
 var tests = [
   'backbone.localstorage',
+  'backbone.validation',
   'backbone.viewmanager',
   'backbone.datetime',
   'backbone.filestyle'
@@ -30,7 +31,7 @@ requirejs.config({
     'underscore': 'client/bower_components/underscore/underscore',
     'backbone': 'client/bower_components/backbone/backbone',
     'backbone.localstorage': 'client/bower_components/backbone.localstorage/backbone.localStorage',
-    'backbone.validation': 'client/bower_components/backbone.validation/src/backbone-validation',
+    'backbone.validation': 'client/bower_components/backbone.validation/dist/backbone-validation-amd',
     'moment': 'client/bower_components/moment/moment',
     'bootstrap.datetimepicker': 'client/bower_components/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker',
     'bootstrap-filestyle': 'client/bower_components/bootstrap-filestyle/src/bootstrap-filestyle',

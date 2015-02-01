@@ -4,6 +4,7 @@
 require.config({
   deps: [
     'backbone.localstorage',
+    'backbone.validation',
     'backbone.viewmanager',
     'backbone.datetime',
     'backbone.filestyle'
@@ -13,8 +14,8 @@ require.config({
     'jquery': '../bower_components/jquery/dist/jquery',
     'underscore': '../bower_components/underscore/underscore',
     'backbone': '../bower_components/backbone/backbone',
-    'backbone.localstorage': 'client/bower_components/backbone.localstorage/backbone.localStorage',
-    'backbone.validation': '../bower_components/backbone.validation/src/backbone-validation',
+    'backbone.localstorage': '../bower_components/backbone.localstorage/backbone.localStorage',
+    'backbone.validation': '../bower_components/backbone.validation/dist/backbone-validation-amd',
     'moment': '../bower_components/moment/moment',
     'bootstrap.datetimepicker': '../bower_components/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker',
     'bootstrap-filestyle': '../bower_components/bootstrap-filestyle/src/bootstrap-filestyle',
