@@ -2,12 +2,31 @@
 
 // RequireJS configuration
 require.config({
-  paths: {}
+  deps: [
+    'backbone.viewmanager',
+    'backbone.datetime',
+    'backbone.filestyle'
+  ],
+
+  paths: {
+    'jquery': '../bower_components/jquery/dist/jquery',
+    'underscore': '../bower_components/underscore/underscore',
+    'backbone': '../bower_components/backbone/backbone',
+    'backbone.localstorage': '../bower_components/backbone.localstorage/backbone.localstorage',
+    'backbone.validation': '../bower_components/backbone.validation/src/backbone-validation',
+    'moment': '../bower_components/moment/moment',
+    'bootstrap.datetimepicker': '../bower_components/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker',
+    'bootstrap-filestyle': '../bower_components/bootstrap-filestyle/src/bootstrap-filestyle',
+    'select2': '../bower_components/select2/select2',
+    'backbone.viewmanager': '../bower_components/backbone-plugins/viewmanager/backbone.viewmanager',
+    'backbone.datetime': '../bower_components/backbone-plugins/modeldatetime/backbone.datetime',
+    'backbone.filestyle': '../bower_components/backbone-plugins/filestyle/backbone.filestyle'
+  }
 });
 
 define('init', function(require) {
 
-  
+
   var router = require('./routes');
 
   // Use GET and POST to support all browsers

@@ -16,7 +16,8 @@
     "moment": "~2.9.0",
     "select2": "~3.5.2",
     "bootstrap-filestyle": "~1.1.2",
-    "select2-bootstrap-css": "~1.4.4"
+    "select2-bootstrap-css": "~1.4.4",
+    "backbone-plugins": "https://github.com/nnance/backbone-plugins.git#c2d9a6b7821e9a473c082b38415da704371099c7"
   },
   "devDependencies": {}
 }
