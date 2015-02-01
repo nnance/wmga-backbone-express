@@ -1,0 +1,162 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+// Injects all bower_component files automatically
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+// bower:sass
+// endbower
+@import "../bower_components/select2-bootstrap-css/lib/select2-bootstrap.scss";
+@import "signin";
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+
+.jumbotron-index {
+    @extend .jumbotron;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+    background-image: url('../images/header_rates.jpg');
+}
+
+.news-img {
+    background-image: url('../images/news.png');
+    display: inline-block;
+    height: 140px;
+    width: 140px;
+}
+
+.news-img-title {
+    @extend .news-img;
+    background-size: 90px;
+    height: 90px;
+    width: 90px;
+    float: left;
+}
+
+.events-img {
+    background-image: url('../images/events.png');
+    display: inline-block;
+    height: 140px;
+    width: 140px;
+}
+
+.events-img-title {
+    @extend .events-img;
+    background-size: 90px;
+    height: 90px;
+    width: 90px;
+    float: left;
+}
+
+.contact-img {
+    background-image: url('../images/contact.png');
+    display: inline-block;
+    height: 140px;
+    width: 140px;
+}
+.contact-img-title {
+    @extend .contact-img;
+    background-size: 90px;
+    height: 90px;
+    width: 90px;
+    float: left;
+}
+
+/* Subhead (other pages)
+------------------------- */
+.subhead {
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+    padding: 10px 0;
+    background: #026323; /* Old browsers */
+    background: -moz-linear-gradient(45deg,  #026323 0%, #11af4b 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#026323), color-stop(100%,#11af4b)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(45deg,  #026323 0%,#11af4b 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(45deg,  #026323 0%,#11af4b 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(45deg,  #026323 0%,#11af4b 100%); /* IE10+ */
+    background: linear-gradient(45deg,  #026323 0%,#11af4b 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#026323', endColorstr='#11af4b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+     -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+      box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+}
+
+.subhead h2 {
+    padding-left: 100px;
+}
+
+/* sticky side nav using affix
+---------------------------------*/
+section:before {
+  display: block;
+  content: " ";
+  margin-top: -50px;
+  height: 50px;
+  visibility: hidden;
+}
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+    margin-top:25px;
+    width:228px;
+  }
+
+  #sidebar.affix {
+    position: fixed;
+    top:75px;
+    width:228px;
+  }
+}
+
+.affix,.affix-top {
+   position:static;
+}
+
+/* signin form
+---------------------------------*/
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
