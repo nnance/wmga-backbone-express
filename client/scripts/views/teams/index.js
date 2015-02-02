@@ -4,7 +4,7 @@ define(function(require) {
   var BaseView = require('client/scripts/views/viewbase');
 
   var TeamsIndexView = BaseView.extend({
-    template: JST['client/templates/teams/index.ejs'],
+    template: JST['client/templates/teams/index.jst'],
 
     initialize: function(options) {
       BaseView.prototype.initialize.apply(this,arguments);

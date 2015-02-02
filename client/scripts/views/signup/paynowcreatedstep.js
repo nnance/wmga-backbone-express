@@ -5,7 +5,7 @@ define(function(require) {
   var AppSettings = require('client/scripts/appsettings');
 
   var PayNowStep = BaseView.extend({
-    template: JST['client/templates/signup/paynowcreatedstep.ejs'],
+    template: JST['client/templates/signup/paynowcreatedstep.jst'],
 
     events: {
       'click .btn-primary': 'nextStep',

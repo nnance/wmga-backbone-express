@@ -3,7 +3,7 @@ define(function(require) {
 
   var FormBaseView = require('client/scripts/views/formbase');
   var CreateStep = FormBaseView.extend({
-    template: JST['client/templates/signup/createstep.ejs'],
+    template: JST['client/templates/signup/createstep.jst'],
 
     events: {
       'click .btn-primary': 'nextStep',

@@ -6,8 +6,8 @@ define(function(require) {
   var AppSettings = require('client/scripts/appsettings');
 
   var UsersDetailView = ReviewBaseView.extend({
-    template: JST['client/templates/users/review.ejs'],
-    editButtonsTemplate: JST['client/templates/users/editbuttons.ejs'],
+    template: JST['client/templates/users/review.jst'],
+    editButtonsTemplate: JST['client/templates/users/editbuttons.jst'],
 
     events: {
       'click #delete-btn': 'showDeleteConfirm',

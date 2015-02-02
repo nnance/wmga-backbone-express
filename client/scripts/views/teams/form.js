@@ -4,7 +4,7 @@ define(function(require) {
   var FormBaseView = require('client/scripts/views/formbase');
 
   var TeamsFormView = FormBaseView.extend({
-    template: JST['client/templates/teams/form.ejs'],
+    template: JST['client/templates/teams/form.jst'],
 
     events: {
       'click #save-button': 'saveButton',

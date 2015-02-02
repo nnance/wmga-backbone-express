@@ -3,7 +3,7 @@ define(function(require) {
 
   var FormBaseView = require('client/scripts/views/formbase');
   var EmailFormView = FormBaseView.extend({
-    template: JST['client/templates/users/email.ejs'],
+    template: JST['client/templates/users/email.jst'],
 
     events: {
       'click #save-button': 'saveButton',

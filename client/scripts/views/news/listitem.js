@@ -4,7 +4,7 @@ define(function(require) {
   var ListItemBaseView = require('client/scripts/views/listitembase');
 
   var NewsListitemView = ListItemBaseView.extend({
-    template: JST['client/templates/news/listitem.ejs'],
+    template: JST['client/templates/news/listitem.jst'],
   });
 
   return NewsListitemView;

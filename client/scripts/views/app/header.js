@@ -8,9 +8,9 @@ define(function(require) {
       role: 'navigation'
     },
 
-    template: JST['client/templates/app/header.ejs'],
-    userTemplate: JST['client/templates/app/header-user.ejs'],
-    signedInTemplate: JST['client/templates/app/header-user-signed.ejs'],
+    template: JST['client/templates/app/header.jst'],
+    userTemplate: JST['client/templates/app/header-user.jst'],
+    signedInTemplate: JST['client/templates/app/header-user-signed.jst'],
 
     initialize: function(options) {
       BaseView.prototype.initialize.apply(this,arguments);

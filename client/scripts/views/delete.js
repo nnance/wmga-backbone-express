@@ -7,7 +7,7 @@ define(function(require) {
   var DeleteView = BaseView.extend({
     className: 'modal fade',
 
-    template: JST['client/templates/delete.ejs'],
+    template: JST['client/templates/delete.jst'],
 
     events: {
       'click #delete-confirm': 'deleteConfirmed',

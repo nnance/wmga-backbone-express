@@ -7,8 +7,8 @@ define(function(require) {
   var MemberView = require('client/scripts/views/teams/listitemmember');
 
   var TeamsListView = ListBaseView.extend({
-    template: JST['client/templates/teams/list.ejs'],
-    addButtonTemplate: JST['client/templates/teams/addbutton.ejs'],
+    template: JST['client/templates/teams/list.jst'],
+    addButtonTemplate: JST['client/templates/teams/addbutton.jst'],
 
     events: {
       'click #filter': 'switchFilter',

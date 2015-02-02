@@ -5,7 +5,7 @@ define(function(require) {
   var RequestPassword = require('client/scripts/models/requestpsw-model');
 
   var TypeStepView = FormBaseView.extend({
-    template: JST['client/templates/signup/typestep.ejs'],
+    template: JST['client/templates/signup/typestep.jst'],
 
     events: {
       'click .btn': 'nextStep'

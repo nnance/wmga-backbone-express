@@ -5,8 +5,8 @@ define(function(require) {
   var DeleteView = require('client/scripts/views/delete');
 
   var EventsDetailView = ReviewBaseView.extend({
-    template: JST['client/templates/events/review.ejs'],
-    editButtonsTemplate: JST['client/templates/events/editbuttons.ejs'],
+    template: JST['client/templates/events/review.jst'],
+    editButtonsTemplate: JST['client/templates/events/editbuttons.jst'],
 
     events: {
       'click #delete-btn': 'showDeleteConfirm',

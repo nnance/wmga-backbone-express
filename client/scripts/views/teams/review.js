@@ -7,10 +7,10 @@ define(function(require) {
   var AppSettings = require('client/scripts/appsettings');
 
   var TeamsDetailView = ReviewBaseView.extend({
-    template: JST['client/templates/teams/review.ejs'],
-    editButtonsTemplate: JST['client/templates/teams/editbuttons.ejs'],
-    adminTemplate: JST['client/templates/teams/reviewadmin.ejs'],
-    treasureTemplate: JST['client/templates/teams/reviewtreasure.ejs'],
+    template: JST['client/templates/teams/review.jst'],
+    editButtonsTemplate: JST['client/templates/teams/editbuttons.jst'],
+    adminTemplate: JST['client/templates/teams/reviewadmin.jst'],
+    treasureTemplate: JST['client/templates/teams/reviewtreasure.jst'],
 
     events: {
       'click #delete-btn': 'showDeleteConfirm',

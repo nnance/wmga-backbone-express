@@ -3,7 +3,7 @@ define(function(require) {
 
   var BaseView = require('client/scripts/views/viewbase');
   var HomeEventsitemView = BaseView.extend({
-    template: JST['client/templates/home/eventsitem.ejs'],
+    template: JST['client/templates/home/eventsitem.jst'],
   });
 
   return HomeEventsitemView;

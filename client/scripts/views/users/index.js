@@ -3,7 +3,7 @@ define(function(require) {
 
   var BaseView = require('client/scripts/views/viewbase');
   var UsersIndexView = BaseView.extend({
-    template: JST['client/templates/users/index.ejs'],
+    template: JST['client/templates/users/index.jst'],
 
     initialize: function(options) {
       BaseView.prototype.initialize.apply(this,arguments);

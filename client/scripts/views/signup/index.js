@@ -3,7 +3,7 @@ define(function(require) {
 
   var BaseView = require('client/scripts/views/viewbase');
   var IndexView = BaseView.extend({
-    template: JST['client/templates/signup/index.ejs']
+    template: JST['client/templates/signup/index.jst']
   });
 
   return IndexView;

@@ -6,8 +6,8 @@ define(function(require) {
   var ItemView = require('client/scripts/views/events/listitem');
 
   var EventsListView = ListBaseView.extend({
-    template: JST['client/templates/events/list.ejs'],
-    addButtonTemplate: JST['client/templates/events/addbutton.ejs'],
+    template: JST['client/templates/events/list.jst'],
+    addButtonTemplate: JST['client/templates/events/addbutton.jst'],
 
     events: {
       'click #filter': 'switchFilter'

@@ -8,7 +8,7 @@ define(function(require) {
 
   var HomeIndexView = BaseView.extend({
 
-    template: JST['client/templates/home/index.ejs'],
+    template: JST['client/templates/home/index.jst'],
 
     initialize: function(options) {
       this.newsCollection = options.newsCol;

@@ -4,7 +4,7 @@ define(function(require) {
   var FormBaseView = require('client/scripts/views/formbase');
   var RequestPassword = require('client/scripts/models/requestpsw-model');
   var SignInView = FormBaseView.extend({
-    template: JST['client/templates/app/signin.ejs'],
+    template: JST['client/templates/app/signin.jst'],
 
     events: {
       'click .btn': 'saveButton',

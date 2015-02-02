@@ -3,7 +3,7 @@ define(function(require) {
 
   var BaseView = require('client/scripts/views/viewbase');
   var NewsIndexView = BaseView.extend({
-    template: JST['client/templates/news/index.ejs'],
+    template: JST['client/templates/news/index.jst'],
 
     initialize: function(options) {
       BaseView.prototype.initialize.apply(this,arguments);

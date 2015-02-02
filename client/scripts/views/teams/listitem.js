@@ -4,7 +4,7 @@ define(function(require) {
   var ListItemBaseView = require('client/scripts/views/listitembase');
 
   var TeamsListitemView = ListItemBaseView.extend({
-    template: JST['client/templates/teams/listitem.ejs'],
+    template: JST['client/templates/teams/listitem.jst'],
     tagName: 'tr'
   });
 
