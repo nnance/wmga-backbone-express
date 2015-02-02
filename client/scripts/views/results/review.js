@@ -4,9 +4,9 @@ define(function(require) {
     var ReviewBaseView = require('client/scripts/views/reviewbase');
     var DeleteView = require('client/scripts/views/delete');
 
-    var NewsDetailView = ReviewBaseView.extend({
-        template: JST['client/templates/news/review.ejs'],
-        editButtonsTemplate: JST['client/templates/news/editbuttons.ejs'],
+    var ResultsDetailView = ReviewBaseView.extend({
+        template: JST['client/templates/results/review.ejs'],
+        editButtonsTemplate: JST['client/templates/results/editbuttons.ejs'],
 
         events: {
             'click #delete-btn': 'showDeleteConfirm',
@@ -16,13 +16,13 @@ define(function(require) {
             var view = new DeleteView({
                 model: this.model,
                 modelAttr: 'title',
-                modelTypeName: 'news article',
-                successRoute: '#news'
+                modelTypeName: 'tournament results',
+                successRoute: '#results'
             });
             this.$el.append(view.render().el);
             view.show();
         }
     });
 
-    return NewsDetailView;
+    return ResultsDetailView;
 });

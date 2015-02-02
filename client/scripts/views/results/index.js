@@ -2,8 +2,8 @@ define(function(require) {
     'use strict';
 
     var BaseView = require('client/scripts/views/viewbase');
-    var NewsIndexView = BaseView.extend({
-        template: JST['client/templates/news/index.ejs'],
+    var ResultsIndexView = BaseView.extend({
+        template: JST['client/templates/results/index.ejs'],
 
         initialize: function(options) {
             BaseView.prototype.initialize.apply(this,arguments);
@@ -17,5 +17,5 @@ define(function(require) {
         }
     });
 
-    return NewsIndexView;
+    return ResultsIndexView;
 });
