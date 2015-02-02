@@ -33,7 +33,7 @@ var defaults = {
   },
   database: {
     // URL to connect to database
-    url: process.env.DBURL || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/wmga-express-development',
+    url: process.env.DBURL || 'mongodb://localhost:27017/wmga-express-development',
     // Mongoose database options
     options: {
       server: {
