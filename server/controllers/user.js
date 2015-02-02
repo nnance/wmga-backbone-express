@@ -42,7 +42,10 @@ exports.requestPassword = function(req, res){
 
 	User.findOne(options, function (err, user) {
 		if (err) throw new Error(err);
-		if (!user) res.status(404).send('Not found');
+		if (!user) {
+			res.status(404).send('Not found');
+			return;
+		};
 
 	    var body = "Pleae return to the site and log in using the following information.\r\n" +
 	                "\r\n" +
@@ -103,7 +106,10 @@ exports.validateSignIn = function(req, res){
 
 	User.findOne(options, function (err, user) {
 		if (err) throw new Error(err);
-		if (!user) res.status(404).send('Not found');
+		if (!user) {
+			res.status(404).send('Not found');
+			return;
+		}
 		res.send(user);
 	});
 };
