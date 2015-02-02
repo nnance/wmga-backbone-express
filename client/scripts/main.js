@@ -35,6 +35,9 @@ require.config({
       deps: ['underscore', 'jquery'],
       exports: 'Backbone'
     },
+    'backbone.localstorage': {
+      deps: ['backbone']
+    },
     'underscore': {
       exports: '_'
     },
