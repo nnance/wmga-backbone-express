@@ -29,8 +29,10 @@ define(function(require) {
     renderNews: function() {
       var recentArticle = this.newsCollection.at(0);
       if (recentArticle) {
-        var newsView = new NewsItemView({model: recentArticle});
-        this.insertView(newsView.render(), '#news-item');
+        this.addSubView({
+          view: new NewsItemView({model: recentArticle}),
+          selector: '#news-item'
+        });
       }
     },
 
@@ -43,8 +45,10 @@ define(function(require) {
         }
       }, this);
       if (recentEvent) {
-        var eventsView = new EventsItemView({model: recentEvent});
-        this.insertView(eventsView.render(), '#events-item');
+        this.addSubView({
+          view: new EventsItemView({model: recentEvent}),
+          selector: '#events-item'
+        });
       }
     }
   });

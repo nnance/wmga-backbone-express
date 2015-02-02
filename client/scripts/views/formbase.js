@@ -42,8 +42,10 @@ define(function(require) {
     showErrors: function(errors) {
       if (_.keys(errors).length > 0) {
         // show the errors in an alert area
-        var alertView = new AlertView({errors: errors});
-        this.insertView(alertView.render(), '#alert');
+        this.addSubView({
+          view: new AlertView({errors: errors}),
+          selector: '#alert'
+        });
 
         // highlight the fields with errors
         for (var key in errors) {

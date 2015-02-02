@@ -45,9 +45,9 @@ define(function(require) {
     },
 
     deleteFailed: function(xhr) {
-      var alertView = new AlertView({errors: {response: xhr.responseText}});
-      alertView.render();
-      this.insertView(alertView, this.$el);
+      this.addSubView({
+        view: new AlertView({errors: {response: xhr.responseText}})
+      });
     }
   });
 

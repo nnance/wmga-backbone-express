@@ -11,7 +11,10 @@ define(function(require) {
 
     render: function() {
       BaseView.prototype.render.apply(this,arguments);
-      this.insertView(this.indexView.render(), '#index');
+      this.addSubView({
+        view: this.indexView,
+        selector: '#index'
+      });
       return this;
     }
   });

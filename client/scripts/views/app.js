@@ -28,9 +28,9 @@ define([
       },
 
       render: function() {
-        this.insertView(this.header.render());
-        this.insertView(this.container.render());
-        this.insertView(this.footer.render());
+        this.addSubView({view: this.header});
+        this.addSubView({view: this.container});
+        this.addSubView({view: this.footer});
       },
 
       initSession: function() {

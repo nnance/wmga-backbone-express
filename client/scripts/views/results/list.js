@@ -42,14 +42,16 @@ define(function(require) {
 
     render: function() {
       ListBaseView.prototype.render.apply(this, arguments);
-      this.$('#' + this.filter.name).button('toggle');
+      // this.$('#' + this.filter.name).button('toggle');
       return this;
     },
 
     renderItem: function(model) {
       if (model.getAsDate('itemdate').isBefore(this.filter.start) && model.getAsDate('itemdate').isAfter(this.filter.end)) {
-        var view = new ItemView({model: model});
-        this.insertView(view.render(),'.container');
+        this.addSubView({
+          view: new ItemView({model: model}),
+          selector: '.container'
+        });
       }
     },
 

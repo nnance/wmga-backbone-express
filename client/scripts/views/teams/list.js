@@ -27,14 +27,19 @@ define(function(require) {
     },
 
     renderItem: function(model) {
-      var view = new ItemView({model: model});
-      this.insertView(view.render(),'table');
+      this.addSubView({
+        view: new ItemView({model: model}),
+        selector: 'table'
+      });
       this.renderMembers(model);
     },
 
     renderMembers: function(model) {
       var view = new MemberView({model: model, collection: this.dataManager.userCollection});
-      this.insertView(view.render(),'table');
+      this.addSubView({
+        view: view,
+        selector: 'table'
+      });
     },
 
     filterTeams: function(e) {

@@ -47,7 +47,10 @@ define([
           }
           var view = new ViewType({model: this.model, collection: this.collection, session: this.session, dataManager: this.dataManager});
           this.indexView.removeSubViews();
-          this.indexView.insertView(view.render(),'#stepContent');
+          this.indexView.addSubView({
+            view: view,
+            selector: '#stepContent'
+          });
         }
       },
     });
