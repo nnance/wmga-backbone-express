@@ -1,17 +1,17 @@
 define(function(require) {
-    'use strict';
+  'use strict';
 
-    var BaseView = require('client/scripts/views/viewbase');
-    var AlertView = BaseView.extend({
-      className: 'alert alert-danger alert-dismissable',
+  var BaseView = require('client/scripts/views/viewbase');
+  var AlertView = BaseView.extend({
+    className: 'alert alert-danger alert-dismissable',
 
-      template: JST['client/templates/alert.ejs'],
+    template: JST['client/templates/alert.ejs'],
 
-      initialize: function(options) {
-          BaseView.prototype.initialize.apply(this,arguments);
-          this.errors = options.errors;
-      }
-    });
+    initialize: function(options) {
+      BaseView.prototype.initialize.apply(this,arguments);
+      this.errors = options.errors;
+    }
+  });
 
-    return AlertView;
+  return AlertView;
 });

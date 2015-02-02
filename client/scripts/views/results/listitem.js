@@ -4,8 +4,8 @@ define(function(require) {
   var ListItemBaseView = require('client/scripts/views/listitembase');
 
   var ResultsListitemView = ListItemBaseView.extend({
-        template: JST['client/templates/results/listitem.ejs'],
-    });
+    template: JST['client/templates/results/listitem.ejs'],
+  });
 
-    return ResultsListitemView;
+  return ResultsListitemView;
 });

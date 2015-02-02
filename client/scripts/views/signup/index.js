@@ -1,10 +1,10 @@
 define(function(require) {
-    'use strict';
+  'use strict';
 
-    var BaseView = require('client/scripts/views/viewbase');
-    var IndexView = BaseView.extend({
-        template: JST['client/templates/signup/index.ejs']
-    });
+  var BaseView = require('client/scripts/views/viewbase');
+  var IndexView = BaseView.extend({
+    template: JST['client/templates/signup/index.ejs']
+  });
 
-    return IndexView;
+  return IndexView;
 });

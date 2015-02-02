@@ -1,28 +1,28 @@
 define(function(require) {
-    'use strict';
+  'use strict';
 
-    var ReviewBaseView = require('client/scripts/views/reviewbase');
-    var DeleteView = require('client/scripts/views/delete');
+  var ReviewBaseView = require('client/scripts/views/reviewbase');
+  var DeleteView = require('client/scripts/views/delete');
 
-    var ResultsDetailView = ReviewBaseView.extend({
-        template: JST['client/templates/results/review.ejs'],
-        editButtonsTemplate: JST['client/templates/results/editbuttons.ejs'],
+  var ResultsDetailView = ReviewBaseView.extend({
+    template: JST['client/templates/results/review.ejs'],
+    editButtonsTemplate: JST['client/templates/results/editbuttons.ejs'],
 
-        events: {
-            'click #delete-btn': 'showDeleteConfirm',
-        },
+    events: {
+      'click #delete-btn': 'showDeleteConfirm',
+    },
 
-        showDeleteConfirm: function() {
-            var view = new DeleteView({
-                model: this.model,
-                modelAttr: 'title',
-                modelTypeName: 'tournament results',
-                successRoute: '#results'
-            });
-            this.$el.append(view.render().el);
-            view.show();
-        }
-    });
+    showDeleteConfirm: function() {
+      var view = new DeleteView({
+        model: this.model,
+        modelAttr: 'title',
+        modelTypeName: 'tournament results',
+        successRoute: '#results'
+      });
+      this.$el.append(view.render().el);
+      view.show();
+    }
+  });
 
-    return ResultsDetailView;
+  return ResultsDetailView;
 });

@@ -1,12 +1,12 @@
 define(function(require) {
-    'use strict';
+  'use strict';
 
-    var ListItemBaseView = require('client/scripts/views/listitembase');
+  var ListItemBaseView = require('client/scripts/views/listitembase');
 
-    var UsersListitemView = ListItemBaseView.extend({
-        template: JST['client/templates/users/listitem.ejs'],
-        tagName: 'tr'
-    });
+  var UsersListitemView = ListItemBaseView.extend({
+    template: JST['client/templates/users/listitem.ejs'],
+    tagName: 'tr'
+  });
 
-    return UsersListitemView;
+  return UsersListitemView;
 });

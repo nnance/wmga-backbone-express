@@ -1,16 +1,16 @@
 define(function(require) {
-    'use strict';
+  'use strict';
 
-    var BaseView = require('client/scripts/views/viewbase');
-    var ListitemBaseView = BaseView.extend({
+  var BaseView = require('client/scripts/views/viewbase');
+  var ListitemBaseView = BaseView.extend({
 
-        initialize: function(options) {
-            BaseView.prototype.initialize.apply(this,arguments);
-            if (this.model) {
-                this.listenTo(this.model, 'change', this.render);
-            }
-        },
-    });
+    initialize: function(options) {
+      BaseView.prototype.initialize.apply(this,arguments);
+      if (this.model) {
+        this.listenTo(this.model, 'change', this.render);
+      }
+    },
+  });
 
-    return ListitemBaseView;
+  return ListitemBaseView;
 });

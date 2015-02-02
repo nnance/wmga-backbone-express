@@ -1,11 +1,11 @@
 define(function(require) {
-    'use strict';
+  'use strict';
 
-    var BaseView = require('client/scripts/views/viewbase');
-    var FooterView = BaseView.extend({
-        template: JST['client/templates/app/footer.ejs'],
-        className: 'container'
-    });
+  var BaseView = require('client/scripts/views/viewbase');
+  var FooterView = BaseView.extend({
+    template: JST['client/templates/app/footer.ejs'],
+    className: 'container'
+  });
 
-    return FooterView;
+  return FooterView;
 });
