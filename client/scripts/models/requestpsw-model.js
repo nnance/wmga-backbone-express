@@ -1,6 +1,8 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
+
   var RequestpswModel = Backbone.Model.extend({
 
     idAttribute: '_id',

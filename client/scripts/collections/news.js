@@ -1,6 +1,7 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
   var NewsModel = require('client/scripts/models/news-model');
 
   var News = Backbone.Collection.extend({

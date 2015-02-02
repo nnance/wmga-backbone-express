@@ -31,9 +31,7 @@ define(function(require) {
     render: function() {
       FormBaseView.prototype.render.apply(this,arguments);
 
-      this.$('#birthdatepicker').datetimepicker({
-        pickTime: false
-      });
+      this.$('#birthdatepicker').datetimepicker();
       this.filestyle({
         selector: '#picture',
         binding: 'picture',

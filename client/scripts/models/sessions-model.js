@@ -1,6 +1,7 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
   var SignInModel = require('./signin-model');
 
   var SessionsModel = Backbone.Model.extend({

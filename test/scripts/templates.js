@@ -1,6 +1,6 @@
 this["JST"] = this["JST"] || {};
 
-this["JST"]["client/templates/alert.ejs"] = function(obj) {
+this["JST"]["client/templates/alert.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
@@ -17,7 +17,7 @@ __p += '\n</ul>\n';
 return __p
 };
 
-this["JST"]["client/templates/app/contact.ejs"] = function(obj) {
+this["JST"]["client/templates/app/contact.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -27,7 +27,7 @@ __p += '<header class="jumbotron subhead">\n    <div class="contact-img-title"/>
 return __p
 };
 
-this["JST"]["client/templates/app/footer.ejs"] = function(obj) {
+this["JST"]["client/templates/app/footer.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -37,7 +37,7 @@ __p += '<hr>\n<footer>\n    <p>&copy; Westwood Men&#39s Golf Association 2012-20
 return __p
 };
 
-this["JST"]["client/templates/app/header-user-signed.ejs"] = function(obj) {
+this["JST"]["client/templates/app/header-user-signed.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -49,7 +49,7 @@ __p += '<ul class="nav navbar-nav navbar-right">\n    <li class="dropdown">\n   
 return __p
 };
 
-this["JST"]["client/templates/app/header-user.ejs"] = function(obj) {
+this["JST"]["client/templates/app/header-user.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -59,7 +59,7 @@ __p += '<ul class="nav navbar-nav navbar-right">\n    <li>\n        <a href="#si
 return __p
 };
 
-this["JST"]["client/templates/app/header.ejs"] = function(obj) {
+this["JST"]["client/templates/app/header.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -69,7 +69,7 @@ __p += '<div class="container">\n    <div class="navbar-header">\n        <butto
 return __p
 };
 
-this["JST"]["client/templates/app/signin.ejs"] = function(obj) {
+this["JST"]["client/templates/app/signin.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -79,7 +79,7 @@ __p += '<form class="form-signin" role="form">\n    <h2 class="form-signin-headi
 return __p
 };
 
-this["JST"]["client/templates/delete.ejs"] = function(obj) {
+this["JST"]["client/templates/delete.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -93,7 +93,7 @@ __p += '  <div class="modal-dialog">\n    <div class="modal-content">\n      <di
 return __p
 };
 
-this["JST"]["client/templates/events/addbutton.ejs"] = function(obj) {
+this["JST"]["client/templates/events/addbutton.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -103,7 +103,7 @@ __p += '<a href="#events/create" class="btn btn-primary"><span class="glyphicon 
 return __p
 };
 
-this["JST"]["client/templates/events/editbuttons.ejs"] = function(obj) {
+this["JST"]["client/templates/events/editbuttons.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -115,7 +115,7 @@ __p += '<a href="#events/update/' +
 return __p
 };
 
-this["JST"]["client/templates/events/form.ejs"] = function(obj) {
+this["JST"]["client/templates/events/form.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -133,7 +133,7 @@ __p += '<form method="POST" role="form">\n    <h3 id="formtitle">Add new event</
 return __p
 };
 
-this["JST"]["client/templates/events/index.ejs"] = function(obj) {
+this["JST"]["client/templates/events/index.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -143,7 +143,7 @@ __p += '<header class="jumbotron subhead">\n    <div class="events-img-title"/>\
 return __p
 };
 
-this["JST"]["client/templates/events/list.ejs"] = function(obj) {
+this["JST"]["client/templates/events/list.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -153,7 +153,7 @@ __p += '<div class="btn-group" data-toggle="buttons" id="filter">\n    <label cl
 return __p
 };
 
-this["JST"]["client/templates/events/listitem.ejs"] = function(obj) {
+this["JST"]["client/templates/events/listitem.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -171,7 +171,7 @@ __p += '<div class="row">\n    <div class="col-md-1"><b>' +
 return __p
 };
 
-this["JST"]["client/templates/events/review.ejs"] = function(obj) {
+this["JST"]["client/templates/events/review.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -191,7 +191,7 @@ __p += '<div class="btn-toolbar pull-right">\n</div>\n<h3>' +
 return __p
 };
 
-this["JST"]["client/templates/home/eventsitem.ejs"] = function(obj) {
+this["JST"]["client/templates/home/eventsitem.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -207,7 +207,7 @@ __p += '<h4>' +
 return __p
 };
 
-this["JST"]["client/templates/home/index.ejs"] = function(obj) {
+this["JST"]["client/templates/home/index.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -217,7 +217,7 @@ __p += '<div class="jumbotron-index masthead">\n    <div class="row">\n        <
 return __p
 };
 
-this["JST"]["client/templates/home/newsitem.ejs"] = function(obj) {
+this["JST"]["client/templates/home/newsitem.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -233,7 +233,7 @@ __p += '<h4>' +
 return __p
 };
 
-this["JST"]["client/templates/news/addbutton.ejs"] = function(obj) {
+this["JST"]["client/templates/news/addbutton.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -243,7 +243,7 @@ __p += ' <a href="#news/create" class="btn btn-primary"><span class="glyphicon g
 return __p
 };
 
-this["JST"]["client/templates/news/editbuttons.ejs"] = function(obj) {
+this["JST"]["client/templates/news/editbuttons.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -255,7 +255,7 @@ __p += '<a href="#news/update/' +
 return __p
 };
 
-this["JST"]["client/templates/news/form.ejs"] = function(obj) {
+this["JST"]["client/templates/news/form.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -271,7 +271,7 @@ __p += '<form method="POST" role="form">\n    <h3 id="formtitle">Add new article
 return __p
 };
 
-this["JST"]["client/templates/news/index.ejs"] = function(obj) {
+this["JST"]["client/templates/news/index.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -281,7 +281,7 @@ __p += '<header class="jumbotron subhead">\n    <div class="news-img-title"/>\n 
 return __p
 };
 
-this["JST"]["client/templates/news/list.ejs"] = function(obj) {
+this["JST"]["client/templates/news/list.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -291,7 +291,7 @@ __p += '<div class="btn-group" data-toggle="buttons" id="filter">\n    <label cl
 return __p
 };
 
-this["JST"]["client/templates/news/listitem.ejs"] = function(obj) {
+this["JST"]["client/templates/news/listitem.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -309,7 +309,7 @@ __p += '<div class="row">\n    <div class="col-md-1"><b>' +
 return __p
 };
 
-this["JST"]["client/templates/news/review.ejs"] = function(obj) {
+this["JST"]["client/templates/news/review.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -329,7 +329,7 @@ __p += '<div class="btn-toolbar pull-right">\n</div>\n<h3>' +
 return __p
 };
 
-this["JST"]["client/templates/results/addbutton.ejs"] = function(obj) {
+this["JST"]["client/templates/results/addbutton.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -339,7 +339,7 @@ __p += '<a href="#results/create" class="btn btn-primary"><span class="glyphicon
 return __p
 };
 
-this["JST"]["client/templates/results/editbuttons.ejs"] = function(obj) {
+this["JST"]["client/templates/results/editbuttons.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -351,7 +351,7 @@ __p += '<a href="#results/update/' +
 return __p
 };
 
-this["JST"]["client/templates/results/form.ejs"] = function(obj) {
+this["JST"]["client/templates/results/form.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -367,7 +367,7 @@ __p += '<form method="POST" role="form">\n    <h3 id="formtitle">Add tournament 
 return __p
 };
 
-this["JST"]["client/templates/results/index.ejs"] = function(obj) {
+this["JST"]["client/templates/results/index.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -377,7 +377,7 @@ __p += '<header class="jumbotron subhead">\n    <div class="events-img-title"/>\
 return __p
 };
 
-this["JST"]["client/templates/results/list.ejs"] = function(obj) {
+this["JST"]["client/templates/results/list.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -387,7 +387,7 @@ __p += '<div class="btn-group" data-toggle="buttons" id="filter">\n    <label cl
 return __p
 };
 
-this["JST"]["client/templates/results/listitem.ejs"] = function(obj) {
+this["JST"]["client/templates/results/listitem.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -405,7 +405,7 @@ __p += '<div class="row">\n    <div class="col-md-1"><b>' +
 return __p
 };
 
-this["JST"]["client/templates/results/review.ejs"] = function(obj) {
+this["JST"]["client/templates/results/review.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -425,7 +425,7 @@ __p += '<div class="btn-toolbar pull-right">\n</div>\n<h3>' +
 return __p
 };
 
-this["JST"]["client/templates/signup/createstep.ejs"] = function(obj) {
+this["JST"]["client/templates/signup/createstep.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -441,7 +441,7 @@ __p += '<h2>New Account</h2>\n<p>Please complete the information below to create
 return __p
 };
 
-this["JST"]["client/templates/signup/emailstep.ejs"] = function(obj) {
+this["JST"]["client/templates/signup/emailstep.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -453,7 +453,7 @@ __p += '<h2>Existing Account</h2>\n<p>Please complete the information below to c
 return __p
 };
 
-this["JST"]["client/templates/signup/index.ejs"] = function(obj) {
+this["JST"]["client/templates/signup/index.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -463,7 +463,7 @@ __p += '<div class="row">\n    <div class="col-sm-2">\n    </div>\n    <div clas
 return __p
 };
 
-this["JST"]["client/templates/signup/passwordstep.ejs"] = function(obj) {
+this["JST"]["client/templates/signup/passwordstep.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -473,7 +473,7 @@ __p += '<h2>We found it!</h2>\n<p>Please enter your password to sign into the si
 return __p
 };
 
-this["JST"]["client/templates/signup/paynowcreatedstep.ejs"] = function(obj) {
+this["JST"]["client/templates/signup/paynowcreatedstep.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -483,7 +483,7 @@ __p += '<h2>Account created!</h2>\n<p>Your account has been created.  To become 
 return __p
 };
 
-this["JST"]["client/templates/signup/paynowstep.ejs"] = function(obj) {
+this["JST"]["client/templates/signup/paynowstep.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -493,7 +493,7 @@ __p += '<h2>Signed in!</h2>\n<p>You are now signed in.  To keep your WMGA member
 return __p
 };
 
-this["JST"]["client/templates/signup/typestep.ejs"] = function(obj) {
+this["JST"]["client/templates/signup/typestep.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -503,7 +503,7 @@ __p += '<h3>Welcome</h3>\n<p>The Westwood Men\'s Golf Association would like to 
 return __p
 };
 
-this["JST"]["client/templates/teams/addbutton.ejs"] = function(obj) {
+this["JST"]["client/templates/teams/addbutton.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -513,7 +513,7 @@ __p += '<span class="input-group-btn">\n    <a href="#teams/create" class="btn b
 return __p
 };
 
-this["JST"]["client/templates/teams/editbuttons.ejs"] = function(obj) {
+this["JST"]["client/templates/teams/editbuttons.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -525,7 +525,7 @@ __p += '<a href="#teams/update/' +
 return __p
 };
 
-this["JST"]["client/templates/teams/form.ejs"] = function(obj) {
+this["JST"]["client/templates/teams/form.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -541,7 +541,7 @@ __p += '<form method="POST" role="form">\n    <h3 id="formtitle">Add team</h3>\n
 return __p
 };
 
-this["JST"]["client/templates/teams/index.ejs"] = function(obj) {
+this["JST"]["client/templates/teams/index.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -551,7 +551,7 @@ __p += '<header class="jumbotron subhead">\n    <div class="contact-img-title"/>
 return __p
 };
 
-this["JST"]["client/templates/teams/list.ejs"] = function(obj) {
+this["JST"]["client/templates/teams/list.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -561,7 +561,7 @@ __p += '<div class="input-group">\n    <input type="text" class="form-control" p
 return __p
 };
 
-this["JST"]["client/templates/teams/listitem.ejs"] = function(obj) {
+this["JST"]["client/templates/teams/listitem.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -583,7 +583,7 @@ __p += '<td><b><a href="#teams/read/' +
 return __p
 };
 
-this["JST"]["client/templates/teams/listitemmember.ejs"] = function(obj) {
+this["JST"]["client/templates/teams/listitemmember.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -595,7 +595,7 @@ __p += '<td colspan="6">Members: ' +
 return __p
 };
 
-this["JST"]["client/templates/teams/review.ejs"] = function(obj) {
+this["JST"]["client/templates/teams/review.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -621,7 +621,7 @@ __p += '<div class="btn-toolbar pull-right">\n</div>\n<div id="info">\n    <div 
 return __p
 };
 
-this["JST"]["client/templates/users/addbutton.ejs"] = function(obj) {
+this["JST"]["client/templates/users/addbutton.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -631,7 +631,7 @@ __p += '<span class="input-group-btn">\n    <a href="#users/create" class="btn b
 return __p
 };
 
-this["JST"]["client/templates/users/editbuttons.ejs"] = function(obj) {
+this["JST"]["client/templates/users/editbuttons.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -643,7 +643,7 @@ __p += '<a href="#users/update/' +
 return __p
 };
 
-this["JST"]["client/templates/users/email.ejs"] = function(obj) {
+this["JST"]["client/templates/users/email.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -653,7 +653,7 @@ __p += '<form method="POST" role="form">\n    <h3 id="formtitle">Email Members</
 return __p
 };
 
-this["JST"]["client/templates/users/form.ejs"] = function(obj) {
+this["JST"]["client/templates/users/form.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -679,7 +679,7 @@ __p += '<form method="POST" role="form">\n    <h3 id="formtitle">Add member</h3>
 return __p
 };
 
-this["JST"]["client/templates/users/index.ejs"] = function(obj) {
+this["JST"]["client/templates/users/index.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -689,7 +689,7 @@ __p += '<header class="jumbotron subhead">\n    <div class="contact-img-title"/>
 return __p
 };
 
-this["JST"]["client/templates/users/list.ejs"] = function(obj) {
+this["JST"]["client/templates/users/list.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -699,7 +699,7 @@ __p += '<div class="input-group">\n    <input type="text" class="form-control" p
 return __p
 };
 
-this["JST"]["client/templates/users/listitem.ejs"] = function(obj) {
+this["JST"]["client/templates/users/listitem.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -717,7 +717,7 @@ __p += '<td><b><a href="#users/read/' +
 return __p
 };
 
-this["JST"]["client/templates/users/review.ejs"] = function(obj) {
+this["JST"]["client/templates/users/review.jst"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {

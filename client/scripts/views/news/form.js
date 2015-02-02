@@ -2,6 +2,8 @@ define(function(require) {
   'use strict';
 
   var FormBaseView = require('client/scripts/views/formbase');
+  var BBFileStyle = require('backbone.filestyle');
+  
   var NewsFormView = FormBaseView.extend({
     template: JST['client/templates/news/form.jst'],
 
@@ -13,9 +15,7 @@ define(function(require) {
     render: function() {
       FormBaseView.prototype.render.apply(this,arguments);
 
-      this.$('#itemdatepicker').datetimepicker({
-        pickTime: false
-      });
+      this.$('#itemdatepicker').datetimepicker();
       this.filestyle({
         selector: '#attachedfile',
         binding: 'attachedfile',

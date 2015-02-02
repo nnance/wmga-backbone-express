@@ -1,19 +1,14 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
+
   var BaseView = Backbone.View.extend({
     constructor: function(attributes, options) {
       if (attributes && attributes.session) {
         this.session = attributes.session;
       }
       Backbone.View.prototype.constructor.apply(this,arguments);
-    },
-
-    render: function() {
-      if (this.template) {
-        this.$el.html( this.template( this ) );
-      }
-      return this;
     },
 
     getAttr: function(attribute) {

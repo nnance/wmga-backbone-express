@@ -1,6 +1,7 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
   var AppSettings = '../appsettings';
   var moment = require('moment');
 

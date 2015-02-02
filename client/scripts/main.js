@@ -3,11 +3,14 @@
 // RequireJS configuration
 require.config({
   deps: [
+    'client/scripts/views/app',
+    'bootstrap',
+    'bootstrap.datetimepicker',
     'backbone.localstorage',
     'backbone.validation',
-    'backbone.composer',
     'backbone.datetime',
-    'backbone.filestyle'
+    'backbone.filestyle',
+    'backbone.composer'
   ],
 
   paths: {
@@ -15,6 +18,7 @@ require.config({
     'jquery': '../bower_components/jquery/dist/jquery',
     'underscore': '../bower_components/underscore/underscore',
     'backbone': '../bower_components/backbone/backbone',
+    'bootstrap': '../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap',
     'backbone.localstorage': '../bower_components/backbone.localstorage/backbone.localStorage',
     'backbone.validation': '../bower_components/backbone.validation/dist/backbone-validation-amd',
     'moment': '../bower_components/moment/moment',
@@ -24,16 +28,33 @@ require.config({
     'backbone.composer': '../bower_components/backbone.composer/backbone.composer',
     'backbone.datetime': '../bower_components/backbone-plugins/modeldatetime/backbone.datetime',
     'backbone.filestyle': '../bower_components/backbone-plugins/filestyle/backbone.filestyle'
+  },
+
+  shim: {
+    'backbone': {
+      deps: ['underscore', 'jquery'],
+      exports: 'Backbone'
+    },
+    'underscore': {
+      exports: '_'
+    },
+    'bootstrap': {
+      deps: ['jquery'],
+      exports: 'jquery'
+    },
+    'bootstrap.datetimepicker': {
+      deps: ['bootstrap','moment']
+    },
+    'select2': {
+      deps: ['jquery']
+    },
+    'bootstrap-filestyle': {
+      deps: ['jquery']
+    }
+  },
+  callback: function(App) {
+    var app = new App({el: '#app'});
+    app.render();
+    app.initSession();
   }
 });
-
-define('init', function(require) {
-
-  var App = require('client/scripts/views/app');
-  var app = new App({el: '#app'});
-  app.render();
-  app.initSession();
-});
-
-// Initialize the application.
-require(['init']);

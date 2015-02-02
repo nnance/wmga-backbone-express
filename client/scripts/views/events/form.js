@@ -12,13 +12,9 @@ define(function(require) {
 
     render: function() {
       FormBaseView.prototype.render.apply(this,arguments);
-      
-      this.$('#startdatepicker').datetimepicker({
-        pickSeconds: false
-      });
-      this.$('#enddatepicker').datetimepicker({
-        pickSeconds: false
-      });
+
+      this.$('#startdatepicker').datetimepicker();
+      this.$('#enddatepicker').datetimepicker();
       this.filestyle({
         selector: '#attachedfile',
         binding: 'attachedfile',

@@ -1,8 +1,9 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
   var AppSettings = require('../appsettings');
-  
+
   var SigninModel = Backbone.Model.extend({
 
     idAttribute: '_id',

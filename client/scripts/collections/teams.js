@@ -1,6 +1,7 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
   var TeamsModel = require('client/scripts/models/teams-model');
 
   var Teams = Backbone.Collection.extend({

@@ -2,6 +2,8 @@ define(function(require) {
   'use strict';
 
   var AppSettings = require('../appsettings');
+  var Backbone = require('backbone');
+  
   var moment = require('moment');
 
   var EventsModel = Backbone.Model.extend({

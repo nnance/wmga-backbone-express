@@ -42,7 +42,7 @@ define(function(require) {
 
     render: function() {
       ListBaseView.prototype.render.apply(this, arguments);
-      // this.$('#' + this.filter.name).button('toggle');
+      this.$('#' + this.filter.name).button('toggle');
       return this;
     },
 

@@ -7,7 +7,7 @@
 var tests = [
   'backbone.localstorage',
   'backbone.validation',
-  'backbone.viewmanager',
+  'backbone.composer',
   'backbone.datetime',
   'backbone.filestyle'
 ];
@@ -36,9 +36,31 @@ requirejs.config({
     'bootstrap.datetimepicker': 'client/bower_components/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker',
     'bootstrap-filestyle': 'client/bower_components/bootstrap-filestyle/src/bootstrap-filestyle',
     'select2': 'client/bower_components/select2/select2',
-    'backbone.viewmanager': 'client/bower_components/backbone-plugins/viewmanager/backbone.viewmanager',
+    'backbone.composer': 'client/bower_components/backbone.composer/backbone.composer',
     'backbone.datetime': 'client/bower_components/backbone-plugins/modeldatetime/backbone.datetime',
     'backbone.filestyle': 'client/bower_components/backbone-plugins/filestyle/backbone.filestyle'
+  },
+  shim: {
+    'backbone': {
+      deps: ['underscore', 'jquery'],
+      exports: 'Backbone'
+    },
+    'underscore': {
+      exports: '_'
+    },
+    'bootstrap': {
+      deps: ['jquery'],
+      exports: 'jquery'
+    },
+    'bootstrap.datetimepicker': {
+      deps: ['bootstrap','moment']
+    },
+    'select2': {
+      deps: ['jquery']
+    },
+    'bootstrap-filestyle': {
+      deps: ['jquery']
+    }
   },
 
   // start test run, once Require.js is done

@@ -1,6 +1,7 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
   var UsersModel = require('client/scripts/models/users-model');
 
   var Users = Backbone.Collection.extend({

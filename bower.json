@@ -17,7 +17,8 @@
     "bootstrap-filestyle": "~1.1.2",
     "select2-bootstrap-css": "~1.4.4",
     "backbone-plugins": "https://github.com/nnance/backbone-plugins.git",
-    "backbone.composer": "~0.2.0"
+    "backbone.composer": "~0.2.0",
+    "bootstrap3-datetimepicker": "~4.0.0"
   },
   "devDependencies": {}
 }
