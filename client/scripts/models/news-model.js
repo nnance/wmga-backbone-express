@@ -2,6 +2,7 @@ define(function(require) {
   'use strict';
 
   var AppSettings = '../appsettings';
+  var moment = require('moment');
 
   var NewsModel = Backbone.Model.extend({
 
@@ -22,7 +23,7 @@ define(function(require) {
 
     defaults: function() {
       return {
-        itemdate:  this.now()
+        itemdate: moment()
       };
     }
 

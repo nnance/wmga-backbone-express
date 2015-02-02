@@ -2,6 +2,7 @@ define(function(require) {
   'use strict';
 
   var AppSettings = require('../appsettings');
+  var moment = require('moment');
 
   var ResultsModel = Backbone.Model.extend({
     idAttribute: '_id',
@@ -21,7 +22,7 @@ define(function(require) {
 
     defaults: function() {
       return {
-        itemdate:  this.now()
+        itemdate:  moment()
       };
     }
 

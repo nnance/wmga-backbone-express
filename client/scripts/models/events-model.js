@@ -2,6 +2,7 @@ define(function(require) {
   'use strict';
 
   var AppSettings = require('../appsettings');
+  var moment = require('moment');
 
   var EventsModel = Backbone.Model.extend({
 
@@ -25,8 +26,8 @@ define(function(require) {
 
     defaults: function() {
       return {
-        startdate:  this.now(),
-        enddate: this.now()
+        startdate:  moment(),
+        enddate: moment()
       };
     }
 
