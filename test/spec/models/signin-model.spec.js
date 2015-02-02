@@ -12,7 +12,7 @@ define(function(require) {
     });
 
     it('Should run a few assertions', function() {
-
+      expect(this.signinModel).to.be.ok;
     });
 
   });
