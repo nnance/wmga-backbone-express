@@ -10,7 +10,6 @@
     "backbone": "~1.1.2",
     "requirejs": "~2.1.11",
     "bootstrap-sass-official": "~3.3.3",
-    "requirejs-text": "~2.0.13",
     "backbone.localstorage": "~1.1.16",
     "backbone.validation": "~0.7.1",
     "moment": "~2.9.0",

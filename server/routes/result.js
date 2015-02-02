@@ -4,16 +4,15 @@
 
 'use strict';
 
-var User = require('../controllers/user');
+var Result = require('../controllers/result');
 
 var routes = function(app) {
-  app.get('/rest/users', User.getList);
-  app.get('/rest/users/:id', User.getById);
-  app.post('/rest/users', User.addUser);
-  app.post('/rest/users/email', User.emailAllUsers);
-  app.post('/rest/users/notify', User.notifyAllUsers);
-  app.put('/rest/users/:id', User.updateUser);
-  app.delete('/rest/users/:id', User.deleteUser);
+  //result route
+  app.get('/rest/results', Result.getAll);
+  app.get('/rest/results/:id', Result.getById);
+  app.post('/rest/results', Result.addResult);
+  app.put('/rest/results/:id', Result.updateResult);
+  app.delete('/rest/results/:id', Result.deleteResult);
 };
 
 module.exports = routes;
