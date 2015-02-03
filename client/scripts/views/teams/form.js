@@ -2,6 +2,7 @@ define(function(require) {
   'use strict';
 
   var FormBaseView = require('client/scripts/views/formbase');
+  var Select2 = require('select2');
 
   var TeamsFormView = FormBaseView.extend({
     template: JST['client/templates/teams/form.jst'],
