@@ -12,7 +12,8 @@ var taskConfig = function(grunt) {
         dest: '<%= yeogurt.dist %>/client/',
         src: [
           'bower_components/requirejs/require.js',
-          'styles/fonts/**/*.{woff,otf,ttf,eot,svg}',
+          'styles/fonts/**/*.{woff,woff2,otf,ttf,eot,svg}',
+          'styles/**/*.{png,jpg,gif}',
           'images/**/*.{webp}',
           '!*.js',
           '*.{ico,png,txt}',
