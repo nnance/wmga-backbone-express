@@ -16,22 +16,6 @@ define(function(require) {
       }
     },
 
-    serializeForm: function(selector) {
-      var result = {};
-      var fields = this.$(selector).serializeArray();
-      _.each(fields, function(field) {
-        if (result[field.name]) {
-          if (!result[field.name].push) {
-            result[field.name] = [result[field.name]];
-          }
-          result[field.name].push(field.value || '');
-        } else {
-          result[field.name] = field.value || '';
-        }
-      });
-      return result;
-    },
-
     handleErrors: function(model, errors) {
       // restore the model
       model.set(model.previousAttributes());
