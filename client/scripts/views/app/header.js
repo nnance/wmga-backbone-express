@@ -23,7 +23,6 @@ define(function(require) {
       this.model = this.collection.at(0);
       this.listenTo(this.model, 'signedin', this.render);
       this.listenTo(this.model, 'signedout', this.render);
-      this.render();
     },
 
     render: function() {

@@ -34,13 +34,13 @@ define([
           session: this.session,
           showSignUp: showSignUp
         });
-        this.container.setView(view.render());
+        this.container.setView(view);
       },
 
       showSignIn: function() {
         var signIn = new SignInModel();
         var view = new SignInView({model: signIn, session: this.session, dataManager: this.dataManager});
-        this.container.setView(view.render());
+        this.container.setView(view);
       },
 
       signOutUser: function() {
@@ -49,7 +49,7 @@ define([
 
       showContact: function() {
         var view = new ContactView();
-        this.container.setView(view.render());
+        this.container.setView(view);
         view.postRender();
       },
 

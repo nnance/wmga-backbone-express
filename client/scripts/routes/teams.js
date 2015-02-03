@@ -17,17 +17,7 @@ define([
       indexView: IndexView,
       listView: ListView,
       reviewView: ReviewView,
-      formView: FormView,
-
-      // showList: function(filter) {
-      //     var view = this.createListView(filter);
-      //     var indexView = new this.indexView({view: view});
-      //     indexView.render();
-      //     indexView.$('#help').remove();
-      //     indexView.$('#index').removeClass('col-md-9').addClass('col-md-12');
-      //     this.container.setView(indexView);
-      // }
-
+      formView: FormView
     });
 
     return TeamsRouter;

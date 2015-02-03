@@ -13,7 +13,7 @@ define(function (require) {
 
     showView: function(view) {
       var indexView = new this.indexView({view: view});
-      this.container.setView(indexView.render());
+      this.container.setView(indexView);
     },
 
     showList: function(filter) {

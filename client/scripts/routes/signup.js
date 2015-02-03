@@ -43,7 +43,7 @@ define([
         } else {
           if (step === 'welcome') {
             this.model = new UserModel();
-            this.container.setView(this.indexView.render());
+            this.container.setView(this.indexView);
           }
           var view = new ViewType({model: this.model, collection: this.collection, session: this.session, dataManager: this.dataManager});
           this.indexView.removeSubViews();
