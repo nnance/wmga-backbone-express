@@ -23,6 +23,7 @@ deployment:
     branch: master
     commands:
       - git push -f git@heroku.com:wmga-backbone-express.git master:master
+      - heroku run cd dist && npm prune && npm install --production
 
 machine:
   node:
