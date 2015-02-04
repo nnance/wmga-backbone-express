@@ -43,7 +43,9 @@ var expressConfig = function(app, express, db) {
 
   if (env === 'development') {
     // Include livereload script on all pages
-    app.use(require('connect-livereload')());
+    app.use(require('connect-livereload')({
+      port: 35759
+    }));
     // Load bower_components
     app.use(express.static(path.join(settings.root, '.tmp'), {maxAge: 0}));
     app.use('/bower_components', express.static(path.join(settings.root, 'client/bower_components'), {maxAge: 0}));
