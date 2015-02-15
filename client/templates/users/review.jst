@@ -4,11 +4,12 @@
         <h3>Membership Info</h3>
     </div>
     <h4><%= model.get('firstname') %> <%= model.get('lastname') %></h4>
-    <p><%= model.get('address') %><br>
+    <p>
+        <%= model.get('address') %><br>
         <%= model.get('address2') %>
     </p>
     <abbr title="Phone">P:</abbr> <%= model.get('phone') %><br/>
-    <p>Photo: <a href="<%= getFileUrl() %>"><%= model.get('photo') %></a></p>
+    <p>Email: <a href="mailto:<%= model.get('email') %>"><%= model.get('email') %></a></p>
     <label class="checkbox">
         <input type="checkbox" id="mark-paid" <%= model.get('paid') ? 'checked' : '' %>> Mark Paid
     </label>
