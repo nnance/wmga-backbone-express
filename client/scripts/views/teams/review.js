@@ -9,8 +9,6 @@ define(function(require) {
   var TeamsDetailView = ReviewBaseView.extend({
     template: JST['client/templates/teams/review.jst'],
     editButtonsTemplate: JST['client/templates/teams/editbuttons.jst'],
-    adminTemplate: JST['client/templates/teams/reviewadmin.jst'],
-    treasureTemplate: JST['client/templates/teams/reviewtreasure.jst'],
 
     events: {
       'click #delete-btn': 'showDeleteConfirm',

@@ -12,6 +12,7 @@ var routes = function(app) {
   app.post('/rest/users', User.addUser);
   app.post('/rest/users/email', User.emailAllUsers);
   app.post('/rest/users/notify', User.notifyAllUsers);
+  app.put('/rest/users/:id', User.updateUser);
   //signin route
   app.post('/rest/signin', User.validateSignIn);
   app.post('/rest/users/requestpassword', User.requestPassword);

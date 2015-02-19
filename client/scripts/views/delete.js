@@ -21,6 +21,10 @@ define(function(require) {
         throw new Error('Missing required modelAttr or modelTypeName option');
       }
 
+      this.modelAttr = options.modelAttr;
+      this.modelTypeName = options.modelTypeName;
+      this.successRoute = options.successRoute;
+
       this.listenTo(this.model, 'sync', this.deleteCompleted);
       this.listenTo(this.model, 'error', this.deleteFailed);
     },
@@ -37,10 +41,10 @@ define(function(require) {
     deleteCompleted: function() {
       var options = this.options;
       this.$el.on('hidden.bs.modal', function() {
-        if (options.successRoute) {
-          Backbone.history.navigate(options.successRoute, true);
+        if (this.successRoute) {
+          Backbone.history.navigate(this.successRoute, true);
         }
-      });
+      }.bind(this));
       this.$el.modal('hide');
     },
 
