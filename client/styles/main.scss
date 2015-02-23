@@ -7,6 +7,14 @@ $icon-font-path: "fonts/bootstrap/";
 // bower:sass
 // endbower
 @import "signin";
+@import "overwrites";
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
 
 .browsehappy {
     margin: 0.2em 0;
@@ -17,15 +25,67 @@ $icon-font-path: "fonts/bootstrap/";
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-    padding-top: 60px;
+    padding-top: 71px;
     padding-bottom: 20px;
 }
 
 .jumbotron-index {
     @extend .jumbotron;
+    border-radius: 0 !important;
+    background-color: transparent;
     color: #fff;
-    text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
-    background-image: url('../images/header_rates.jpg');
+    background-image: url('../images/golf_grass.jpg');
+    background-size: cover;
+    position: relative;
+    text-align: center;
+
+    p {
+      font-size: 16px;
+      margin-top: 25px;
+      margin-bottom: 30px;
+    }
+
+    &:before, &:after {
+      z-index: -1;
+      position: absolute;
+      content: "";
+      bottom: 15px;
+      left: 10px;
+      width: 50%;
+      top: 80%;
+      max-width:300px;
+      background: #777;
+      -webkit-box-shadow: 0 15px 10px #777;
+      -moz-box-shadow: 0 15px 10px #777;
+      box-shadow: 0 15px 10px #777;
+      -webkit-transform: rotate(-3deg);
+      -moz-transform: rotate(-3deg);
+      -o-transform: rotate(-3deg);
+      -ms-transform: rotate(-3deg);
+      transform: rotate(-3deg);
+    }
+    &:after {
+      -webkit-transform: rotate(3deg);
+      -moz-transform: rotate(3deg);
+      -o-transform: rotate(3deg);
+      -ms-transform: rotate(3deg);
+      transform: rotate(3deg);
+      right: 10px;
+      left: auto;
+    }
+
+    .btn {
+      background-color: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+    }
+}
+
+@media (max-width: 768px) {
+  .jumbotron-index {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
 }
 
 .news-img {
@@ -70,6 +130,11 @@ body {
     height: 90px;
     width: 90px;
     float: left;
+}
+.listItem {
+  margin-bottom: 20px;
+  display: block;
+  color: inherit;
 }
 
 /* Subhead (other pages)
@@ -158,4 +223,17 @@ section:before {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+/* item view
+----------------------------*/
+.item-view {
+
+  h4 {
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
 }

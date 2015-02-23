@@ -1,3 +1,13 @@
-<h4><%= getAttr('title') %></h4>
-<p><%= getAttr('text') %></p>
-<p><a class="btn btn-default" href="#news/read/<%=getAttr('_id')%>" role="button">View details &raquo;</a></p>
+<div class="panel panel-default listItem">
+	<div class="panel-heading">
+		<h1 class="panel-title">
+			<%= model.get('title') %>
+		</h1>
+	</div>
+	<div class="panel-body">
+		<p><%= getAttr('text') %></p>
+	</div>
+	<div class="panel-footer">
+		<a href="#news/read/<%= model.id %>">View Details <span class="glyphicon glyphicon-arrow-right"></span></a>
+	</div>
+</div>
