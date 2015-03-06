@@ -1,3 +1,12 @@
-<h4><%= getAttr('title') %></h4>
-<p><%= getAttr('description') %></p>
-<p><a class="btn btn-default" href="#events/read/<%=getAttr('_id')%>" role="button">View details &raquo;</a></p>
+<!--<a href="#events/read/<%= model.id %>" class="listItem panel">-->
+<a href="#events/read/<%= model.id %>" class="panel panel-default listItem">
+	<div class="panel-heading">
+		<h1 class="panel-title">
+			<%= model.get('title') %>
+		</h1>
+	</div>
+	<div class="panel-body">
+		<p><%= model.dateAsString('startdate') %></p>
+    <p><%= model.get('description') %></p>
+	</div>
+</a>

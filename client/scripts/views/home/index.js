@@ -27,29 +27,33 @@ define(function(require) {
     },
 
     renderNews: function() {
-      var recentArticle = this.newsCollection.at(0);
-      if (recentArticle) {
-        this.addSubView({
-          view: new NewsItemView({model: recentArticle}),
-          selector: '#news-item'
-        });
+      for (var i = 0; i < 3; i++) {
+        var recentArticle = this.newsCollection.at(i);
+        if (recentArticle) {
+          this.addSubView({
+            view: new NewsItemView({model: recentArticle}),
+            selector: '#news-item'
+          });
+        }
       }
     },
 
     renderEvent: function() {
-      var recentEvent = this.eventsCollection.at(0);
+      var recentEvent;
+      var count = 0;
       var now = moment();
       this.eventsCollection.forEach(function(event) {
         if (event.getAsDate('startdate').isAfter(now)) {
           recentEvent = event;
         }
+        if (recentEvent && (count < 3)) {
+          this.addSubView({
+            view: new EventsItemView({model: recentEvent}),
+            selector: '#events-item'
+          });
+          count++;
+        }
       }, this);
-      if (recentEvent) {
-        this.addSubView({
-          view: new EventsItemView({model: recentEvent}),
-          selector: '#events-item'
-        });
-      }
     }
   });
 

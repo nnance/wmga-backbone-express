@@ -50,7 +50,7 @@ define(function(require) {
       if (model.getAsDate('startdate').isBefore(this.filter.start) && model.getAsDate('startdate').isAfter(this.filter.end)) {
         this.addSubView({
           view: new ItemView({model: model}),
-          selector: '.container'
+          selector: '.eventList'
         });
       }
     },

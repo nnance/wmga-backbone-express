@@ -3,8 +3,7 @@ define(function(require) {
 
   var BaseView = require('client/scripts/views/viewbase');
   var FooterView = BaseView.extend({
-    template: JST['client/templates/app/footer.jst'],
-    className: 'container'
+    template: JST['client/templates/app/footer.jst']
   });
 
   return FooterView;
