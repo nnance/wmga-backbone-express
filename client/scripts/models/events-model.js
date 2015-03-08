@@ -3,7 +3,7 @@ define(function(require) {
 
   var AppSettings = require('../appsettings');
   var Backbone = require('backbone');
-  
+
   var moment = require('moment');
 
   var EventsModel = Backbone.Model.extend({
@@ -28,6 +28,9 @@ define(function(require) {
 
     defaults: function() {
       return {
+        title: '',
+        description: '',
+        attachedfile: '',
         startdate:  moment(),
         enddate: moment()
       };

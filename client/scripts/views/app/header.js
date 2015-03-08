@@ -1,4 +1,6 @@
 define(function(require) {
+  // TODO close pull down menu on menu select
+
   'use strict';
 
   var BaseView = require('client/scripts/views/viewbase');

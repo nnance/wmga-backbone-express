@@ -1,7 +1,9 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
   var FormBaseView = require('client/scripts/views/formbase');
+
   var EventsFormView = FormBaseView.extend({
     template: JST['client/templates/events/form.jst'],
 
@@ -14,7 +16,6 @@ define(function(require) {
       FormBaseView.prototype.render.apply(this,arguments);
 
       this.$('#startdatepicker').datetimepicker();
-      this.$('#enddatepicker').datetimepicker();
       this.filestyle({
         selector: '#attachedfile',
         binding: 'attachedfile',
@@ -22,6 +23,13 @@ define(function(require) {
       });
 
       return this;
+    },
+
+    serializeData: function() {
+      return _.extend(this.model.toJSON(), {
+        startdate: this.getDateAttr('startdate'),
+        isNew: this.model.isNew()
+      });
     },
 
     routeSuccessfulResult: function() {

@@ -47,7 +47,8 @@ define(function(require) {
     },
 
     renderItem: function(model) {
-      if (model.getAsDate('startdate').isBefore(this.filter.start) && model.getAsDate('startdate').isAfter(this.filter.end)) {
+      var startDate = model.getAsDate('startdate');
+      if (startDate.isBefore(this.filter.start) && startDate.isAfter(this.filter.end)) {
         this.addSubView({
           view: new ItemView({model: model}),
           selector: '.eventList'

@@ -2,6 +2,7 @@ define(function(require) {
   'use strict';
 
   var Backbone = require('backbone');
+  var moment = require('moment');
 
   var BaseView = Backbone.View.extend({
     constructor: function(attributes, options) {
@@ -22,6 +23,13 @@ define(function(require) {
         return this.model.dateAsString(attribute);
       }
     },
+
+    getDisplayDate: function(attribute) {
+      if (this.model && this.model.get(attribute)) {
+        var startdate = this.model.get('startdate').split('T')[0];
+        return moment(startdate).format('dddd, MMMM Do YYYY');
+      }
+    }
 
   });
 

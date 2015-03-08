@@ -1,8 +1,17 @@
 <div class="page-header">
-  <h1><%= model.get('title') %></h1>
+  <h1><%= title %></h1>
+</div>
+<div class="btn-group pull-right" id="action-menu">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#events/update/<%= _id %>"> Edit Event</a></li>
+    <li><a id="delete-btn"> Delete Event</a></li>
+  </ul>
 </div>
 <div class="item-view">
-	<h4><%= model.dateAsString('startdate') %></h4>
-	<p><%= model.get('description') %></p>
-	<p>Attached file: <a href="<%= getFileUrl() %>"><%= model.get('attachedfile') %></a></p>
+	<h4><%= startdate %></h4>
+	<p><%= description %></p>
+	<p class="<%= attachedfile ? '' : 'hidden'%>">Attached file: <a href="<%= fileUrl %>"><%= attachedfile %></a></p>
 </div>

@@ -1,4 +1,6 @@
 define(function(require) {
+  // TODO add sticker headers for news and events on home page
+
   'use strict';
 
   var moment = require('moment');

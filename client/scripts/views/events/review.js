@@ -6,10 +6,15 @@ define(function(require) {
 
   var EventsDetailView = ReviewBaseView.extend({
     template: JST['client/templates/events/review.jst'],
-    editButtonsTemplate: JST['client/templates/events/editbuttons.jst'],
-
     events: {
       'click #delete-btn': 'showDeleteConfirm',
+    },
+
+    serializeData: function() {
+      return _.extend(this.model.toJSON(), {
+        startdate: this.getDisplayDate('startdate'),
+        fileUrl: this.getFileUrl()
+      });
     },
 
     showDeleteConfirm: function() {

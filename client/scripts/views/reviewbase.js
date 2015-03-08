@@ -6,19 +6,19 @@ define(function(require) {
   var ReviewBaseView = BaseView.extend({
 
     initialize: function(options) {
-      BaseView.prototype.initialize.apply(this,arguments);
       if (this.model) {
         this.listenTo(this.model,'change',this.render);
       }
-
     },
 
-    render: function() {
-      BaseView.prototype.render.apply(this, arguments);
-      if (this.editButtonsTemplate && this.session && this.session.get('admin')) {
-        this.$('.btn-toolbar').append(this.editButtonsTemplate(this));
+    onRender: function() {
+      if (this.session && this.session.get('admin')) {
+        if (this.editButtonsTemplate) {
+          this.$('.btn-toolbar').append(this.editButtonsTemplate(this));
+        }
+      } else if (this.$('#action-menu')) {
+          this.$('#action-menu').hide();
       }
-      return this;
     },
 
     getFileUrl: function() {

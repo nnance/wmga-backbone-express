@@ -1,5 +1,7 @@
 'use strict';
 
+// TODO Remove backbone plugins
+
 // RequireJS configuration
 require.config({
   deps: [
