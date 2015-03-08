@@ -29,7 +29,7 @@ define(function(require) {
     },
 
     renderNews: function() {
-      for (var i = 0; i < 3; i++) {
+      for (var i = 0; i < 3 && i < this.newsCollection.length; i++) {
         var recentArticle = this.newsCollection.at(i);
         if (recentArticle) {
           this.addSubView({
@@ -41,21 +41,19 @@ define(function(require) {
     },
 
     renderEvent: function() {
-      var recentEvent;
-      var count = 0;
       var now = moment();
-      this.eventsCollection.forEach(function(event) {
-        if (event.getAsDate('startdate').isAfter(now)) {
-          recentEvent = event;
-        }
-        if (recentEvent && (count < 3)) {
-          this.addSubView({
-            view: new EventsItemView({model: recentEvent}),
-            selector: '#events-item'
-          });
-          count++;
-        }
-      }, this);
+
+      var filter = this.eventsCollection.filter(function(event){
+        return event.getAsDate('startdate').isAfter(now);
+      });
+
+      for (var i = 0; i < 3 && i < filter.length; i++) {
+        var recentEvent = filter[i];
+        this.addSubView({
+          view: new EventsItemView({model: recentEvent}),
+          selector: '#events-item'
+        });
+      }
     }
   });
 
