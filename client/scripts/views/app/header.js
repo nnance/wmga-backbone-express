@@ -1,6 +1,4 @@
 define(function(require) {
-  // TODO close pull down menu on menu select
-
   'use strict';
 
   var BaseView = require('client/scripts/views/viewbase');
@@ -53,6 +51,8 @@ define(function(require) {
         item = item.parent().parent();
       }
       item.parent().addClass('active');
+
+      this.$('.collapse').collapse('hide');
     }
 
   });
