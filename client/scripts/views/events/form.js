@@ -1,4 +1,9 @@
 define(function(require) {
+
+  // TODO Fix file attachment.  Getting index 0 not found on server when saving attachment
+  // TODO Clean up file attachment button layout
+  // TODO Add support for multiple file attachments
+
   'use strict';
 
   var _ = require('underscore');

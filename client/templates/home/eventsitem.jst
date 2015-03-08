@@ -1,12 +1,14 @@
-<!--<a href="#events/read/<%= model.id %>" class="listItem panel">-->
-<a href="#events/read/<%= model.id %>" class="panel panel-default listItem">
+<div class="panel panel-default listItem">
 	<div class="panel-heading">
 		<h1 class="panel-title">
-			<%= model.get('title') %>
+			<%= title %>
 		</h1>
 	</div>
 	<div class="panel-body">
-		<p><%= model.dateAsString('startdate') %></p>
-    <p><%= model.get('description') %></p>
+		<p><%= startdate %></p>
+		<p><%= description %></p>
 	</div>
-</a>
+	<div class="panel-footer">
+		<a href="#events/read/<%= _id %>">View Details <span class="glyphicon glyphicon-arrow-right"></span></a>
+	</div>
+</div>
