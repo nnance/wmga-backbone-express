@@ -2,10 +2,10 @@ define(function(require) {
   'use strict';
 
   var BaseView = require('client/scripts/views/viewbase');
-  var ContactView = BaseView.extend({
+  return BaseView.extend({
     template: JST['client/templates/app/contact.jst'],
 
-    postRender: function() {
+    onRender: function() {
       this.$('#sidebar').affix({
         offset: {
           top: this.$('#sidebar').offset().top - 50
@@ -13,6 +13,4 @@ define(function(require) {
       });
     }
   });
-
-  return ContactView;
 });

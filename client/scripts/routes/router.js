@@ -50,7 +50,6 @@ define([
       showContact: function() {
         var view = new ContactView();
         this.container.setView(view);
-        view.postRender();
       },
 
       routeHome: function() {

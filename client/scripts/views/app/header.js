@@ -2,15 +2,14 @@ define(function(require) {
   'use strict';
 
   var BaseView = require('client/scripts/views/viewbase');
-  var HeaderView = BaseView.extend({
+
+  return BaseView.extend({
     attributes: {
       class: 'navbar navbar-inverse navbar-fixed-top',
       role: 'navigation'
     },
 
     template: JST['client/templates/app/header.jst'],
-    userTemplate: JST['client/templates/app/header-user.jst'],
-    signedInTemplate: JST['client/templates/app/header-user-signed.jst'],
 
     initialize: function(options) {
       BaseView.prototype.initialize.apply(this,arguments);
@@ -25,17 +24,21 @@ define(function(require) {
       this.listenTo(this.model, 'signedout', this.render);
     },
 
-    render: function() {
-      BaseView.prototype.render.apply(this,arguments);
+    onRender: function() {
       if (this.model && this.model.get('signedin')) {
-        this.$('.navbar-collapse').append(this.signedInTemplate( this ));
+        this.$('#signed-in').show();
+        this.$('#signed-out').hide();
       } else {
         this.$('#nav-users').hide();
         this.$('#nav-teams').hide();
-        this.$('.navbar-collapse').append(this.userTemplate( this ));
+        this.$('#signed-in').hide();
+        this.$('#signed-out').show();
       }
       this.highlighItem();
-      return this;
+    },
+
+    serializeData: function() {
+      return this.model ? this.model.toJSON() : {};
     },
 
     highlighItem: function(router, route, params) {
@@ -56,6 +59,4 @@ define(function(require) {
     }
 
   });
-
-  return HeaderView;
 });
