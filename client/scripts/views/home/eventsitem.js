@@ -3,7 +3,7 @@ define(function(require) {
 
   var BaseView = require('client/scripts/views/viewbase');
 
-  var HomeEventsitemView = BaseView.extend({
+  return BaseView.extend({
     template: JST['client/templates/home/eventsitem.jst'],
 
     serializeData: function() {
@@ -12,6 +12,4 @@ define(function(require) {
       });
     }
   });
-
-  return HomeEventsitemView;
 });

@@ -8,7 +8,7 @@ define(function(require) {
   var EventsItemView = require('client/scripts/views/home/eventsitem');
   var NewsItemView = require('client/scripts/views/home/newsitem');
 
-  var HomeIndexView = BaseView.extend({
+  return BaseView.extend({
 
     template: JST['client/templates/home/index.jst'],
 
@@ -19,13 +19,9 @@ define(function(require) {
 
       this.listenTo(this.newsCollection, 'sync', this.renderNews);
       this.listenTo(this.eventsCollection, 'sync', this.renderEvent);
-    },
 
-    render: function() {
-      BaseView.prototype.render.apply(this,arguments);
       this.renderNews();
-      this.renderEvent();
-      return this;
+      this.renderEvents();
     },
 
     renderNews: function() {
@@ -40,7 +36,7 @@ define(function(require) {
       }
     },
 
-    renderEvent: function() {
+    renderEvents: function() {
       var now = moment();
 
       var filter = this.eventsCollection.filter(function(event){
@@ -56,6 +52,4 @@ define(function(require) {
       }
     }
   });
-
-  return HomeIndexView;
 });
