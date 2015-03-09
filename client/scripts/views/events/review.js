@@ -4,7 +4,7 @@ define(function(require) {
   var ReviewBaseView = require('client/scripts/views/reviewbase');
   var DeleteView = require('client/scripts/views/delete');
 
-  var EventsDetailView = ReviewBaseView.extend({
+  return ReviewBaseView.extend({
     template: JST['client/templates/events/review.jst'],
     events: {
       'click #delete-btn': 'showDeleteConfirm',
@@ -28,6 +28,4 @@ define(function(require) {
       view.show();
     }
   });
-
-  return EventsDetailView;
 });

@@ -17,17 +17,13 @@ define(function(require) {
       'click #cancel-button': 'cancelButton'
     },
 
-    render: function() {
-      FormBaseView.prototype.render.apply(this,arguments);
-
+    onRender: function() {
       this.$('#startdatepicker').datetimepicker();
       this.filestyle({
         selector: '#attachedfile',
         binding: 'attachedfile',
         classButton: 'btn btn-default'
       });
-
-      return this;
     },
 
     serializeData: function() {
