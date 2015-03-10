@@ -4,12 +4,17 @@ define(function(require) {
   var ReviewBaseView = require('client/scripts/views/reviewbase');
   var DeleteView = require('client/scripts/views/delete');
 
-  var ResultsDetailView = ReviewBaseView.extend({
+  return ReviewBaseView.extend({
     template: JST['client/templates/results/review.jst'],
-    editButtonsTemplate: JST['client/templates/results/editbuttons.jst'],
-
     events: {
       'click #delete-btn': 'showDeleteConfirm',
+    },
+
+    serializeData: function() {
+      return _.extend(this.model.toJSON(), {
+        itemdate: this.getDisplayDate('itemdate'),
+        fileUrl: this.getFileUrl()
+      });
     },
 
     showDeleteConfirm: function() {
@@ -23,6 +28,4 @@ define(function(require) {
       view.show();
     }
   });
-
-  return ResultsDetailView;
 });

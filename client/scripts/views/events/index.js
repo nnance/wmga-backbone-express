@@ -12,7 +12,6 @@ define(function(require) {
         view: this.indexView,
         selector: '#index'
       });
-    },
-
+    }
   });
 });

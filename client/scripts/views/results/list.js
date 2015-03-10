@@ -5,7 +5,7 @@ define(function(require) {
   var ListBaseView = require('client/scripts/views/listbase');
   var ItemView = require('client/scripts/views/results/listitem');
 
-  var ResultsListView = ListBaseView.extend({
+  return ListBaseView.extend({
     template: JST['client/templates/results/list.jst'],
     addButtonTemplate: JST['client/templates/results/addbutton.jst'],
 
@@ -14,8 +14,6 @@ define(function(require) {
     },
 
     initialize: function(options) {
-      ListBaseView.prototype.initialize.apply(this, arguments);
-
       var filterValues = {
         all: {
           name: 'all',
@@ -38,19 +36,21 @@ define(function(require) {
       } else {
         this.filter = filterValues.all;
       }
+
+      ListBaseView.prototype.initialize.apply(this, arguments);
     },
 
-    render: function() {
-      ListBaseView.prototype.render.apply(this, arguments);
+    onRender: function() {
+      ListBaseView.prototype.onRender.apply(this, arguments);
       this.$('#' + this.filter.name).button('toggle');
-      return this;
     },
 
     renderItem: function(model) {
-      if (model.getAsDate('itemdate').isBefore(this.filter.start) && model.getAsDate('itemdate').isAfter(this.filter.end)) {
+      var startDate = model.getAsDate('itemdate');
+      if (startDate.isBefore(this.filter.start) && startDate.isAfter(this.filter.end)) {
         this.addSubView({
           view: new ItemView({model: model}),
-          selector: '.container'
+          selector: '.eventList'
         });
       }
     },
@@ -59,6 +59,4 @@ define(function(require) {
       Backbone.history.navigate('#results/filter/' + e.target.id, true);
     }
   });
-
-  return ResultsListView;
 });

@@ -1,11 +1,16 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
   var ListItemBaseView = require('client/scripts/views/listitembase');
 
-  var ResultsListitemView = ListItemBaseView.extend({
+  return ListItemBaseView.extend({
     template: JST['client/templates/results/listitem.jst'],
-  });
 
-  return ResultsListitemView;
+    serializeData: function() {
+      return _.extend(this.model.toJSON(), {
+          itemdate: this.getDisplayDate('itemdate')
+      });
+    }
+  });
 });
