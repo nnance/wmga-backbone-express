@@ -5,12 +5,12 @@ define(function(require) {
   return BaseView.extend({
     template: JST['client/templates/app/contact.jst'],
 
-    onRender: function() {
-      this.$('#sidebar').affix({
-        offset: {
-          top: this.$('#sidebar').offset().top - 50
-        }
-      });
-    }
+    // onRender: function() {
+    //   this.$('#sidebar').affix({
+    //     offset: {
+    //       top: this.$('#sidebar').offset().top - 50
+    //     }
+    //   });
+    // }
   });
 });
