@@ -1,10 +1,10 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
   var FormBaseView = require('client/scripts/views/formbase');
-  var BBFileStyle = require('backbone.filestyle');
-  
-  var NewsFormView = FormBaseView.extend({
+
+  return FormBaseView.extend({
     template: JST['client/templates/news/form.jst'],
 
     events: {
@@ -12,22 +12,24 @@ define(function(require) {
       'click #cancel-button': 'cancelButton',
     },
 
-    render: function() {
-      FormBaseView.prototype.render.apply(this,arguments);
-
+    onRender: function() {
       this.$('#itemdatepicker').datetimepicker();
       this.filestyle({
         selector: '#attachedfile',
         binding: 'attachedfile',
         classButton: 'btn btn-default'
       });
-      return this;
+    },
+
+    serializeData: function() {
+      return _.extend(this.model.toJSON(), {
+        itemdate: this.getDateAttr('itemdate'),
+        isNew: this.model.isNew()
+      });
     },
 
     routeSuccessfulResult: function() {
       Backbone.history.navigate('#news', true);
     }
   });
-
-  return NewsFormView;
 });

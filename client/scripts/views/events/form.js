@@ -9,7 +9,7 @@ define(function(require) {
   var _ = require('underscore');
   var FormBaseView = require('client/scripts/views/formbase');
 
-  var EventsFormView = FormBaseView.extend({
+  return FormBaseView.extend({
     template: JST['client/templates/events/form.jst'],
 
     events: {
@@ -37,6 +37,4 @@ define(function(require) {
       Backbone.history.navigate('#events', true);
     }
   });
-
-  return EventsFormView;
 });

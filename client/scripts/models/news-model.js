@@ -24,6 +24,9 @@ define(function(require) {
 
     defaults: function() {
       return {
+        title: '',
+        text: '',
+        attachedfile: '',
         itemdate: moment()
       };
     }
