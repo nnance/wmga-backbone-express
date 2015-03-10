@@ -18,7 +18,9 @@ define(function(require) {
     },
 
     onRender: function() {
-      this.$('#startdatepicker').datetimepicker();
+      this.$('#startdatepicker').datetimepicker({
+        format: 'MM/DD/YYYY'
+      });
       this.filestyle({
         selector: '#attachedfile',
         binding: 'attachedfile',

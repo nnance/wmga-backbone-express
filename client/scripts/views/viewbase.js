@@ -1,8 +1,10 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
   var Backbone = require('backbone');
   var moment = require('moment');
+  var AppSettings = require('../appsettings');
 
   return Backbone.View.extend({
     constructor: function(attributes, options) {
@@ -18,16 +20,23 @@ define(function(require) {
       }
     },
 
+    _getDateOnly: function(attribute) {
+      var dateAttr = this.model.get(attribute);
+      if (_.isString(dateAttr) && dateAttr.indexOf('T') !== -1) {
+        dateAttr = dateAttr.split('T')[0];
+      }
+      return dateAttr;
+    },
+
     getDateAttr: function(attribute) {
-      if (this.model) {
-        return this.model.dateAsString(attribute);
+      if (this.model && this.model.get(attribute)) {
+        return moment(this._getDateOnly(attribute)).format(AppSettings.dateFormat);
       }
     },
 
     getDisplayDate: function(attribute) {
       if (this.model && this.model.get(attribute)) {
-        var dateAttr = this.model.get(attribute).split('T')[0];
-        return moment(dateAttr).format('dddd, MMMM Do YYYY');
+        return moment(this._getDateOnly(attribute)).format(AppSettings.displayDateFormat);
       }
     }
 

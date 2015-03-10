@@ -1,4 +1,6 @@
 define(function(require) {
+  //TODO fix button actions without using delegateEvents
+
   'use strict';
 
   var _ = require('underscore');
@@ -13,12 +15,15 @@ define(function(require) {
     },
 
     onRender: function() {
-      this.$('#itemdatepicker').datetimepicker();
+      this.$('#itemdatepicker').datetimepicker({
+        format: 'MM/DD/YYYY'
+      });
       this.filestyle({
         selector: '#attachedfile',
         binding: 'attachedfile',
         classButton: 'btn btn-default'
       });
+      this.delegateEvents();
     },
 
     serializeData: function() {
