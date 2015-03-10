@@ -4,7 +4,7 @@ define(function(require) {
   var BaseView = require('client/scripts/views/viewbase');
   var AlertView = require('client/scripts/views/alert');
 
-  var FormBaseView = BaseView.extend({
+  return BaseView.extend({
 
     initialize: function(options) {
       if (this.model) {
@@ -40,7 +40,7 @@ define(function(require) {
       }
     },
 
-    sendFile: function(callback) {
+    sendFile: function() {
       this.filestyleUpload({
         url: '/rest/attachments',
         success: _.bind(function(data, textStatus, jqXHR) {
@@ -79,10 +79,9 @@ define(function(require) {
       }
 
       if (this.filestyleHasFiles()) {
-        this.sendFile(_.bind(this.routeSuccessfulResult,this));
+        this.sendFile();
       } else {
-        this.delegateEvents();
-        this.routeSuccessfulResult();
+        this.fileuploadCompleted();
       }
     },
 
@@ -96,6 +95,4 @@ define(function(require) {
     }
 
   });
-
-  return FormBaseView;
 });

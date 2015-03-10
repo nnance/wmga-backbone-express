@@ -2,7 +2,8 @@ define(function(require) {
   'use strict';
 
   var BaseView = require('client/scripts/views/viewbase');
-  var ListBaseView = BaseView.extend({
+
+  return BaseView.extend({
 
     initialize: function(options) {
       this.dataManager = options.dataManager;
@@ -34,6 +35,4 @@ define(function(require) {
     },
 
   });
-
-  return ListBaseView;
 });

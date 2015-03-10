@@ -4,7 +4,7 @@ define(function(require) {
   var BaseView = require('client/scripts/views/viewbase');
   var AlertView = require('client/scripts/views/alert');
 
-  var DeleteView = BaseView.extend({
+  return BaseView.extend({
     className: 'modal fade',
 
     template: JST['client/templates/delete.jst'],
@@ -15,8 +15,6 @@ define(function(require) {
     },
 
     initialize: function(options) {
-      BaseView.prototype.initialize.apply(this,arguments);
-
       if (!options || !options.modelAttr || !options.modelTypeName) {
         throw new Error('Missing required modelAttr or modelTypeName option');
       }
@@ -54,6 +52,4 @@ define(function(require) {
       });
     }
   });
-
-  return DeleteView;
 });

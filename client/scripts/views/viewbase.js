@@ -4,7 +4,7 @@ define(function(require) {
   var Backbone = require('backbone');
   var moment = require('moment');
 
-  var BaseView = Backbone.View.extend({
+  return Backbone.View.extend({
     constructor: function(attributes, options) {
       if (attributes && attributes.session) {
         this.session = attributes.session;
@@ -26,12 +26,10 @@ define(function(require) {
 
     getDisplayDate: function(attribute) {
       if (this.model && this.model.get(attribute)) {
-        var startdate = this.model.get('startdate').split('T')[0];
-        return moment(startdate).format('dddd, MMMM Do YYYY');
+        var dateAttr = this.model.get(attribute).split('T')[0];
+        return moment(dateAttr).format('dddd, MMMM Do YYYY');
       }
     }
 
   });
-
-  return BaseView;
 });

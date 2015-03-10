@@ -3,7 +3,8 @@ define(function(require) {
 
   var AppSettings = require('client/scripts/appsettings');
   var BaseView = require('client/scripts/views/viewbase');
-  var ReviewBaseView = BaseView.extend({
+
+  return BaseView.extend({
 
     initialize: function(options) {
       if (this.model) {
@@ -26,6 +27,4 @@ define(function(require) {
     },
 
   });
-
-  return ReviewBaseView;
 });
