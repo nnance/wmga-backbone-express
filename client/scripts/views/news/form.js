@@ -1,6 +1,4 @@
 define(function(require) {
-  //TODO fix button actions without using delegateEvents
-
   'use strict';
 
   var _ = require('underscore');
@@ -23,7 +21,6 @@ define(function(require) {
         binding: 'attachedfile',
         classButton: 'btn btn-default'
       });
-      this.delegateEvents();
     },
 
     serializeData: function() {

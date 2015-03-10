@@ -1,6 +1,4 @@
 define(function(require) {
-  //TODO fix action options without using delegateEvents
-
   'use strict';
 
   var ReviewBaseView = require('client/scripts/views/reviewbase');
@@ -10,10 +8,6 @@ define(function(require) {
     template: JST['client/templates/news/review.jst'],
     events: {
       'click #delete-btn': 'showDeleteConfirm',
-    },
-
-    onRender: function() {
-      this.delegateEvents();
     },
 
     serializeData: function() {

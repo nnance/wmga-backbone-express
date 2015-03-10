@@ -8,7 +8,6 @@ define(function(require) {
 
     initialize: function(options) {
       this.indexView = options.view;
-      BaseView.prototype.render.apply(this,arguments);
       this.addSubView({
         view: this.indexView,
         selector: '#index'
