@@ -1,4 +1,6 @@
 define(function(require) {
+  //TODO remove the need for index view
+  
   'use strict';
 
   var BaseView = require('client/scripts/views/viewbase');

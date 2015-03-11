@@ -1,4 +1,7 @@
 define(function(require) {
+  
+  //TODO add the add button template to the main list template
+
   'use strict';
 
   var moment = require('moment');

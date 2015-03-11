@@ -31,6 +31,20 @@ define(function(require) {
       },
     },
 
+    defaults: {
+      firstname: '',
+      lastname: '',
+      address: '',
+      address2: '',
+      phone: '',
+      altphone: '',
+      email: '',
+      birthdate: '',
+      paid: false,
+      admin: false,
+      treasure: false
+    },
+
     getFullName: function() {
       return this.get('lastname') + ', ' + this.get('firstname');
     }
