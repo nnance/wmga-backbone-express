@@ -3,10 +3,33 @@ define(function(require) {
 
   var ListItemBaseView = require('client/scripts/views/listitembase');
 
-  var TeamsListitemView = ListItemBaseView.extend({
-    template: JST['client/templates/teams/listitem.jst'],
-    tagName: 'tr'
-  });
+  function renderMembers(model, collection) {
+    var result = '';
 
-  return TeamsListitemView;
+    _.each(model.get('members'), function(id, index){
+      var member = collection.get(id);
+      if (_.isObject(member)) {
+        var name = member.get('firstname') + ' ' + member.get('lastname');
+        if (index === 0) {
+          result = name;
+        } else {
+          result = result + ', ' + name;
+        }
+      }
+    });
+
+    return result;
+  }
+
+  return ListItemBaseView.extend({
+    template: JST['client/templates/teams/listitem.jst'],
+    className: 'col-xs-12 col-sm-6',
+
+    serializeData: function() {
+      return _.extend(this.model.toJSON(), {
+          createdate: this.getSimpleDisplayDate('createdate'),
+          members: renderMembers(this.model, this.collection)
+      });
+    }
+  });
 });

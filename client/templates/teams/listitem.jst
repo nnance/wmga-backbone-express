@@ -1,5 +1,27 @@
-<td><b><a href="#teams/read/<%= model.id %>"><%= model.get('name') %></a></b></td>
-<td><span class="glyphicon glyphicon-ok <%= model.get('paid') ? '' : 'hidden' %>"></span></td>
-<td><%= model.get('teetime') %></td>
-<td><%= model.dateAsString('createdate') %></td>
-<td><%= model.get('comments') %></td>
+<div class="panel panel-default listItem">
+	<div class="panel-heading">
+		<h1 class="panel-title"><%= name %></h1>
+	</div>
+	<div class="panel-body">
+    <div class="row">
+      <div class="col-xs-2"><strong>Tee: </strong></div>
+      <div class="col-xs-4"><%= teetime %></div>
+      <div class="col-xs-2"><strong>Paid: </strong></div>
+      <div class="col-xs-4"><span class="glyphicon glyphicon-ok <%= paid ? '' : 'hidden' %>"></span></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2"><strong>Date: </strong></div>
+      <div class="col-xs-10"><%= createdate %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2"><strong>Notes: </strong></div>
+      <div class="col-xs-10"><%= comments %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12"><%= members %></div>
+    </div>
+	</div>
+	<div class="panel-footer">
+		<a href="#teams/read/<%= _id %>">View Details <span class="glyphicon glyphicon-arrow-right"></span></a>
+	</div>
+</div>

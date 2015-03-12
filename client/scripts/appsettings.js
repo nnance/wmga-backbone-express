@@ -11,6 +11,7 @@ define(function(require) {
     fileURL: 'https://s3-us-west-2.amazonaws.com/wmga/',
     dateFormat: 'MM/DD/YYYY',
     displayDateFormat: 'dddd, MMMM Do YYYY',
+    simpleDisplayDateFormat: 'MMMM Do',
     membershipPayNow: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DNR67PXFP5DX8&invoice=2015-',
     teamPayNow: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CAN4SWN98RJGJ&invoice=',
   };
