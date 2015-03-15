@@ -6,6 +6,7 @@
 var compress = require('compression');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var path = require('path');
@@ -56,6 +57,9 @@ var expressConfig = function(app, express, db) {
   // Returns middleware that parses both json and urlencoded.
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
+
+  // multipart/form-data handler for file uploads
+  app.use(multer({ dest: './uploads/'}))
 
   // Returns middleware that parses cookies
   app.use(cookieParser());

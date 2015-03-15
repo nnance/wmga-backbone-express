@@ -90,6 +90,66 @@ define(function(require) {
       this.routeSuccessfulResult();
     },
 
+    filestyle: function(options) {
+      if (!options || !options.selector) {
+        throw new Error('Required selector option missing');
+      }
+      this.filestyleOptions = options;
+
+      this.$(options.selector).filestyle(options);
+      this.$('.group-span-filestyle').append('<a id="filestyleclear" class="btn btn-default hidden">Clear</a>');
+
+      if (this.model && options.binding) {
+        this.$('.bootstrap-filestyle input').val(this.model.get(options.binding));
+        if (this.model.get(options.binding) && this.model.get(options.binding).length > 0) {
+          this.$('#filestyleclear').removeClass('hidden');
+        }
+      }
+
+      this.$(options.selector).on('change', _.bind(this.filestylePrerpareUpload,this));
+      this.$('#filestyleclear').on('click', _.bind(this.filestyleClearFile,this));
+    },
+
+    filestylePrerpareUpload: function(event) {
+      this.filestyleFiles = event.target.files;
+      if (this.model && this.filestyleOptions.binding) {
+        this.model.set(this.filestyleOptions.binding, this.filestyleFiles[0].name);
+      }
+      this.$('#filestyleclear').removeClass('hidden');
+    },
+
+    filestyleHasFiles: function() {
+      return this.filestyleFiles;
+    },
+
+    filestyleClearFile: function(event) {
+      if (this.model && this.filestyleOptions.binding) {
+        this.model.set(this.filestyleOptions.binding,'');
+      }
+
+      this.$(this.filestyleOptions.selector).filestyle('clear');
+      this.$('#filestyleclear').addClass('hidden');
+    },
+
+    filestyleUpload: function(options) {
+      var data = new FormData();
+      $.each(this.filestyleFiles, function(key, value) {
+        data.append(key, value);
+      });
+
+      $.ajax({
+        url: options.url,
+        type: 'POST',
+        data: data,
+        cache: false,
+        dataType: 'json',
+        processData: false, // Don't process the files
+        contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+        success: options.success, // returns data, textStatus, jqXHR
+        error: options.error // returns jqXHR, textStatus, errorThrown
+      });
+    },
+
     routeSuccessfulResult: function() {
       // noop function to be added by subclass
     }
