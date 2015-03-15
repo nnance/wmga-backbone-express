@@ -8,8 +8,6 @@ define(function(require) {
 
     idAttribute: '_id',
 
-    dateFormat: AppSettings.dateFormat,
-
     urlRoot: '/rest/users',
 
     validation: {
