@@ -1,3 +1,5 @@
+//TODO move blank defaults to serializeData in views
+
 define(function(require) {
   'use strict';
 
