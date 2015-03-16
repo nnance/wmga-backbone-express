@@ -22,27 +22,50 @@ define(function(require) {
       Backbone.View.prototype.constructor.apply(this,arguments);
     },
 
-    getAttr: function(attribute) {
-      if (this.model) {
-        return this.model.get(attribute);
+    getAttr: function(attribute, model) {
+      if (!model) {
+        model = this.model;
+      }
+      if (model) {
+        return model.get(attribute);
       }
     },
 
-    getDateAttr: function(attribute) {
-      if (this.model && this.model.get(attribute)) {
-        return moment(getDateOnly(this.model, attribute)).format(AppSettings.dateFormat);
+    getDateAttr: function(attribute, model) {
+      if (!model) {
+        model = this.model;
+      }
+
+      if (model && model.get(attribute)) {
+        return moment(getDateOnly(model, attribute)).format(AppSettings.dateFormat);
       }
     },
 
-    getDisplayDate: function(attribute) {
-      if (this.model && this.model.get(attribute)) {
-        return moment(getDateOnly(this.model, attribute)).format(AppSettings.displayDateFormat);
+    getAsDate: function(attribute, model) {
+      if (!model) {
+        model = this.model;
+      }
+
+      return moment(model.get(attribute));
+    },
+
+    getDisplayDate: function(attribute, model) {
+      if (!model) {
+        model = this.model;
+      }
+
+      if (model && model.get(attribute)) {
+        return moment(getDateOnly(model, attribute)).format(AppSettings.displayDateFormat);
       }
     },
 
-    getSimpleDisplayDate: function(attribute) {
-      if (this.model && this.model.get(attribute)) {
-        return moment(getDateOnly(this.model, attribute)).format(AppSettings.simpleDisplayDateFormat);
+    getSimpleDisplayDate: function(attribute, model) {
+      if (!model) {
+        model = this.model;
+      }
+
+      if (model && model.get(attribute)) {
+        return moment(getDateOnly(model, attribute)).format(AppSettings.simpleDisplayDateFormat);
       }
     }
 

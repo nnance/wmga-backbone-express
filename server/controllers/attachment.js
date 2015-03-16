@@ -18,8 +18,8 @@ exports.saveAttachment = function(req, res){
 			} else {
 				console.log('S3 upload Successful');
 				res.send({
-					path: 'https://s3-us-west-2.amazonaws.com/wmga/' + req.files[0].name,
-					fileName: req.files[0].name
+					path: 'https://s3-us-west-2.amazonaws.com/wmga/' + req.files[0].originalname,
+					fileName: req.files[0].originalname
 				});
 			}
 		});

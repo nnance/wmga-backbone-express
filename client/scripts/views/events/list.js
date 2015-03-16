@@ -1,5 +1,5 @@
 define(function(require) {
-  
+
   //TODO add the add button template to the main list template
 
   'use strict';
@@ -50,7 +50,7 @@ define(function(require) {
     },
 
     renderItem: function(model) {
-      var startDate = model.getAsDate('startdate');
+      var startDate = this.getAsDate('startdate', model);
       if (startDate.isBefore(this.filter.start) && startDate.isAfter(this.filter.end)) {
         this.addSubView({
           view: new ItemView({model: model}),

@@ -46,7 +46,7 @@ define(function(require) {
     },
 
     renderItem: function(model) {
-      var startDate = model.getAsDate('itemdate');
+      var startDate = this.getAsDate('itemdate', model);
       if (startDate.isBefore(this.filter.start) && startDate.isAfter(this.filter.end)) {
         this.addSubView({
           view: new ItemView({model: model}),
