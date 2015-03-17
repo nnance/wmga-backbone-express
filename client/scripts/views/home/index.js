@@ -41,7 +41,7 @@ define(function(require) {
 
       var filter = this.eventsCollection.filter(function(event){
         return this.getAsDate('startdate', event).isAfter(now);
-      });
+      }.bind(this));
 
       for (var i = 0; i < 3 && i < filter.length; i++) {
         var recentEvent = filter[i];
