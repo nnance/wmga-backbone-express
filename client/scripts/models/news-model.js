@@ -9,8 +9,6 @@ define(function(require) {
 
     idAttribute: '_id',
 
-    dateFormat: AppSettings.dateFormat,
-
     urlRoot: '/rest/articles',
 
     validation: {
@@ -24,6 +22,9 @@ define(function(require) {
 
     defaults: function() {
       return {
+        title: '',
+        text: '',
+        attachedfile: '',
         itemdate: moment()
       };
     }

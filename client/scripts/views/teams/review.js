@@ -6,9 +6,8 @@ define(function(require) {
   var DeleteView = require('client/scripts/views/delete');
   var AppSettings = require('client/scripts/appsettings');
 
-  var TeamsDetailView = ReviewBaseView.extend({
+  return ReviewBaseView.extend({
     template: JST['client/templates/teams/review.jst'],
-    editButtonsTemplate: JST['client/templates/teams/editbuttons.jst'],
 
     events: {
       'click #delete-btn': 'showDeleteConfirm',
@@ -22,14 +21,14 @@ define(function(require) {
       this.userCollection = options.dataManager.userCollection;
     },
 
-    render: function() {
-      BaseView.prototype.render.apply(this, arguments);
+    onRender: function() {
+      ReviewBaseView.prototype.onRender.apply(this, arguments);
 
       var isSignedUser = this.session.get('userid') === this.model.get('captainid');
       var isAdmin = this.session.get('admin');
 
-      if (isAdmin || isSignedUser) {
-        this.$('.btn-toolbar').append(this.editButtonsTemplate(this));
+      if (!isAdmin && !isSignedUser) {
+        this.$('#action-menu').hide();
       }
 
       if (this.model.get('paid') || !isSignedUser) {
@@ -73,6 +72,4 @@ define(function(require) {
       view.show();
     }
   });
-
-  return TeamsDetailView;
 });

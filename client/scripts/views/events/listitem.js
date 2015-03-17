@@ -5,7 +5,7 @@ define(function(require) {
   var moment = require('moment');
   var ListItemBaseView = require('client/scripts/views/listitembase');
 
-  var EventsListitemView = ListItemBaseView.extend({
+  return ListItemBaseView.extend({
     template: JST['client/templates/events/listitem.jst'],
 
     serializeData: function() {
@@ -14,6 +14,4 @@ define(function(require) {
       });
     }
   });
-
-  return EventsListitemView;
 });

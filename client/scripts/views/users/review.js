@@ -5,9 +5,8 @@ define(function(require) {
   var DeleteView = require('client/scripts/views/delete');
   var AppSettings = require('client/scripts/appsettings');
 
-  var UsersDetailView = ReviewBaseView.extend({
+  return ReviewBaseView.extend({
     template: JST['client/templates/users/review.jst'],
-    editButtonsTemplate: JST['client/templates/users/editbuttons.jst'],
 
     events: {
       'click #delete-btn': 'showDeleteConfirm',
@@ -23,13 +22,13 @@ define(function(require) {
       this.teamCollection = options.dataManager.teamCollection;
     },
 
-    render: function() {
-      ReviewBaseView.prototype.render.apply(this, arguments);
+    onRender: function() {
+      ReviewBaseView.prototype.onRender.apply(this, arguments);
 
       var isSignedUser = this.session.get('userid') === this.model.id;
 
-      if (isSignedUser && !this.session.get('admin')) {
-        this.$('.btn-toolbar').append(this.editButtonsTemplate(this));
+      if (isSignedUser) {
+        this.$('#action-menu').show();
       }
       if (this.session.get('email') !== 'nance.nick@gmail.com') {
         this.$('#admin').parent().remove();
@@ -54,15 +53,13 @@ define(function(require) {
           this.$('#team-btn-edit').remove();
         }
       }
-      return this;
     },
 
-    getFileUrl: function() {
-      return AppSettings.fileURL + this.model.get('photo');
-    },
-
-    getPayNow: function() {
-      return AppSettings.membershipPayNow + this.model.get('email');
+    serializeData: function() {
+      return _.extend(this.model.toJSON(), {
+        payNow: AppSettings.membershipPayNow + this.model.get('email'),
+        fileUrl: AppSettings.fileURL + this.model.get('photo')
+      });
     },
 
     showDeleteConfirm: function() {
@@ -101,6 +98,4 @@ define(function(require) {
       Backbone.history.navigate('#teams/read/' + this.model.get('teamid'),true);
     }
   });
-
-  return UsersDetailView;
 });

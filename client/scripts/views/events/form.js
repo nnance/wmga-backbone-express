@@ -1,7 +1,5 @@
 define(function(require) {
 
-  // TODO Fix file attachment.  Getting index 0 not found on server when saving attachment
-  // TODO Clean up file attachment button layout
   // TODO Add support for multiple file attachments
 
   'use strict';
@@ -9,7 +7,7 @@ define(function(require) {
   var _ = require('underscore');
   var FormBaseView = require('client/scripts/views/formbase');
 
-  var EventsFormView = FormBaseView.extend({
+  return FormBaseView.extend({
     template: JST['client/templates/events/form.jst'],
 
     events: {
@@ -17,17 +15,15 @@ define(function(require) {
       'click #cancel-button': 'cancelButton'
     },
 
-    render: function() {
-      FormBaseView.prototype.render.apply(this,arguments);
-
-      this.$('#startdatepicker').datetimepicker();
+    onRender: function() {
+      this.$('#startdatepicker').datetimepicker({
+        format: 'MM/DD/YYYY'
+      });
       this.filestyle({
         selector: '#attachedfile',
         binding: 'attachedfile',
         classButton: 'btn btn-default'
       });
-
-      return this;
     },
 
     serializeData: function() {
@@ -41,6 +37,4 @@ define(function(require) {
       Backbone.history.navigate('#events', true);
     }
   });
-
-  return EventsFormView;
 });

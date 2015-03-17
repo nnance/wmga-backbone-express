@@ -1,10 +1,20 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
   var Backbone = require('backbone');
   var moment = require('moment');
+  var AppSettings = require('../appsettings');
 
-  var BaseView = Backbone.View.extend({
+  function getDateOnly(model, attribute) {
+    var dateAttr = model.get(attribute);
+    if (_.isString(dateAttr) && dateAttr.indexOf('T') !== -1) {
+      dateAttr = dateAttr.split('T')[0];
+    }
+    return dateAttr;
+  }
+
+  return Backbone.View.extend({
     constructor: function(attributes, options) {
       if (attributes && attributes.session) {
         this.session = attributes.session;
@@ -12,26 +22,52 @@ define(function(require) {
       Backbone.View.prototype.constructor.apply(this,arguments);
     },
 
-    getAttr: function(attribute) {
-      if (this.model) {
-        return this.model.get(attribute);
+    getAttr: function(attribute, model) {
+      if (!model) {
+        model = this.model;
+      }
+      if (model) {
+        return model.get(attribute);
       }
     },
 
-    getDateAttr: function(attribute) {
-      if (this.model) {
-        return this.model.dateAsString(attribute);
+    getDateAttr: function(attribute, model) {
+      if (!model) {
+        model = this.model;
+      }
+
+      if (model && model.get(attribute)) {
+        return moment(getDateOnly(model, attribute)).format(AppSettings.dateFormat);
       }
     },
 
-    getDisplayDate: function(attribute) {
-      if (this.model && this.model.get(attribute)) {
-        var startdate = this.model.get('startdate').split('T')[0];
-        return moment(startdate).format('dddd, MMMM Do YYYY');
+    getAsDate: function(attribute, model) {
+      if (!model) {
+        model = this.model;
+      }
+
+      return moment(model.get(attribute));
+    },
+
+    getDisplayDate: function(attribute, model) {
+      if (!model) {
+        model = this.model;
+      }
+
+      if (model && model.get(attribute)) {
+        return moment(getDateOnly(model, attribute)).format(AppSettings.displayDateFormat);
+      }
+    },
+
+    getSimpleDisplayDate: function(attribute, model) {
+      if (!model) {
+        model = this.model;
+      }
+
+      if (model && model.get(attribute)) {
+        return moment(getDateOnly(model, attribute)).format(AppSettings.simpleDisplayDateFormat);
       }
     }
 
   });
-
-  return BaseView;
 });

@@ -4,9 +4,8 @@ define(function(require) {
   var moment = require('moment');
   var ListBaseView = require('client/scripts/views/listbase');
   var ItemView = require('client/scripts/views/teams/listitem');
-  var MemberView = require('client/scripts/views/teams/listitemmember');
 
-  var TeamsListView = ListBaseView.extend({
+  return ListBaseView.extend({
     template: JST['client/templates/teams/list.jst'],
     addButtonTemplate: JST['client/templates/teams/addbutton.jst'],
 
@@ -26,19 +25,10 @@ define(function(require) {
       }), this.renderItem, this);
     },
 
-    renderItem: function(model) {
+    renderItem: function(model, index) {
       this.addSubView({
-        view: new ItemView({model: model}),
-        selector: 'table'
-      });
-      this.renderMembers(model);
-    },
-
-    renderMembers: function(model) {
-      var view = new MemberView({model: model, collection: this.dataManager.userCollection});
-      this.addSubView({
-        view: view,
-        selector: 'table'
+        view: new ItemView({model: model, collection: this.dataManager.userCollection}),
+        selector: '#table'
       });
     },
 
@@ -48,6 +38,4 @@ define(function(require) {
     }
 
   });
-
-  return TeamsListView;
 });

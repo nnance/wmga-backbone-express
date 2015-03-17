@@ -3,7 +3,8 @@ define(function(require) {
 
   var AppSettings = require('client/scripts/appsettings');
   var BaseView = require('client/scripts/views/viewbase');
-  var ReviewBaseView = BaseView.extend({
+
+  return BaseView.extend({
 
     initialize: function(options) {
       if (this.model) {
@@ -12,11 +13,7 @@ define(function(require) {
     },
 
     onRender: function() {
-      if (this.session && this.session.get('admin')) {
-        if (this.editButtonsTemplate) {
-          this.$('.btn-toolbar').append(this.editButtonsTemplate(this));
-        }
-      } else if (this.$('#action-menu')) {
+      if (this.session && !this.session.get('admin')) {
           this.$('#action-menu').hide();
       }
     },
@@ -26,6 +23,4 @@ define(function(require) {
     },
 
   });
-
-  return ReviewBaseView;
 });

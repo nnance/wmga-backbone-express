@@ -1,6 +1,17 @@
-<div class="btn-toolbar pull-right">
+<div class="page-header">
+  <h1><%= title %></h1>
 </div>
-<h3><%= model.get('title') %></h3>
-<h4><%= model.dateAsString('itemdate') %></h4>
-<p><%= model.get('text') %></p>
-<p>Attached file: <a href="<%= getFileUrl() %>"><%= model.get('attachedfile') %></a>
+<div class="btn-group pull-right" id="action-menu">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#results/update/<%= _id %>"> Edit Results</a></li>
+    <li><a id="delete-btn"> Delete Results</a></li>
+  </ul>
+</div>
+<div class="item-view">
+	<h4><%= itemdate %></h4>
+	<p><%= text %></p>
+	<p class="<%= attachedfile ? '' : 'hidden'%>">Attached file: <a href="<%= fileUrl %>"><%= attachedfile %></a></p>
+</div>

@@ -1,15 +1,30 @@
-<div class="btn-toolbar pull-right">
+<div class="page-header">
+    <h1><%= model.get('name') %></h1>
 </div>
 <div id="info">
-    <div class="page-header">
-        <h3>Team Info</h3>
+  <div class="row">
+    <div class="col-xs-3"><strong>Captain:</strong></div>
+    <div class="col-xs-7"><%= getCaptainName()%></div>
+    <div class="col-xs-2">
+      <div class="btn-group pull-right" id="action-menu">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Action <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#teams/update/<%= model.id %>"> Edit Team</a></li>
+          <li><a id="delete-btn"> Delete Team</a></li>
+        </ul>
+      </div>
     </div>
-    <h4><%= model.get('name') %></h4>
-    <p>Captain: <%= getCaptainName() %></p>
-    <p>Tee Time: <%= model.get('teetime') %></p>
-    <p>Comments:</p>
-    <p><%= model.get('comments') %></p>
-    <p>Photo: <a href="<%= getFileUrl() %>"><%= model.get('photo') %></a></p>
+  </div>
+  <div class="row">
+    <div class="col-xs-3"><strong>Tee Time:</strong></div>
+    <div class="col-xs-9"><%= model.get('teetime') %></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3"><strong>Comments:</strong></div>
+    <div class="col-xs-9"><%= model.get('comments') %></div>
+  </div>
 </div>
 <div id="team">
     <div class="page-header">

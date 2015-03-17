@@ -40,8 +40,8 @@ define(function(require) {
       var now = moment();
 
       var filter = this.eventsCollection.filter(function(event){
-        return event.getAsDate('startdate').isAfter(now);
-      });
+        return this.getAsDate('startdate', event).isAfter(now);
+      }, this);
 
       for (var i = 0; i < 3 && i < filter.length; i++) {
         var recentEvent = filter[i];

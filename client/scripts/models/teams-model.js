@@ -2,13 +2,11 @@ define(function(require) {
   'use strict';
 
   var Backbone = require('backbone');
-  var AppSettings = require('../appsettings');
+  var moment = require('moment');
 
   var TeamsModel = Backbone.Model.extend({
 
     idAttribute: '_id',
-
-    dateFormat: AppSettings.dateFormat,
 
     urlRoot: '/rest/teams',
 
@@ -20,6 +18,13 @@ define(function(require) {
       teetime: {
         required: true
       }
+    },
+
+    defaults: {
+      name: '',
+      paid: false,
+      datecreated: moment(),
+      comments: ''
     }
 
   });

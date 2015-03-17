@@ -1,7 +1,14 @@
-<div class="row">
-    <div class="col-md-1"><b><%= model.dateAsString('itemdate') %></b></div>
-    <div class="col-md-4"><a href="#results/read/<%= model.id %>"><%= model.get('title') %></a></div>
-</div>
-<div class="row">
-    <div class="col-md-8 well"><%= model.get('text') %></div>
+<div class="panel panel-default listItem">
+	<div class="panel-heading">
+		<h1 class="panel-title">
+			<%= title %>
+		</h1>
+	</div>
+	<div class="panel-body">
+		<p class="highlightedInfo"><%= itemdate %></p>
+    <p><%= text %></p>
+	</div>
+	<div class="panel-footer">
+		<a href="#results/read/<%= _id %>">View Details <span class="glyphicon glyphicon-arrow-right"></span></a>
+	</div>
 </div>

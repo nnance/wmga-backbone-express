@@ -8,8 +8,6 @@ define(function(require) {
 
     idAttribute: '_id',
 
-    dateFormat: AppSettings.dateFormat,
-
     urlRoot: '/rest/users',
 
     validation: {
@@ -29,6 +27,20 @@ define(function(require) {
       password: {
         required: true
       },
+    },
+
+    defaults: {
+      firstname: '',
+      lastname: '',
+      address: '',
+      address2: '',
+      phone: '',
+      altphone: '',
+      email: '',
+      birthdate: '',
+      paid: false,
+      admin: false,
+      treasure: false
     },
 
     getFullName: function() {

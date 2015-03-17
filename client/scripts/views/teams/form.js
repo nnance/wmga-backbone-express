@@ -29,15 +29,7 @@ define(function(require) {
       }
     },
 
-    render: function() {
-      FormBaseView.prototype.render.apply(this,arguments);
-
-      this.$('#birthdatepicker').datetimepicker();
-      this.filestyle({
-        selector: '#picture',
-        binding: 'picture',
-        classButton: 'btn btn-default'
-      });
+    onRender: function() {
       var memberSelect = this.$('[name="members"]');
       memberSelect.select2();
       _.each(
@@ -47,7 +39,6 @@ define(function(require) {
         }
       );
       memberSelect.select2('val', this.model.get('members'));
-      return this;
     },
 
     getFormData: function() {

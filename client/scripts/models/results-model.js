@@ -8,8 +8,6 @@ define(function(require) {
   var ResultsModel = Backbone.Model.extend({
     idAttribute: '_id',
 
-    dateFormat: AppSettings.dateFormat,
-
     urlRoot: '/rest/results',
 
     validation: {
@@ -23,6 +21,9 @@ define(function(require) {
 
     defaults: function() {
       return {
+        title: '',
+        text: '',
+        attachedfile: '',
         itemdate:  moment()
       };
     }

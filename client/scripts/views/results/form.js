@@ -1,8 +1,10 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
   var FormBaseView = require('client/scripts/views/formbase');
-  var ResultsFormView = FormBaseView.extend({
+
+  return FormBaseView.extend({
     template: JST['client/templates/results/form.jst'],
 
     events: {
@@ -10,22 +12,26 @@ define(function(require) {
       'click #cancel-button': 'cancelButton',
     },
 
-    render: function() {
-      FormBaseView.prototype.render.apply(this,arguments);
-
-      this.$('#itemdatepicker').datetimepicker();
+    onRender: function() {
+      this.$('#itemdatepicker').datetimepicker({
+        format: 'MM/DD/YYYY'
+      });
       this.filestyle({
         selector: '#attachedfile',
         binding: 'attachedfile',
         classButton: 'btn btn-default'
       });
-      return this;
+    },
+
+    serializeData: function() {
+      return _.extend(this.model.toJSON(), {
+        itemdate: this.getDateAttr('itemdate'),
+        isNew: this.model.isNew()
+      });
     },
 
     routeSuccessfulResult: function() {
       Backbone.history.navigate('#results', true);
     }
   });
-
-  return ResultsFormView;
 });

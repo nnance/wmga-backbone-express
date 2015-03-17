@@ -5,7 +5,7 @@ define(function(require) {
   var ListBaseView = require('client/scripts/views/listbase');
   var ItemView = require('client/scripts/views/users/listitem');
 
-  var UsersListView = ListBaseView.extend({
+  return ListBaseView.extend({
     template: JST['client/templates/users/list.jst'],
     addButtonTemplate: JST['client/templates/users/addbutton.jst'],
 
@@ -32,7 +32,7 @@ define(function(require) {
     renderItem: function(model) {
       this.addSubView({
         view: new ItemView({model: model}),
-        selector: 'table'
+        selector: '#table'
       });
     },
 
@@ -42,6 +42,4 @@ define(function(require) {
     }
 
   });
-
-  return UsersListView;
 });

@@ -1,15 +1,14 @@
-define([
-  'client/scripts/routes/routerbase',
-  'client/scripts/models/email-model',
-  'client/scripts/views/users/index',
-  'client/scripts/views/users/list',
-  'client/scripts/views/users/review',
-  'client/scripts/views/users/form',
-  'client/scripts/views/users/email',
-  ], function (BaseRouter, EmailModel, IndexView, ListView, ReviewView, FormView, EmailView) {
+define(function(require) {
     'use strict';
 
-    var UsersRouter = BaseRouter.extend({
+    var BaseRouter = require('client/scripts/routes/routerbase');
+    var EmailModel = require('client/scripts/models/email-model');
+    var ListView = require('client/scripts/views/users/list');
+    var ReviewView = require('client/scripts/views/users/review');
+    var FormView = require('client/scripts/views/users/form');
+    var EmailView = require('client/scripts/views/users/email');
+
+    return BaseRouter.extend({
       routes: {
         'users': 'showList',
         'users/create': 'showAddForm',
@@ -18,7 +17,6 @@ define([
         'membership': 'showMembership',
         'users/email': 'showEmailForm'
       },
-      indexView: IndexView,
       listView: ListView,
       reviewView: ReviewView,
       formView: FormView,
@@ -40,6 +38,4 @@ define([
         this.showView(view);
       },
     });
-
-    return UsersRouter;
   });

@@ -1,11 +1,14 @@
 define(function(require) {
+
+  //TODO add the add button template to the main list template
+
   'use strict';
 
   var moment = require('moment');
   var ListBaseView = require('client/scripts/views/listbase');
   var ItemView = require('client/scripts/views/events/listitem');
 
-  var EventsListView = ListBaseView.extend({
+  return ListBaseView.extend({
     template: JST['client/templates/events/list.jst'],
     addButtonTemplate: JST['client/templates/events/addbutton.jst'],
 
@@ -14,7 +17,6 @@ define(function(require) {
     },
 
     initialize: function(options) {
-      ListBaseView.prototype.initialize.apply(this,arguments);
 
       var filterValues = {
         all: {
@@ -38,16 +40,17 @@ define(function(require) {
       } else {
         this.filter = filterValues.all;
       }
+
+      ListBaseView.prototype.initialize.apply(this,arguments);
     },
 
-    render: function() {
-      ListBaseView.prototype.render.apply(this, arguments);
+    onRender: function() {
+      ListBaseView.prototype.onRender.apply(this, arguments);
       this.$('#' + this.filter.name).button('toggle');
-      return this;
     },
 
     renderItem: function(model) {
-      var startDate = model.getAsDate('startdate');
+      var startDate = this.getAsDate('startdate', model);
       if (startDate.isBefore(this.filter.start) && startDate.isAfter(this.filter.end)) {
         this.addSubView({
           view: new ItemView({model: model}),
@@ -61,6 +64,4 @@ define(function(require) {
     }
 
   });
-
-  return EventsListView;
 });

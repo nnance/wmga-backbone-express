@@ -7,9 +7,7 @@
 var tests = [
   'backbone.localstorage',
   'backbone.validation',
-  'backbone.composer',
-  'backbone.datetime',
-  'backbone.filestyle'
+  'backbone.composer'
 ];
 for (var file in window.__karma__.files) {
   if (window.__karma__.files.hasOwnProperty(file)) {
@@ -36,9 +34,7 @@ requirejs.config({
     'bootstrap.datetimepicker': 'client/bower_components/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker',
     'bootstrap-filestyle': 'client/bower_components/bootstrap-filestyle/src/bootstrap-filestyle',
     'select2': 'client/bower_components/select2/select2',
-    'backbone.composer': 'client/bower_components/backbone.composer/backbone.composer',
-    'backbone.datetime': 'client/bower_components/backbone-plugins/modeldatetime/backbone.datetime',
-    'backbone.filestyle': 'client/bower_components/backbone-plugins/filestyle/backbone.filestyle'
+    'backbone.composer': 'client/bower_components/backbone.composer/backbone.composer'
   },
   shim: {
     'backbone': {

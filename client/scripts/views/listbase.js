@@ -2,16 +2,18 @@ define(function(require) {
   'use strict';
 
   var BaseView = require('client/scripts/views/viewbase');
-  var ListBaseView = BaseView.extend({
+
+  return BaseView.extend({
 
     initialize: function(options) {
       this.dataManager = options.dataManager;
       this.listenTo(this.collection, 'reset,sort', this.renderList);
       this.listenTo(this.collection, 'add', this.renderItem);
+
+      this.renderList();
     },
 
-    render: function() {
-      BaseView.prototype.render.apply(this,arguments);
+    onRender: function() {
       if (this.addButtonTemplate && this.session && this.session.get('admin')) {
         var inputGroup = this.$('.input-group');
         var btnGroup = this.$('.btn-group');
@@ -21,8 +23,6 @@ define(function(require) {
           btnGroup.after(this.addButtonTemplate(this));
         }
       }
-      this.renderList();
-      return this;
     },
 
     renderList: function() {
@@ -35,6 +35,4 @@ define(function(require) {
     },
 
   });
-
-  return ListBaseView;
 });

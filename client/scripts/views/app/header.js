@@ -55,7 +55,10 @@ define(function(require) {
       }
       item.parent().addClass('active');
 
-      this.$('.collapse').collapse('hide');
+      var navbar = this.$('.navbar-collapse');
+      if (navbar && navbar.hasClass('in')) {
+        this.$('.collapse').collapse('hide');
+      }
     }
 
   });

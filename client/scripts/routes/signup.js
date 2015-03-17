@@ -1,16 +1,16 @@
-define([
-  'client/scripts/models/users-model',
-  'client/scripts/views/signup/index',
-  'client/scripts/views/signup/typestep',
-  'client/scripts/views/signup/emailstep',
-  'client/scripts/views/signup/passwordstep',
-  'client/scripts/views/signup/createstep',
-  'client/scripts/views/signup/paynowstep',
-  'client/scripts/views/signup/paynowcreatedstep',
-  ], function (UserModel, IndexView, TypeStepView, EmailStepView, PasswordStepView, CreateStepView, PayNowStepView, PayNowCreatedView) {
+define(function(require) {
     'use strict';
 
-    var SignupRouter = Backbone.Router.extend({
+    var UserModel = require('client/scripts/models/users-model');
+    var IndexView = require('client/scripts/views/signup/index');
+    var TypeStepView = require('client/scripts/views/signup/typestep');
+    var EmailStepView = require('client/scripts/views/signup/emailstep');
+    var PasswordStepView = require('client/scripts/views/signup/passwordstep');
+    var CreateStepView = require('client/scripts/views/signup/createstep');
+    var PayNowStepView = require('client/scripts/views/signup/paynowstep');
+    var PayNowCreatedView = require('client/scripts/views/signup/paynowcreatedstep');
+
+    return Backbone.Router.extend({
       routes: {
         'signup': 'showSignup',
         'signup/:step': 'showSignup',
@@ -54,6 +54,4 @@ define([
         }
       },
     });
-
-    return SignupRouter;
   });

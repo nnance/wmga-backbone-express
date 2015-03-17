@@ -1,6 +1,17 @@
-<div class="btn-toolbar pull-right">
+<div class="page-header">
+  <h1><%= title %></h1>
 </div>
-<h3><%= getAttr('title') %></h3>
-<h4><%= getDateAttr('itemdate') %></h4>
-<p><%= getAttr('text') %></p>
-<p>Attached file: <a href="<%= getFileUrl() %>"><%= getAttr('attachedfile') %></a>
+<div class="btn-group pull-right" id="action-menu">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#news/update/<%= _id %>"> Edit Article</a></li>
+    <li><a id="delete-btn"> Delete Article</a></li>
+  </ul>
+</div>
+<div class="item-view">
+	<h4><%= itemdate %></h4>
+	<p><%= text %></p>
+	<p class="<%= attachedfile ? '' : 'hidden'%>">Attached file: <a href="<%= fileUrl %>"><%= attachedfile %></a></p>
+</div>
