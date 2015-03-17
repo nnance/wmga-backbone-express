@@ -1,11 +1,11 @@
-define([
-  'client/scripts/collections/events',
-  'client/scripts/collections/news',
-  'client/scripts/collections/results',
-  'client/scripts/collections/users',
-  'client/scripts/collections/teams'
-  ], function (Events, News, Results, Users, Teams) {
+define(function(require) {
     'use strict';
+
+    var Events = require('client/scripts/collections/events');
+    var News = require('client/scripts/collections/news');
+    var Results = require('client/scripts/collections/results');
+    var Users = require('client/scripts/collections/users');
+    var Teams = require('client/scripts/collections/teams');
 
     var DataManager = function (options) {
       this.initialize.apply(this,arguments);

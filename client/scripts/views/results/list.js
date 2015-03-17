@@ -18,17 +18,17 @@ define(function(require) {
         all: {
           name: 'all',
           start: moment(),
-          end: moment().subtract('years',1)
+          end: moment().subtract(1, 'years')
         },
         recent: {
           name: 'recent',
           start: moment(),
-          end: moment().subtract('days', 5)
+          end: moment().subtract(5, 'days')
         },
         past: {
           name: 'past',
-          start: moment().subtract('days',5),
-          end: moment().subtract('years',2)
+          start: moment().subtract(5, 'days'),
+          end: moment().subtract(2, 'years')
         }
       };
       if (options && options.filter) {
