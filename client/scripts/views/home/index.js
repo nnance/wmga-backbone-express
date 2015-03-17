@@ -37,10 +37,14 @@ define(function(require) {
     },
 
     renderEvents: function() {
-      var now = moment();
-
+      var upcoming = {
+        start: moment().add(15, 'days'),
+        end: moment()
+      };
+      
       var filter = this.eventsCollection.filter(function(event){
-        return this.getAsDate('startdate', event).isAfter(now);
+        var startDate = this.getAsDate('startdate', event);
+        return (startDate.isBefore(upcoming.start) && startDate.isAfter(upcoming.end));
       }, this);
 
       for (var i = 0; i < 3 && i < filter.length; i++) {
