@@ -27,8 +27,8 @@ define(function(require) {
 
       var isSignedUser = this.session.get('userid') === this.model.id;
 
-      if (isSignedUser && !this.session.get('admin')) {
-        this.$('#action-menu').hide();
+      if (isSignedUser) {
+        this.$('#action-menu').show();
       }
       if (this.session.get('email') !== 'nance.nick@gmail.com') {
         this.$('#admin').parent().remove();

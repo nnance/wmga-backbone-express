@@ -13,11 +13,7 @@ define(function(require) {
     },
 
     onRender: function() {
-      if (this.session && this.session.get('admin')) {
-        if (this.editButtonsTemplate) {
-          this.$('.btn-toolbar').append(this.editButtonsTemplate(this));
-        }
-      } else if (this.$('#action-menu')) {
+      if (this.session && !this.session.get('admin')) {
           this.$('#action-menu').hide();
       }
     },
