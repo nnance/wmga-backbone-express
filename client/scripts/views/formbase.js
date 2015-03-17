@@ -3,6 +3,7 @@ define(function(require) {
 
   var BaseView = require('client/scripts/views/viewbase');
   var AlertView = require('client/scripts/views/alert');
+  var filestyle = require('bootstrap-filestyle');
 
   return BaseView.extend({
 
@@ -97,17 +98,19 @@ define(function(require) {
       this.filestyleOptions = options;
 
       this.$(options.selector).filestyle(options);
-      this.$('.group-span-filestyle').append('<a id="filestyleclear" class="btn btn-default hidden">Clear</a>');
+      this.$(options.selector).next().find('.group-span-filestyle').append('<a class="btn btn-default hidden">Clear</a>');
+
+      this.filestyleClearBtn = this.$(options.selector).next().find('a');
 
       if (this.model && options.binding) {
-        this.$('.bootstrap-filestyle input').val(this.model.get(options.binding));
+        this.$(options.selector).next().find('input').val(this.model.get(options.binding));
         if (this.model.get(options.binding) && this.model.get(options.binding).length > 0) {
-          this.$('#filestyleclear').removeClass('hidden');
+          this.filestyleClearBtn.removeClass('hidden');
         }
       }
 
       this.$(options.selector).on('change', _.bind(this.filestylePrerpareUpload,this));
-      this.$('#filestyleclear').on('click', _.bind(this.filestyleClearFile,this));
+      this.filestyleClearBtn.on('click', _.bind(this.filestyleClearFile,this));
     },
 
     filestylePrerpareUpload: function(event) {
@@ -115,7 +118,7 @@ define(function(require) {
       if (this.model && this.filestyleOptions.binding) {
         this.model.set(this.filestyleOptions.binding, this.filestyleFiles[0].name);
       }
-      this.$('#filestyleclear').removeClass('hidden');
+      this.filestyleClearBtn.removeClass('hidden');
     },
 
     filestyleHasFiles: function() {
@@ -128,7 +131,7 @@ define(function(require) {
       }
 
       this.$(this.filestyleOptions.selector).filestyle('clear');
-      this.$('#filestyleclear').addClass('hidden');
+      this.filestyleClearBtn.addClass('hidden');
     },
 
     filestyleUpload: function(options) {
