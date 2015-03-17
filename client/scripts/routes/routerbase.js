@@ -11,13 +11,8 @@ define(function (require) {
       this.session = options.dataManager.session;
     },
 
-    showView: function(view) {
-      var indexView = new this.indexView({view: view});
-      this.container.setView(indexView);
-    },
-
     showList: function(filter) {
-      this.showView(this.createListView(filter));
+      this.container.setView(this.createListView(filter));
     },
 
     createListView: function(filter) {
@@ -31,7 +26,7 @@ define(function (require) {
 
     showReview: function(id) {
       var model = this.collection.get(id);
-      this.showView(this.createReviewView(model));
+      this.container.setView(this.createReviewView(model));
     },
 
     createReviewView: function(model) {
@@ -44,7 +39,7 @@ define(function (require) {
 
     showAddForm: function(queryParams) {
       var model = new this.collection.model();
-      this.showView(this.createFormView(model, queryParams));
+      this.container.setView(this.createFormView(model, queryParams));
     },
 
     createFormView: function(model, queryParams) {
@@ -59,7 +54,7 @@ define(function (require) {
 
     showEditForm: function(id) {
       var model = this.collection.get(id);
-      this.showView(this.createFormView(model));
+      this.container.setView(this.createFormView(model));
     },
 
     parseQueryString: function( queryString ) {

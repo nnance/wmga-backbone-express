@@ -1,13 +1,12 @@
-define([
-  'client/scripts/routes/routerbase',
-  'client/scripts/views/news/index',
-  'client/scripts/views/news/list',
-  'client/scripts/views/news/review',
-  'client/scripts/views/news/form',
-  ], function (BaseRouter, IndexView, ListView, ReviewView, FormView) {
+define(function(require) {
     'use strict';
 
-    var NewsRouter = BaseRouter.extend({
+    var BaseRouter = require('client/scripts/routes/routerbase');
+    var ListView = require('client/scripts/views/news/list');
+    var ReviewView = require('client/scripts/views/news/review');
+    var FormView = require('client/scripts/views/news/form');
+
+    return BaseRouter.extend({
       routes: {
         'news': 'showList',
         'news/create': 'showAddForm',
@@ -15,11 +14,8 @@ define([
         'news/update/:id': 'showEditForm',
         'news/filter/:value': 'showList'
       },
-      indexView: IndexView,
       listView: ListView,
       reviewView: ReviewView,
       formView: FormView
     });
-
-    return NewsRouter;
   });

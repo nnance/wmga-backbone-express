@@ -1,13 +1,12 @@
-define([
-  'client/scripts/models/signin-model',
-  'client/scripts/views/home/index',
-  'client/scripts/views/app/signin',
-  'client/scripts/views/events/index',
-  'client/scripts/views/app/contact',
-  ], function (SignInModel, HomeView, SignInView, EventsView, ContactView) {
+define(function(require) {
     'use strict';
 
-    var RouterRouter = Backbone.Router.extend({
+    var SignInModel = require('client/scripts/models/signin-model');
+    var HomeView = require('client/scripts/views/home/index');
+    var SignInView = require('client/scripts/views/app/signin');
+    var ContactView = require('client/scripts/views/app/contact');
+
+    return Backbone.Router.extend({
       routes: {
         '': 'showHome',
         'home': 'showHome',
@@ -56,6 +55,4 @@ define([
         Backbone.history.navigate('#home',true);
       }
     });
-
-    return RouterRouter;
   });

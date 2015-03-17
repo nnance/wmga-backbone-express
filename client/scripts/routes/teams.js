@@ -1,24 +1,20 @@
-define([
-  'client/scripts/routes/routerbase',
-  'client/scripts/views/teams/index',
-  'client/scripts/views/teams/list',
-  'client/scripts/views/teams/review',
-  'client/scripts/views/teams/form',
-  ], function (BaseRouter, IndexView, ListView, ReviewView, FormView) {
+define(function(require) {
     'use strict';
 
-    var TeamsRouter = BaseRouter.extend({
+    var BaseRouter = require('client/scripts/routes/routerbase');
+    var ListView = require('client/scripts/views/teams/list');
+    var ReviewView = require('client/scripts/views/teams/review');
+    var FormView = require('client/scripts/views/teams/form');
+
+    return BaseRouter.extend({
       routes: {
         'teams': 'showList',
         'teams/create(:return)': 'showAddForm',
         'teams/read/:id': 'showReview',
         'teams/update/:id': 'showEditForm',
       },
-      indexView: IndexView,
       listView: ListView,
       reviewView: ReviewView,
       formView: FormView
     });
-
-    return TeamsRouter;
   });

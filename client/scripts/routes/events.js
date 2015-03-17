@@ -1,13 +1,12 @@
-define([
-  'client/scripts/routes/routerbase',
-  'client/scripts/views/events/index',
-  'client/scripts/views/events/list',
-  'client/scripts/views/events/review',
-  'client/scripts/views/events/form',
-  ], function (BaseRouter, IndexView, ListView, ReviewView, FormView) {
+define(function(require) {
     'use strict';
 
-    var EventsRouter = BaseRouter.extend({
+    var BaseRouter = require('client/scripts/routes/routerbase');
+    var ListView = require('client/scripts/views/events/list');
+    var ReviewView = require('client/scripts/views/events/review');
+    var FormView = require('client/scripts/views/events/form');
+
+    return BaseRouter.extend({
       routes: {
         'events': 'showList',
         'events/create': 'showAddForm',
@@ -15,11 +14,8 @@ define([
         'events/update/:id': 'showEditForm',
         'events/filter/:value': 'showList'
       },
-      indexView: IndexView,
       listView: ListView,
       reviewView: ReviewView,
       formView: FormView
     });
-
-    return EventsRouter;
   });
