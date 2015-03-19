@@ -35,7 +35,7 @@ define(function(require) {
           session: this.session,
           dataManager: this.dataManager
         });
-        this.showView(view);
+        this.container.setView(view);
       },
     });
   });
