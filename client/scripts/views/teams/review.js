@@ -27,8 +27,8 @@ define(function(require) {
       var isSignedUser = this.session.get('userid') === this.model.get('captainid');
       var isAdmin = this.session.get('admin');
 
-      if (!isAdmin && !isSignedUser) {
-        this.$('#action-menu').hide();
+      if (isAdmin || isSignedUser) {
+        this.$('#action-menu').show();
       }
 
       if (this.model.get('paid') || !isSignedUser) {
