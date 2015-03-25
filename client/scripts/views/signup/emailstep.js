@@ -15,13 +15,15 @@ define(function(require) {
 
       this.removeSubViews();
       var formData = this.serializeForm('form');
-      this.model.set(formData, {validate: true});
+      this.model.set(formData);
 
       if (this.model.isValid('email')) {
         this.collection.fetch({data: formData,
           success: _.bind(this.nextStepSuccess,this),
           error: _.bind(this.nextStepError,this)
         });
+      } else {
+        this.model.validate();
       }
     },
 
