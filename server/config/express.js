@@ -6,6 +6,7 @@
 var compress = require('compression');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var path = require('path');
@@ -57,6 +58,9 @@ var expressConfig = function(app, express, db) {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
+  // multipart/form-data handler for file uploads
+  app.use(multer({ dest: './uploads/'}).single('0'));
+
   // Returns middleware that parses cookies
   app.use(cookieParser());
 
@@ -96,7 +100,7 @@ var expressConfig = function(app, express, db) {
         });
       },
       text: function() {
-        res.send(404 + ': ' + 'Page not found');
+        res.status(404).send('Page not found');
       }
     });
   });
