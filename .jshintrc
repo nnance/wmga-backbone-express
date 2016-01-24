@@ -17,7 +17,7 @@
   "quotmark": "single",
   "asi": false,
   "debug": true,
-  "globalstrict": true,
+  "globalstrict": false,
   "smarttabs": true,
   "browser": true,
   "devel": true,
