@@ -1,12 +1,10 @@
 dependencies:
   pre:
     - npm install
-    - npm install bower -g
-    - npm install grunt -g
     - gem install compass
-    - bower install --allow-root
+    - npm run init
   post:
-    - grunt build
+    - npm run build
 
 test:
   override:
