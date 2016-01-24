@@ -23,7 +23,7 @@ define(function(require) {
 
       this.model.validation = _.extend(this.model.validation, this.model.registrationValidation);
       this.model.set(formData);
-      if (this.model.isValid()) {
+      if (this.model.isValid(true)) {
         this.collection.fetch({data: {email: formData.email},
           success: _.bind(this.nextStepSuccess,this),
           error: _.bind(this.nextStepError,this)
