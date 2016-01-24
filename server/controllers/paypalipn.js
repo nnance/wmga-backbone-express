@@ -16,7 +16,7 @@ exports.successfulTakePayment = function(req, res) {
 
 exports.processIPN = function(req, res){
 	console.log('controller/paypalipn processIPN: ' + req.body);
-	res.send(200);
+	res.status(200).send();
 
 	ipn.verify(req.body, function callback(err, msg) {
 		if (err) {
@@ -80,4 +80,3 @@ exports.processIPN = function(req, res){
 		}
 	});
 };
-
