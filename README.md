@@ -60,4 +60,4 @@ npm start
 ```
 
 ## CI and Deployment
-The project is setup in Github with a hook to the Travis continuous integration services.  Once changes are pushed to master Travis will pull down the changes, run the tests, build the software and deploy it automatically to Heroku.
+The project is setup in Github with a hook to the CircleCI continuous integration services.  Once changes are pushed to master CircleCI will pull down the changes, run the tests, build the software.  If the tests and build is successful it will automatically deploy to Heroku.
