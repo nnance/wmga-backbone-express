@@ -10,14 +10,12 @@ var multer = require('multer');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var path = require('path');
-var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
 
 // Configuration files
 var settings = require('./env/default');
-var security = require('./security');
 
-var expressConfig = function(app, express, db) {
+var expressConfig = function(app, express) {
 
   var hour = 3600000;
   var day = hour * 24;
@@ -112,9 +110,7 @@ var expressConfig = function(app, express, db) {
   }
 
   // Production Error Handler.
-  app.use(function(err, req, res, next) {
-
-    var error = err.error || err;
+  app.use(function(err, req, res) {
     var message = err.message;
     var status = err.status || 500;
 

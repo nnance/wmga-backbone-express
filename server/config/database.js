@@ -6,13 +6,12 @@
 var mongoose = require('mongoose');
 var settings = require('./env/default');
 var fs = require('fs');
-var path = require('path');
 var db = {};
 
 // Add coloring for console output
 require('colors');
 
-var databaseConfig = function(app) {
+var databaseConfig = function() {
 
   // Connect to database
   mongoose.connect(settings.database.url, settings.database.options);

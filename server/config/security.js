@@ -2,6 +2,7 @@
  * Security Configuration
  */
 
+ /*eslint-disable no-console*/
 'use strict';
 
 var _ = require('lodash');

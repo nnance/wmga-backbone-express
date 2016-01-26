@@ -1,226 +1,227 @@
-var mongoose = require('mongoose'),
-	User = mongoose.model('User'),
-	_ = require('lodash'),
-	settings = require('../config/env/default'),
-	passwordHash = require('password-hash'),
-	mandrill = require('mandrill-api'),
-	twilio = require('twilio'),
-	excludeList = '-password -passwordHash';
+/*eslint-disable no-console*/
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+var _ = require('lodash');
+var settings = require('../config/env/default');
+var passwordHash = require('password-hash');
+var mandrill = require('mandrill-api');
+var twilio = require('twilio');
+var excludeList = '-password -passwordHash';
 
 var mandrill_client = new mandrill.Mandrill(settings.mandrillKey);
 var twilio_client = twilio(settings.twilio.acct, settings.twilio.key);
 
 exports.getList = function(req, res){
-	console.log('controller/user getList: ' + (req.query && req.query.email ? req.query.email : ''));
+  console.log('controller/user getList: ' + (req.query && req.query.email ? req.query.email : ''));
 
-	if (req.query && req.query.email) {
-		req.query.email = new RegExp(req.query.email, 'i');
-	}
+  if (req.query && req.query.email) {
+    req.query.email = new RegExp(req.query.email, 'i');
+  }
 
-	User.find(req.query, excludeList, function(err, users){
-		if(err) throw new Error(err);
-		res.send(users);
-	});
+  User.find(req.query, excludeList, function(err, users){
+    if(err) throw new Error(err);
+    res.send(users);
+  });
 };
 
 exports.getById = function(req, res){
-	console.log('controller/user getById: ' + req.params);
+  console.log('controller/user getById: ' + req.params);
 
-	User.findById(req.params.id, excludeList, function(err, user){
-		if(err) throw new Error(err);
-		res.send(user);
-	});
+  User.findById(req.params.id, excludeList, function(err, user){
+    if(err) throw new Error(err);
+    res.send(user);
+  });
 };
 
 exports.requestPassword = function(req, res){
-	console.log('controller/user requestPassword: ' + req.body.email);
+  console.log('controller/user requestPassword: ' + req.body.email);
 
-	var options = {};
-	if (req.body.email) {
-		options.email = new RegExp(req.body.email, 'i')
-	}
+  var options = {};
+  if (req.body.email) {
+    options.email = new RegExp(req.body.email, 'i');
+  }
 
-	User.findOne(options, function (err, user) {
-		if (err) throw new Error(err);
-		if (!user) {
-			res.status(404).send('Not found');
-			return;
-		};
+  User.findOne(options, function (err, user) {
+    if (err) throw new Error(err);
+    if (!user) {
+      res.status(404).send('Not found');
+      return;
+    }
 
-	    var body = "Pleae return to the site and log in using the following information.\r\n" +
-	                "\r\n" +
-	                "User Name: " + user.email + "\r\n" +
-	                "Password: " + user.password + "\r\n" +
-	                "\r\n" +
-	                "Make sure you type the password exactly.  It is best to copy and paste the password into " +
-	                "the password field when you log in.  Once logged in you can change your password by going " +
-	                "to the Membership page.\r\n";
+    var body = 'Pleae return to the site and log in using the following information.\r\n' +
+                '\r\n' +
+                'User Name: ' + user.email + '\r\n' +
+                'Password: ' + user.password + '\r\n' +
+                '\r\n' +
+                'Make sure you type the password exactly.  It is best to copy and paste the password into ' +
+                'the password field when you log in.  Once logged in you can change your password by going ' +
+                'to the Membership page.\r\n';
 
-		var message = {
-			"text": body,
-			"subject": "WMGA Password Request",
-			"from_email": "donotreply@westwoodmensgolf.org",
-			"from_name": "WMGA",
-			"to": [{
-					"email": user.email,
-					"name": user.firstname + ' ' + user.lastname,
-					"type": "to"
-				}],
-			"headers": {
-				"Reply-To": "donotreply@westwoodmensgolf.org"
-			},
-			"important": false,
-			"tags": [
-				"password-resets"
-			]
-		};
+    var message = {
+      'text': body,
+      'subject': 'WMGA Password Request',
+      'from_email': 'donotreply@westwoodmensgolf.org',
+      'from_name': 'WMGA',
+      'to': [{
+        'email': user.email,
+        'name': user.firstname + ' ' + user.lastname,
+        'type': 'to'
+      }],
+      'headers': {
+        'Reply-To': 'donotreply@westwoodmensgolf.org'
+      },
+      'important': false,
+      'tags': [
+        'password-resets'
+      ]
+    };
 
-		var async = false;
-		var ip_pool = "Main Pool";
-		mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
-			console.log(result);
-			res.send(result);
-		}, function(e) {
-			// Mandrill returns the error as an object with name and message keys
-			console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
-			// A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
-			res.status(500).send(e.name + ' - ' + e.message);
-		});
-	});
+    var async = false;
+    var ip_pool = 'Main Pool';
+    mandrill_client.messages.send({'message': message, 'async': async, 'ip_pool': ip_pool}, function(result) {
+      console.log(result);
+      res.send(result);
+    }, function(e) {
+      // Mandrill returns the error as an object with name and message keys
+      console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+      // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+      res.status(500).send(e.name + ' - ' + e.message);
+    });
+  });
 };
 
 exports.validateSignIn = function(req, res){
-	console.log('controller/user validateSignIn: ' + req.body.email);
+  console.log('controller/user validateSignIn: ' + req.body.email);
 
-	var options = {};
+  var options = {};
 
-	if (req.body.email) {
-		options.email = new RegExp(req.body.email, 'i');
-	}
+  if (req.body.email) {
+    options.email = new RegExp(req.body.email, 'i');
+  }
 
-	if (passwordHash.isHashed(req.body.password)) {
-		options.passwordHash = req.body.password;
-	} else {
-		options.password = req.body.password;
-	}
+  if (passwordHash.isHashed(req.body.password)) {
+    options.passwordHash = req.body.password;
+  } else {
+    options.password = req.body.password;
+  }
 
-	User.findOne(options, function (err, user) {
-		if (err) throw new Error(err);
-		if (!user) {
-			res.status(404).send('Not found');
-			return;
-		}
-		res.send(user);
-	});
+  User.findOne(options, function (err, user) {
+    if (err) throw new Error(err);
+    if (!user) {
+      res.status(404).send('Not found');
+      return;
+    }
+    res.send(user);
+  });
 };
 
 exports.addUser = function(req, res){
-	console.log('controller/user postMessage: ' + req.body);
+  console.log('controller/user postMessage: ' + req.body);
 
-	var user = new User(req.body);
-	if (user.password) {
-		user.passwordHash = passwordHash.generate(user.password);
-	}
-	user.save(function() {
-		res.send(user);
-	});
+  var user = new User(req.body);
+  if (user.password) {
+    user.passwordHash = passwordHash.generate(user.password);
+  }
+  user.save(function() {
+    res.send(user);
+  });
 };
 
 exports.emailAllUsers = function(req, res){
-	console.log('controller/user emailAllUsers: ' + req.body.subject);
+  console.log('controller/user emailAllUsers: ' + req.body.subject);
 
-	var query = req.query;
-	User.find(query, excludeList, function(err, users){
-		if(err) throw new Error(err);
-		var addresses = [];
-		_.each(users, function(user){
-			addresses.push({
-				'email': user.email,
-				'name': user.firstname + ' ' + user.lastname,
-				'type': 'to'
-			});
-		});
+  var query = req.query;
+  User.find(query, excludeList, function(err, users){
+    if(err) throw new Error(err);
+    var addresses = [];
+    _.each(users, function(user){
+      addresses.push({
+        'email': user.email,
+        'name': user.firstname + ' ' + user.lastname,
+        'type': 'to'
+      });
+    });
 
-		var message = {
-			'text': req.body.body,
-			'subject': req.body.subject,
-			'from_email': 'donotreply@westwoodmensgolf.org',
-			'from_name': 'WMGA',
-			'to': addresses,
-			'headers': {
-				'Reply-To': 'donotreply@westwoodmensgolf.org'
-			},
-			'important': false,
-			'preserve_recipients': false
-		};
+    var message = {
+      'text': req.body.body,
+      'subject': req.body.subject,
+      'from_email': 'donotreply@westwoodmensgolf.org',
+      'from_name': 'WMGA',
+      'to': addresses,
+      'headers': {
+        'Reply-To': 'donotreply@westwoodmensgolf.org'
+      },
+      'important': false,
+      'preserve_recipients': false
+    };
 
-		mandrill_client.messages.send({'message': message, 'async': true, 'ip_pool': 'Main Pool'}, function(result) {
-			console.log(result);
-			res.send(result);
-		}, function(e) {
-			// Mandrill returns the error as an object with name and message keys
-			console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
-			// A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
-			res.status(500).send(e.name + ' - ' + e.message);
-		});
-	});
+    mandrill_client.messages.send({'message': message, 'async': true, 'ip_pool': 'Main Pool'}, function(result) {
+      console.log(result);
+      res.send(result);
+    }, function(e) {
+      // Mandrill returns the error as an object with name and message keys
+      console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+      // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+      res.status(500).send(e.name + ' - ' + e.message);
+    });
+  });
 };
 
 exports.notifyAllUsers = function(req, res){
-	console.log('controller/user notifyAllUsers: ' + req.body.message);
+  console.log('controller/user notifyAllUsers: ' + req.body.message);
 
-	var query = req.query;
-	query = {email: 'nance.nick@gmail.com'};
-	User.find(query, excludeList, function(err, users){
-		if(err) throw new Error(err);
-		var numbers = [];
-		_.each(users, function(user){
-			if (user.phone) {
-				numbers.push('+1' + user.phone);
-			}
-		});
+  var query = req.query;
+  query = {email: 'nance.nick@gmail.com'};
+  User.find(query, excludeList, function(err, users){
+    if(err) throw new Error(err);
+    var numbers = [];
+    _.each(users, function(user){
+      if (user.phone) {
+        numbers.push('+1' + user.phone);
+      }
+    });
 
-		twilio_client.sms.messages.create({
-			body: "Jenny please?! I love you <3",
-			to: "+14058319107",
-			from: "+19183799090"
-		}, function(err, message) {
-			console.log(message);
-			if (err) {
-				res.status(500).send(err);
-			} else {
-				res.send();
-			}
-		});
-	});
+    twilio_client.sms.messages.create({
+      body: 'Jenny please?! I love you <3',
+      to: '+14058319107',
+      from: '+19183799090'
+    }, function(err, message) {
+      console.log(message);
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.send();
+      }
+    });
+  });
 };
 
 exports.updateUser = function(req, res){
-	console.log('controller/user putMessage: ' + req.body);
+  console.log('controller/user putMessage: ' + req.body);
 
-	var updateObj = _.omit(req.body, ['_id', '__v']);
+  var updateObj = _.omit(req.body, ['_id', '__v']);
 
-	User.findById(req.params.id,function(err, user){
-		if(err) throw new Error(err);
+  User.findById(req.params.id,function(err, user){
+    if(err) throw new Error(err);
 
-		if (updateObj.password) {
-			updateObj.passwordHash = passwordHash.generate(updateObj.password);
-		}
-		user.update(updateObj,function(err,count){
-			if(err) throw new Error(err);
-			res.send(req.body);
-		});
-	});
+    if (updateObj.password) {
+      updateObj.passwordHash = passwordHash.generate(updateObj.password);
+    }
+    user.update(updateObj,function(err){
+      if(err) throw new Error(err);
+      res.send(req.body);
+    });
+  });
 };
 
 exports.deleteUser = function(req, res){
-	console.log('controller/user deleteMessage: ' + req.body);
+  console.log('controller/user deleteMessage: ' + req.body);
 
-	User.findById(req.params.id,function(err, user){
-		if(err) throw new Error(err);
-		user.remove(function(err,count){
-			if(err) throw new Error(err);
-			res.send(req.body);
-		});
-	});
+  User.findById(req.params.id,function(err, user){
+    if(err) throw new Error(err);
+    user.remove(function(err){
+      if(err) throw new Error(err);
+      res.send(req.body);
+    });
+  });
 };

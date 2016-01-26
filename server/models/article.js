@@ -9,7 +9,7 @@ var ArticleSchema = new Schema({
   attachedfile: String,
   itemdate: Date,
   createdate: { type: Date, default: Date.now },
-  photo: String,
+  photo: String
 });
 
 mongoose.model('Article', ArticleSchema);
