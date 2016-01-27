@@ -29,5 +29,8 @@
         "jsx": true,
         "modules": true,
         "experimentalObjectRestSpread": true
+    },
+    "globals": {
+      "define": true
     }
 }
