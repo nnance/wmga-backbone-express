@@ -5,16 +5,18 @@
 //
 //////
 
-// import globals
-import 'babel-polyfill';
+/* eslint-disable no-unused-vars */
+var scss = require('./styles/main.scss');
+var bootstrap = require('bootstrap');
+var bbComposer = require('backbone.composer');
+/* eslint-enable no-unused-vars */
 
-// styles
-import './styles/main.scss';
+var $ = require('jquery');
+var App = require('./scripts/views/app');
 
-import Backbone from 'backbone';
+$(function() {
+  var app = new App({el: '#app'});
 
-import App from './scripts/views/app';
-
-let app = new App({el: '#app'});
-app.render();
-app.initSession();
+  app.render();
+  app.initSession();
+});

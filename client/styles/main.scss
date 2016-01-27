@@ -1,11 +1,7 @@
-$icon-font-path: "fonts/bootstrap/";
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
-// Injects all bower_component files automatically
-// bower:scss
-@import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
-// bower:sass
-// endbower
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap";
+
 @import "signin";
 @import "overwrites";
 

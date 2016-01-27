@@ -14,24 +14,11 @@
       <link rel="stylesheet" href="/bower_components/select2-bootstrap-css/select2-bootstrap.css" />
       <link rel="stylesheet" href="/bower_components/bootstrap3-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
     <!-- endbuild -->
-
-    <link rel="stylesheet" href="/styles/main.css" />
-
-    <!-- HTML5 and consolelog shims for IE8 support -->
-    <!-- build:js(client) scripts/lt-ie9.js -->
-    <!--[if lt IE 9]>
-    <script src="/bower_components/consolelog/consolelog.js"></script>
-    <script src="/bower_components/html5shiv/dist/html5shiv-printshiv.js"></script>
-    <![endif]-->
-    <!-- endbuild -->
   </head>
   <body>
-    <!--[if lte IE 7]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
     <!-- Application loads here -->
     <div id="app" class="container"></div>
+    <script src="/static/bundle.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -42,11 +29,5 @@
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-38943604-1');ga('send','pageview');
     </script>
-
-    <!-- build:js({client,.tmp}) scripts/global.js -->
-    <script src="/templates/templates.js"></script>
-    <!-- endbuild -->
-
-    <script data-main="/scripts/main", src="/bower_components/requirejs/require.js"></script>
   </body>
 </html>
