@@ -1,13 +1,16 @@
+/* global define */
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
+  var _ = require('underscore');
+  var $ = require('jquery');
   var BaseView = require('client/scripts/views/viewbase');
   var AlertView = require('client/scripts/views/alert');
-  var filestyle = require('bootstrap-filestyle');
 
   return BaseView.extend({
 
-    initialize: function(options) {
+    initialize: function() {
       if (this.model) {
         Backbone.Validation.bind(this);
         this.listenTo(this.model, 'validated:invalid', this.handleErrors);
@@ -44,16 +47,16 @@ define(function(require) {
     sendFile: function() {
       this.filestyleUpload({
         url: '/rest/attachments',
-        success: _.bind(function(data, textStatus, jqXHR) {
+        success: _.bind(function() {
           this.trigger('uploaded', arguments);
         }, this),
-        error: _.bind(function(jqXHR, textStatus, errorThrown) {
+        error: _.bind(function(jqXHR, textStatus) {
           this.handleErrors(this.model, textStatus);
         }, this)
       });
     },
 
-    saveFailed: function(model, xhr, options) {
+    saveFailed: function(model, xhr) {
       this.handleErrors(model,{response: xhr.responseText});
     },
 
@@ -74,7 +77,7 @@ define(function(require) {
       this.model.save(this.getFormData());
     },
 
-    saveCompleted: function(model, response, options) {
+    saveCompleted: function(model) {
       if (this.collection) {
         this.collection.add(model);
       }
@@ -125,7 +128,7 @@ define(function(require) {
       return this.filestyleFiles;
     },
 
-    filestyleClearFile: function(event) {
+    filestyleClearFile: function() {
       if (this.model && this.filestyleOptions.binding) {
         this.model.set(this.filestyleOptions.binding,'');
       }

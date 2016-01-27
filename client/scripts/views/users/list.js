@@ -1,13 +1,13 @@
 define(function(require) {
   'use strict';
 
-  var moment = require('moment');
+  var _ = require('underscore');
   var ListBaseView = require('client/scripts/views/listbase');
   var ItemView = require('client/scripts/views/users/listitem');
 
   return ListBaseView.extend({
-    template: JST['client/templates/users/list.jst'],
-    addButtonTemplate: JST['client/templates/users/addbutton.jst'],
+    template: require('client/templates/users/list.ejs'),
+    addButtonTemplate: require('client/templates/users/addbutton.ejs'),
 
     events: {
       'click #filter': 'switchFilter',

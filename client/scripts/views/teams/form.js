@@ -1,15 +1,16 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
+  var $ = require('jquery');
+  var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
-  var Select2 = require('select2');
-
   var TeamsFormView = FormBaseView.extend({
-    template: JST['client/templates/teams/form.jst'],
+    template: require('client/templates/teams/form.ejs'),
 
     events: {
       'click #save-button': 'saveButton',
-      'click #cancel-button': 'cancelButton',
+      'click #cancel-button': 'cancelButton'
     },
 
     initialize: function(options) {

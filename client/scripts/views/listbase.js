@@ -30,9 +30,9 @@ define(function(require) {
       this.collection.forEach(this.renderItem, this);
     },
 
-    renderItem: function(model) {
+    renderItem: function() {
       // must be provided by subclasses
-    },
+    }
 
   });
 });

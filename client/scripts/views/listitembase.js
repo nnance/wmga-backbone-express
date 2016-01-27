@@ -5,10 +5,10 @@ define(function(require) {
 
   return BaseView.extend({
 
-    initialize: function(options) {
+    initialize: function() {
       if (this.model) {
         this.listenTo(this.model, 'change', this.render);
       }
-    },
+    }
   });
 });

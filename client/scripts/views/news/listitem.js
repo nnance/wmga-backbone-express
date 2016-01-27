@@ -5,11 +5,11 @@ define(function(require) {
   var ListItemBaseView = require('client/scripts/views/listitembase');
 
   return ListItemBaseView.extend({
-    template: JST['client/templates/news/listitem.jst'],
+    template: require('client/templates/news/listitem.ejs'),
 
     serializeData: function() {
       return _.extend(this.model.toJSON(), {
-          itemdate: this.getDisplayDate('itemdate')
+        itemdate: this.getDisplayDate('itemdate')
       });
     }
   });

@@ -2,15 +2,14 @@ define(function(require) {
   'use strict';
 
   var _ = require('underscore');
-  var moment = require('moment');
   var ListItemBaseView = require('client/scripts/views/listitembase');
 
   return ListItemBaseView.extend({
-    template: JST['client/templates/events/listitem.jst'],
+    template: require('client/templates/events/listitem.ejs'),
 
     serializeData: function() {
       return _.extend(this.model.toJSON(), {
-          startdate: this.getDisplayDate('startdate')
+        startdate: this.getDisplayDate('startdate')
       });
     }
   });

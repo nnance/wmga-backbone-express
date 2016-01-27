@@ -4,13 +4,14 @@ define(function(require) {
 
   'use strict';
 
+  var Backbone = require('backbone');
   var moment = require('moment');
   var ListBaseView = require('client/scripts/views/listbase');
   var ItemView = require('client/scripts/views/events/listitem');
 
   return ListBaseView.extend({
-    template: JST['client/templates/events/list.jst'],
-    addButtonTemplate: JST['client/templates/events/addbutton.jst'],
+    template: require('client/templates/events/list.ejs'),
+    addButtonTemplate: require('client/templates/events/addbutton.ejs'),
 
     events: {
       'click #filter': 'switchFilter'

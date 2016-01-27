@@ -1,11 +1,11 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
-  var RequestPassword = require('client/scripts/models/requestpsw-model');
 
   var TypeStepView = FormBaseView.extend({
-    template: JST['client/templates/signup/typestep.jst'],
+    template: require('client/templates/signup/typestep.ejs'),
 
     events: {
       'click .btn': 'nextStep'

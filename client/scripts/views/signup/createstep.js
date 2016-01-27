@@ -1,9 +1,11 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
+  var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
   var CreateStep = FormBaseView.extend({
-    template: JST['client/templates/signup/createstep.jst'],
+    template: require('client/templates/signup/createstep.ejs'),
 
     events: {
       'click .btn-primary': 'nextStep',
@@ -38,7 +40,7 @@ define(function(require) {
       Backbone.history.navigate('#signup/email', true);
     },
 
-    nextStepSuccess: function(col, resp, opt) {
+    nextStepSuccess: function(col) {
       if (col.length !== 0) {
         this.showErrors({email: 'Email address alredy exists.'});
         this.$('.hidden').removeClass('hidden');
@@ -48,7 +50,7 @@ define(function(require) {
             this.listenToOnce(this.session,'signedin', this.initData);
             this.session.signin(this.model.attributes,true);
           },this),
-          error: _.bind(function(model, response, options) {
+          error: _.bind(function(model, response) {
             this.handleError(model, response);
           },this)
         });
@@ -62,7 +64,7 @@ define(function(require) {
       },this));
     },
 
-    nextStepError: function(col, resp, opt) {
+    nextStepError: function(col, resp) {
       this.showErrors(resp);
     }
   });

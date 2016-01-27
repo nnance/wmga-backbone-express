@@ -6,7 +6,7 @@ define(function(require) {
 
   return BaseView.extend({
 
-    initialize: function(options) {
+    initialize: function() {
       if (this.model) {
         this.listenTo(this.model,'change',this.render);
       }
@@ -14,13 +14,13 @@ define(function(require) {
 
     onRender: function() {
       if (this.session && !this.session.get('admin')) {
-          this.$('#action-menu').hide();
+        this.$('#action-menu').hide();
       }
     },
 
     getFileUrl: function() {
       return AppSettings.fileURL + this.model.get('attachedfile');
-    },
+    }
 
   });
 });

@@ -1,13 +1,13 @@
 define(function(require) {
   'use strict';
 
-  var moment = require('moment');
+  var _ = require('underscore');
   var ListBaseView = require('client/scripts/views/listbase');
   var ItemView = require('client/scripts/views/teams/listitem');
 
   return ListBaseView.extend({
-    template: JST['client/templates/teams/list.jst'],
-    addButtonTemplate: JST['client/templates/teams/addbutton.jst'],
+    template: require('client/templates/teams/list.ejs'),
+    addButtonTemplate: require('client/templates/teams/addbutton.ejs'),
 
     events: {
       'click #filter': 'switchFilter',
@@ -25,7 +25,7 @@ define(function(require) {
       }), this.renderItem, this);
     },
 
-    renderItem: function(model, index) {
+    renderItem: function(model) {
       this.addSubView({
         view: new ItemView({model: model, collection: this.dataManager.userCollection}),
         selector: '#table'

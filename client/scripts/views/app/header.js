@@ -1,6 +1,7 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
   var BaseView = require('client/scripts/views/viewbase');
 
   return BaseView.extend({
@@ -9,9 +10,9 @@ define(function(require) {
       role: 'navigation'
     },
 
-    template: JST['client/templates/app/header.jst'],
+    template: require('client/templates/app/header.ejs'),
 
-    initialize: function(options) {
+    initialize: function() {
       BaseView.prototype.initialize.apply(this,arguments);
 
       this.listenToOnce(this.collection, 'sync', this.loadCompleted);
@@ -41,7 +42,7 @@ define(function(require) {
       return this.model ? this.model.toJSON() : {};
     },
 
-    highlighItem: function(router, route, params) {
+    highlighItem: function() {
       this.$('.active').removeClass('active');
 
       var hash = (window.location.hash.length === 0) ? '#home' : window.location.hash;

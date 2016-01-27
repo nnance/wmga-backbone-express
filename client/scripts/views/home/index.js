@@ -10,7 +10,7 @@ define(function(require) {
 
   return BaseView.extend({
 
-    template: JST['client/templates/home/index.jst'],
+    template: require('client/templates/home/index.ejs'),
 
     initialize: function(options) {
       this.newsCollection = options.newsCol;
@@ -41,7 +41,7 @@ define(function(require) {
         start: moment().add(15, 'days'),
         end: moment()
       };
-      
+
       var filter = this.eventsCollection.filter(function(event){
         var startDate = this.getAsDate('startdate', event);
         return (startDate.isBefore(upcoming.start) && startDate.isAfter(upcoming.end));

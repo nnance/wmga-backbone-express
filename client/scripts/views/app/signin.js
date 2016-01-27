@@ -1,11 +1,13 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
+  var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
   var RequestPassword = require('client/scripts/models/requestpsw-model');
 
   return FormBaseView.extend({
-    template: JST['client/templates/app/signin.jst'],
+    template: require('client/templates/app/signin.ejs'),
 
     events: {
       'click .btn': 'saveButton',
@@ -17,7 +19,7 @@ define(function(require) {
       this.dataManager = options.dataManager;
     },
 
-    saveFailed: function(model, xhr, options) {
+    saveFailed: function(model, xhr) {
       if (xhr.responseText) {
         this.handleErrors(model,{response: xhr.responseText});
       } else {
@@ -25,7 +27,7 @@ define(function(require) {
       }
     },
 
-    saveCompleted: function(model, response, options) {
+    saveCompleted: function(model) {
       this.listenToOnce(this.session,'signedin', this.initData);
       this.session.signin(model.attributes, model.has('rememberMe'));
     },

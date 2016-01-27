@@ -1,12 +1,14 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
+  var Backbone = require('backbone');
   var ReviewBaseView = require('client/scripts/views/reviewbase');
   var DeleteView = require('client/scripts/views/delete');
   var AppSettings = require('client/scripts/appsettings');
 
   return ReviewBaseView.extend({
-    template: JST['client/templates/users/review.jst'],
+    template: require('client/templates/users/review.ejs'),
 
     events: {
       'click #delete-btn': 'showDeleteConfirm',

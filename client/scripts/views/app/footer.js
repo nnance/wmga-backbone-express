@@ -3,6 +3,6 @@ define(function(require) {
 
   var BaseView = require('client/scripts/views/viewbase');
   return BaseView.extend({
-    template: JST['client/templates/app/footer.jst']
+    template: require('client/templates/app/footer.ejs')
   });
 });

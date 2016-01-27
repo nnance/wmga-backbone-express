@@ -15,7 +15,7 @@ define(function(require) {
   }
 
   return Backbone.View.extend({
-    constructor: function(attributes, options) {
+    constructor: function(attributes) {
       if (attributes && attributes.session) {
         this.session = attributes.session;
       }

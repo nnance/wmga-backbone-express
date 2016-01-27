@@ -1,11 +1,12 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
   var BaseView = require('client/scripts/views/viewbase');
   var AppSettings = require('client/scripts/appsettings');
 
   var PayNowStep = BaseView.extend({
-    template: JST['client/templates/signup/paynowstep.jst'],
+    template: require('client/templates/signup/paynowstep.ejs'),
 
     events: {
       'click .btn-primary': 'nextStep',
@@ -20,7 +21,7 @@ define(function(require) {
     skipStep: function(e) {
       e.preventDefault();
       Backbone.history.navigate('#membership', true);
-    },
+    }
   });
 
   return PayNowStep;

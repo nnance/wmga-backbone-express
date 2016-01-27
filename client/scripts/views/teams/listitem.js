@@ -1,6 +1,7 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
   var ListItemBaseView = require('client/scripts/views/listitembase');
 
   function renderMembers(model, collection) {
@@ -22,13 +23,13 @@ define(function(require) {
   }
 
   return ListItemBaseView.extend({
-    template: JST['client/templates/teams/listitem.jst'],
+    template: require('client/templates/teams/listitem.ejs'),
     className: 'col-xs-12 col-sm-6',
 
     serializeData: function() {
       return _.extend(this.model.toJSON(), {
-          createdate: this.getSimpleDisplayDate('createdate'),
-          members: renderMembers(this.model, this.collection)
+        createdate: this.getSimpleDisplayDate('createdate'),
+        members: renderMembers(this.model, this.collection)
       });
     }
   });

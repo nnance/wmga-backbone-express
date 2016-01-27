@@ -1,13 +1,14 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
   var EmailFormView = FormBaseView.extend({
-    template: JST['client/templates/users/email.jst'],
+    template: require('client/templates/users/email.ejs'),
 
     events: {
       'click #save-button': 'saveButton',
-      'click #cancel-button': 'cancelButton',
+      'click #cancel-button': 'cancelButton'
     },
 
     routeSuccessfulResult: function() {

@@ -1,13 +1,14 @@
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
   var BaseView = require('client/scripts/views/viewbase');
   var AlertView = require('client/scripts/views/alert');
 
   return BaseView.extend({
     className: 'modal fade',
 
-    template: JST['client/templates/delete.jst'],
+    template: require('client/templates/delete.ejs'),
 
     events: {
       'click #delete-confirm': 'deleteConfirmed',
@@ -37,7 +38,6 @@ define(function(require) {
     },
 
     deleteCompleted: function() {
-      var options = this.options;
       this.$el.on('hidden.bs.modal', function() {
         if (this.successRoute) {
           Backbone.history.navigate(this.successRoute, true);

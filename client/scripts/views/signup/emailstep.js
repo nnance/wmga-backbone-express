@@ -1,9 +1,11 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
+  var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
   var EmailStepView = FormBaseView.extend({
-    template: JST['client/templates/signup/emailstep.jst'],
+    template: require('client/templates/signup/emailstep.ejs'),
 
     events: {
       'click .btn-primary': 'nextStep',
@@ -36,7 +38,7 @@ define(function(require) {
       Backbone.history.navigate('#signup/create', true);
     },
 
-    nextStepSuccess: function(col, resp, opt) {
+    nextStepSuccess: function(col) {
       if (col.length === 0) {
         this.showErrors({email: 'Email address not found.'});
         this.$('.hidden').removeClass('hidden');
@@ -46,7 +48,7 @@ define(function(require) {
 
     },
 
-    nextStepError: function(col, resp, opt) {
+    nextStepError: function(col, resp) {
       this.showErrors(resp);
     }
   });

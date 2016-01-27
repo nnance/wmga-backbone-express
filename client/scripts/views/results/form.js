@@ -2,14 +2,15 @@ define(function(require) {
   'use strict';
 
   var _ = require('underscore');
+  var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
 
   return FormBaseView.extend({
-    template: JST['client/templates/results/form.jst'],
+    template: require('client/templates/results/form.ejs'),
 
     events: {
       'click #save-button': 'saveButton',
-      'click #cancel-button': 'cancelButton',
+      'click #cancel-button': 'cancelButton'
     },
 
     onRender: function() {

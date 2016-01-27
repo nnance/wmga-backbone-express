@@ -6,7 +6,7 @@ define(function(require) {
   return BaseView.extend({
     className: 'alert alert-danger alert-dismissable',
 
-    template: JST['client/templates/alert.jst'],
+    template: require('client/templates/alert.ejs'),
 
     initialize: function(options) {
       this.errors = options.errors;

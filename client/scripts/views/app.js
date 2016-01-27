@@ -1,6 +1,9 @@
+/* global define */
 define(function(require) {
   'use strict';
 
+  var Backbone = require('backbone');
+  var _ = require('underscore');
   var BaseView = require('client/scripts/views/viewbase');
   var Router = require('client/scripts/routes/router');
   var NewsRouter = require('client/scripts/routes/news');
@@ -21,8 +24,6 @@ define(function(require) {
       this.header = new HeaderView({collection: this.sessionCollection});
       this.container = new BaseView();
       this.footer = new FooterView();
-
-      this.listenTo(Backbone.history,'route',this.updateTracking);
     },
 
     render: function() {
@@ -98,10 +99,6 @@ define(function(require) {
         collection: this.dataManager.userCollection
       });
 
-    },
-
-    updateTracking: function(router, route, params) {
-      // ga('send','pageview','/', window.location.hash);
     }
   });
 });

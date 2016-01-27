@@ -1,13 +1,13 @@
 define(function(require) {
   'use strict';
 
-  var BaseView = require('client/scripts/views/viewbase');
+  var _ = require('underscore');
   var ReviewBaseView = require('client/scripts/views/reviewbase');
   var DeleteView = require('client/scripts/views/delete');
   var AppSettings = require('client/scripts/appsettings');
 
   return ReviewBaseView.extend({
-    template: JST['client/templates/teams/review.jst'],
+    template: require('client/templates/teams/review.ejs'),
 
     events: {
       'click #delete-btn': 'showDeleteConfirm',

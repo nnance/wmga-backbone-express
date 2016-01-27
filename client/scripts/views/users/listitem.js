@@ -5,7 +5,7 @@ define(function(require) {
   var ListItemBaseView = require('client/scripts/views/listitembase');
 
   return ListItemBaseView.extend({
-    template: JST['client/templates/users/listitem.jst'],
+    template: require('client/templates/users/listitem.ejs'),
     className: 'row',
 
     serializeData: function() {

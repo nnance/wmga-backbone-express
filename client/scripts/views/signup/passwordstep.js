@@ -1,11 +1,13 @@
 define(function(require) {
   'use strict';
 
+  var _ = require('underscore');
+  var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
   var RequestPassword = require('client/scripts/models/requestpsw-model');
 
   var PasswordStepView = FormBaseView.extend({
-    template: JST['client/templates/signup/passwordstep.jst'],
+    template: require('client/templates/signup/passwordstep.ejs'),
 
     events: {
       'click .btn': 'nextStep',
@@ -22,10 +24,10 @@ define(function(require) {
       this.model.set(this.serializeForm('form'));
 
       this.session.validateAccount(this.model.get('email'), this.model.get('password'))
-      .done( _.bind(function(data, textStatus, jqXHR){
+      .done( _.bind(function(data){
         this.nextStepSuccess(data);
       },this))
-      .fail( _.bind(function(jqXHR, textStatus, errorThrown) {
+      .fail( _.bind(function() {
         this.handleErrors(this.model, {response: 'password does not match'});
       },this));
 

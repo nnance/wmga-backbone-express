@@ -5,10 +5,11 @@ define(function(require) {
   'use strict';
 
   var _ = require('underscore');
+  var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
 
   return FormBaseView.extend({
-    template: JST['client/templates/events/form.jst'],
+    template: require('client/templates/events/form.ejs'),
 
     events: {
       'click #save-button': 'saveButton',
