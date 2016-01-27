@@ -2,7 +2,9 @@ define(function(require) {
   'use strict';
 
   var Backbone = require('backbone');
-  var AppSettings = require('../appsettings');
+  /* eslint-disable no-unused-vars */
+  var bbValidation = require('backbone.validation');
+  /* eslint-enable no-unused-vars */
 
   var UsersModel = Backbone.Model.extend({
 
@@ -20,13 +22,13 @@ define(function(require) {
       email: {
         required: true,
         pattern: 'email'
-      },
+      }
     },
 
     registrationValidation: {
       password: {
         required: true
-      },
+      }
     },
 
     defaults: {

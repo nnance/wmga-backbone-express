@@ -1,8 +1,10 @@
 define(function(require) {
   'use strict';
 
-  var AppSettings = require('../appsettings');
   var Backbone = require('backbone');
+  /* eslint-disable no-unused-vars */
+  var bbValidation = require('backbone.validation');
+  /* eslint-enable no-unused-vars */
 
   var moment = require('moment');
 

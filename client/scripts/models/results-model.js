@@ -2,8 +2,10 @@ define(function(require) {
   'use strict';
 
   var Backbone = require('backbone');
-  var AppSettings = require('../appsettings');
   var moment = require('moment');
+  /* eslint-disable no-unused-vars */
+  var bbValidation = require('backbone.validation');
+  /* eslint-enable no-unused-vars */
 
   var ResultsModel = Backbone.Model.extend({
     idAttribute: '_id',

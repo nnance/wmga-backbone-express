@@ -3,6 +3,9 @@ define(function(require) {
 
   var Backbone = require('backbone');
   var moment = require('moment');
+  /* eslint-disable no-unused-vars */
+  var bbValidation = require('backbone.validation');
+  /* eslint-enable no-unused-vars */
 
   var TeamsModel = Backbone.Model.extend({
 

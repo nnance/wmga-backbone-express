@@ -2,6 +2,9 @@ define(function(require) {
   'use strict';
 
   var Backbone = require('backbone');
+  /* eslint-disable no-unused-vars */
+  var bbValidation = require('backbone.validation');
+  /* eslint-enable no-unused-vars */
 
   var EmailModel = Backbone.Model.extend({
 

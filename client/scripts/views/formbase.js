@@ -8,6 +8,11 @@ define(function(require) {
   var BaseView = require('client/scripts/views/viewbase');
   var AlertView = require('client/scripts/views/alert');
 
+  /* eslint-disable no-unused-vars */
+  var fileStyle = require('bootstrap-filestyle');
+  var bbValidation = require('backbone.validation');
+  /* eslint-enable no-unused-vars */
+
   return BaseView.extend({
 
     initialize: function() {

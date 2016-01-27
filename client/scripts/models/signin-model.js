@@ -2,7 +2,9 @@ define(function(require) {
   'use strict';
 
   var Backbone = require('backbone');
-  var AppSettings = require('../appsettings');
+  /* eslint-disable no-unused-vars */
+  var bbValidation = require('backbone.validation');
+  /* eslint-enable no-unused-vars */
 
   var SigninModel = Backbone.Model.extend({
 

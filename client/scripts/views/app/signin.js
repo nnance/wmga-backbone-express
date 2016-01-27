@@ -5,6 +5,9 @@ define(function(require) {
   var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
   var RequestPassword = require('client/scripts/models/requestpsw-model');
+  /* eslint-disable no-unused-vars */
+  var bbValidation = require('backbone.validation');
+  /* eslint-enable no-unused-vars */
 
   return FormBaseView.extend({
     template: require('client/templates/app/signin.ejs'),

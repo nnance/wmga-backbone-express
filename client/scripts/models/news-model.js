@@ -2,8 +2,10 @@ define(function(require) {
   'use strict';
 
   var Backbone = require('backbone');
-  var AppSettings = '../appsettings';
   var moment = require('moment');
+  /* eslint-disable no-unused-vars */
+  var bbValidation = require('backbone.validation');
+  /* eslint-enable no-unused-vars */
 
   var NewsModel = Backbone.Model.extend({
 

@@ -2,8 +2,11 @@ define(function(require) {
   'use strict';
 
   var Backbone = require('backbone');
-  var LocalStorage = require('backbone.localstorage');
   var SessionsModel = require('client/scripts/models/sessions-model');
+
+  /* eslint-disable no-unused-vars */
+  var LocalStorage = require('backbone.localstorage');
+  /* eslint-enable no-unused-vars */
 
   var Sessions = Backbone.Collection.extend({
 
