@@ -6,7 +6,6 @@ define(function(require) {
   var FormBaseView = require('client/scripts/views/formbase');
   /* eslint-disable no-unused-vars */
   var dataTimePicker = require('bootstrap-datetimepicker');
-  var dataTimeCss = require('bootstrap-datetimepicker-css');
   /* eslint-disable no-unused-vars */
 
   return FormBaseView.extend({

@@ -1,6 +1,8 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap";
+@import "../bower_components/bootstrap3-datetimepicker/src/sass/_bootstrap-datetimepicker";
+@import "../bower_components/select2-bootstrap-css/lib/select2-bootstrap.scss";
 
 @import "signin";
 @import "overwrites";
