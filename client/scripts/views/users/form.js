@@ -4,6 +4,10 @@ define(function(require) {
   var _ = require('underscore');
   var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
+  /* eslint-disable no-unused-vars */
+  var dataTimePicker = require('bootstrap-datetimepicker');
+  var dataTimeCss = require('bootstrap-datetimepicker-css');
+  /* eslint-disable no-unused-vars */
 
   return FormBaseView.extend({
     template: require('client/templates/users/form.ejs'),

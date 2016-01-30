@@ -38,6 +38,7 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.scss$/, loaders: ['style', 'css', 'autoprefixer', 'sass']},
+      {test: /\.css$/, loader: 'css'},
       {test: /\.ejs$/, loader: 'ejs'},
       {test: /\.jsx$/, loader: 'babel', include: path.join(__dirname, 'client')},
       {test: /\.png$/, loader: 'url?limit=8192&mimetype=image/png'},
@@ -63,7 +64,8 @@ module.exports = {
       'moment': resolveBower('moment/moment'),
       'bootstrap.datetimepicker': resolveBower('bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker'),
       'bootstrap-filestyle': resolveBower('bootstrap-filestyle/src/bootstrap-filestyle'),
-      'select2': resolveBower('select2/select2'),
+      'bootstrap-datetimepicker': resolveBower('bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker'),
+      'bootstrap-datetimepicker-css': resolveBower('bootstrap3-datetimepicker/build/css/bootstrap-datetimepicker.min.css'),
       'backbone.composer': resolveBower('backbone.composer/backbone.composer')
     },
     extensions: ['', '.js', '.jsx', '.json']

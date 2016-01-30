@@ -5,6 +5,13 @@ define(function(require) {
   var $ = require('jquery');
   var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
+  /* eslint-disable no-unused-vars */
+  var select2css = require('client/bower_components/select2/select2.css');
+  var select2bootstrap = require('client/bower_components/select2-bootstrap-css/select2-bootstrap.css');
+  var select2 = require('client/bower_components/select2/select2');
+  /* eslint-enable no-unused-vars */
+
+
   var TeamsFormView = FormBaseView.extend({
     template: require('client/templates/teams/form.ejs'),
 

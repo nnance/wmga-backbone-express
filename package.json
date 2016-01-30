@@ -34,6 +34,7 @@
     "babel-eslint": "^3.1.30",
     "babel-loader": "^5.1.2",
     "babel-polyfill": "^6.2.0",
+    "bower": "^1.7.7",
     "chai": "^3.4.1",
     "connect-livereload": "^0.5.4",
     "css-loader": "^0.21.0",
@@ -56,12 +57,10 @@
     "webpack": "^1.9.6"
   },
   "scripts": {
+    "bower:install": "bower install",
     "clean": "rimraf dist node_modules/ client/bower_components",
-    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
-    "build": "grunt build",
-    "serve": "grunt serve",
+    "build": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "start": "NODE_ENV=production node server.js",
-    "test": "grunt test",
     "lint": "eslint client server"
   },
   "engines": {

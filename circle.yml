@@ -2,7 +2,7 @@ dependencies:
   pre:
     - npm install
     - gem install compass
-    - npm run init
+    - npm run bower:install
   post:
     - npm run build
 
