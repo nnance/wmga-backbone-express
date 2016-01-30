@@ -24,7 +24,7 @@ deployment:
 
 machine:
   node:
-    version: v5.0.0
+    version: v5.4.0
 
   ruby:
     version: 1.9.3-p448
