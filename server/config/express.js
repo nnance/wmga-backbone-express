@@ -43,10 +43,8 @@ var expressConfig = function(app, express) {
   if (env === 'development') {
     // Include livereload script on all pages
     app.use(require('connect-livereload')());
-    // Load bower_components
-    app.use('/static', express.static(path.join(settings.root, 'dist'), {maxAge: 0}));
-    app.use('/bower_components', express.static(path.join(settings.root, 'client/bower_components'), {maxAge: 0}));
   }
+  app.use('/static', express.static(path.join(settings.root, 'dist'), {maxAge: 0}));
   // Load favicon
   app.use(favicon(path.join(settings.root, settings.staticAssets, '/favicon.ico')));
   // Load static assets
