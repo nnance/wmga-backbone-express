@@ -6,7 +6,6 @@ define(function(require) {
   var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
   /* eslint-disable no-unused-vars */
-  var select2css = require('select2-css');
   var select2 = require('select2');
   /* eslint-enable no-unused-vars */
 

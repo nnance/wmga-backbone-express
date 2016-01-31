@@ -37,7 +37,6 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.scss$/, loaders: ['style', 'css', 'autoprefixer', 'sass']},
-      {test: /\.css$/, loaders: ['style', 'css']},
       {test: /\.ejs$/, loader: 'ejs'},
       {test: /\.jsx$/, loader: 'babel', include: path.join(__dirname, 'client')},
       {test: /\.png$/, loader: 'url?limit=8192&mimetype=image/png'},
@@ -57,7 +56,6 @@ module.exports = {
       'bootstrap': resolveBower('bootstrap-sass-official/assets/javascripts/bootstrap'),
       'bootstrap-filestyle': resolveBower('bootstrap-filestyle/src/bootstrap-filestyle'),
       'bootstrap-datetimepicker': resolveBower('bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker'),
-      'select2-css': resolveBower('select2/select2.css'),
       'select2': resolveBower('select2/select2')
     },
     extensions: ['', '.js', '.jsx', '.json']
