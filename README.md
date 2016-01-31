@@ -33,7 +33,7 @@ Once you have these dependencies installed you can run the following commands to
 git clone https://github.com/nnance/wmga-backbone-express.git
 cd wmga-backbone-express
 npm install
-bower install
+npm run bower:install
 ```
 
 ### Create local database
@@ -46,7 +46,17 @@ mongo
 ### Useful commands
 To run the system in development mode with live reload use
 ```
-npm run serve
+npm run watch
+```
+
+To build a production version
+```
+npm run build
+```
+
+To run the linter
+```
+npm run lint
 ```
 
 To run the test suite

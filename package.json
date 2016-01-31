@@ -37,7 +37,7 @@
     "backbone": "^1.2.1",
     "backbone.composer": "~0.2.0",
     "backbone.localstorage": "~1.1.16",
-    "backbone.validation": "~0.7.1",    
+    "backbone.validation": "~0.7.1",
     "bower": "^1.7.7",
     "chai": "^3.4.1",
     "connect-livereload": "^0.5.4",
@@ -52,6 +52,7 @@
     "mocha": "^2.3.4",
     "moment": "~2.11.1",
     "node-sass": "^3.4.1",
+    "nodemon": "^1.8.1",
     "postcss-loader": "^0.8.0",
     "rimraf": "~2.5.1",
     "sass-loader": "^3.1.1",
@@ -59,14 +60,19 @@
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
-    "webpack": "^1.9.6"
+    "webpack": "^1.12.2",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.2.0"
   },
   "scripts": {
     "bower:install": "bower install",
     "clean": "rimraf dist node_modules/ client/bower_components",
-    "build": "NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build:webpack": "NODE_ENV=production webpack --progress --profile --colors",
+    "build:clean": "rimraf dist",
+    "build": "npm run build:clean && npm run build:webpack",
     "start": "NODE_ENV=production node server.js",
-    "lint": "eslint client server"
+    "watch": "nodemon -w ./server server.js",
+    "lint": "eslint client/scripts server"
   },
   "engines": {
     "node": ">=5.4.0"

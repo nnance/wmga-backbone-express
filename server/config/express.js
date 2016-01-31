@@ -41,10 +41,21 @@ var expressConfig = function(app, express) {
   app.use(compress());
 
   if (env === 'development') {
-    // Include livereload script on all pages
-    app.use(require('connect-livereload')());
+    // Dev Tools
+    var webpack = require('webpack');
+    var webpackConfig = require('../../webpack.config.js');
+
+    const compiler = webpack(webpackConfig);
+    // setup webpack dev server components
+    app.use(require('webpack-dev-middleware')(compiler, {
+      noInfo: true,
+      publicPath: webpackConfig.output.publicPath
+    }));
+    app.use(require('webpack-hot-middleware')(compiler));
+  } else {
+    app.use('/static', express.static(path.join(settings.root, 'dist'), {maxAge: 0}));
   }
-  app.use('/static', express.static(path.join(settings.root, 'dist'), {maxAge: 0}));
+
   // Load favicon
   app.use(favicon(path.join(settings.root, settings.staticAssets, '/favicon.ico')));
   // Load static assets
@@ -64,7 +75,6 @@ var expressConfig = function(app, express) {
   app.use(logger(settings.server.logLevel));
 
   if (env === 'development') {
-
     // Disable caching for easier testing
     app.use(function noCache(req, res, next) {
       res.header('Cache-Control', 'no-cache, no-store, must-revalidate');

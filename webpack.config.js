@@ -1,11 +1,20 @@
 var path = require('path');
 var webpack = require('webpack');
+var _ = require('lodash');
+var env = process.env.NODE_ENV || 'development';
 
 var resolveBower = function(module) {
   return path.join(__dirname, 'client/bower_components/', module);
 };
 
-module.exports = {
+var globalsPlugin = new webpack.ProvidePlugin({
+  _: 'lodash',
+  $: 'jquery',
+  jQuery: 'jquery',
+  'window.jQuery': 'jquery'
+});
+
+var defaults = {
   devtool: 'source-map',
   entry: [
     './client/index'
@@ -16,17 +25,10 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      _: 'lodash',
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery'
-    }),
+    globalsPlugin,
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
@@ -61,3 +63,26 @@ module.exports = {
     extensions: ['', '.js', '.jsx', '.json']
   }
 };
+
+var envConfig = {};
+
+if (env === 'development') {
+  envConfig = {
+    devtool: 'eval-source-map',
+    entry: [
+      'webpack-hot-middleware/client?reload=true',
+      './client/index'
+    ],
+    plugins: [
+      globalsPlugin,
+      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin(),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('development')
+      })
+    ]
+  };
+}
+
+module.exports = _.merge(defaults, envConfig);
