@@ -4,12 +4,15 @@ define(function(require) {
   var _ = require('underscore');
   var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
+
+
   var CreateStep = FormBaseView.extend({
     template: require('client/templates/signup/createstep.ejs'),
 
     events: {
       'click .btn-primary': 'nextStep',
-      'click .btn-default': 'createStep'
+      'click .btn-default': 'createStep',
+      'keypress input': 'keypress'
     },
 
     initialize: function(options) {
@@ -20,18 +23,18 @@ define(function(require) {
     nextStep: function(e) {
       e.preventDefault();
 
-      this.removeSubViews();
-      var formData = this.serializeForm('form');
+      this.model.set(this.serializeForm('form'), {validate: true});
 
-      this.model.validation = _.extend(this.model.validation, this.model.registrationValidation);
-      this.model.set(formData);
-      if (this.model.isValid(true)) {
-        this.collection.fetch({data: {email: formData.email},
-          success: _.bind(this.nextStepSuccess,this),
-          error: _.bind(this.nextStepError,this)
-        });
-      } else {
-        this.model.validate();
+      if (this.model.isValid()) {
+        this.collection.fetch({data: {email: this.model.get('email')}})
+        .done(this.nextStepSuccess.bind(this))
+        .fail(this.nextStepError.bind(this));
+      }
+    },
+
+    keypress: function(e) {
+      if (e.which == 13) {
+        this.nextStep(e);
       }
     },
 

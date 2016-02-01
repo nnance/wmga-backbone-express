@@ -22,10 +22,7 @@ define(function(require) {
       email: {
         required: true,
         pattern: 'email'
-      }
-    },
-
-    registrationValidation: {
+      },
       password: {
         required: true
       }

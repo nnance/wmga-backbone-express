@@ -11,7 +11,8 @@ define(function(require) {
 
     events: {
       'click .btn': 'nextStep',
-      'click #forgotPassword': 'sendPasswordEmail'
+      'click #forgotPassword': 'sendPasswordEmail',
+      'keypress input': 'keypress'
     },
 
     initialize: function(options) {
@@ -21,16 +22,20 @@ define(function(require) {
 
     nextStep: function(e) {
       e.preventDefault();
+
       this.model.set(this.serializeForm('form'));
 
       this.session.validateAccount(this.model.get('email'), this.model.get('password'))
-      .done( _.bind(function(data){
-        this.nextStepSuccess(data);
-      },this))
-      .fail( _.bind(function() {
-        this.handleErrors(this.model, {response: 'password does not match'});
-      },this));
+      .done(this.nextStepSuccess.bind(this))
+      .fail(
+        this.handleErrors
+        .bind(this, this.model, {response: 'password does not match'}));
+    },
 
+    keypress: function(e) {
+      if (e.which == 13) {
+        this.nextStep(e);
+      }
     },
 
     nextStepSuccess: function(data) {
@@ -48,9 +53,10 @@ define(function(require) {
       e.preventDefault();
       var passwordEmail = new RequestPassword({email: this.model.get('email')});
       passwordEmail.save()
-      .done(_.bind(function() {
-        this.handleErrors(this.model,{result: 'Please check your email for your password.'});
-      },this));
+      .done(
+        this.handleErrors
+        .bind(this, this.model, {result: 'Please check your email for your password.'})
+      );
     }
   });
 

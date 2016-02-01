@@ -1,7 +1,6 @@
 define(function(require) {
   'use strict';
 
-  var _ = require('underscore');
   var Backbone = require('backbone');
   var FormBaseView = require('client/scripts/views/formbase');
   var EmailStepView = FormBaseView.extend({
@@ -9,28 +8,27 @@ define(function(require) {
 
     events: {
       'click .btn-primary': 'nextStep',
-      'click .btn-default': 'createStep'
+      'click .btn-default': 'createStep',
+      'keypress input': 'keypress'
     },
 
     nextStep: function(e) {
       e.preventDefault();
 
-      this.removeSubViews();
-      var formData = this.serializeForm('form');
-      this.model.set(formData);
+      this.model.set(this.serializeForm('form'));
+      this.model.validate();
 
       if (this.model.isValid('email')) {
-        this.collection.fetch({data: formData,
-          success: _.bind(this.nextStepSuccess,this),
-          error: _.bind(this.nextStepError,this)
-        });
-      } else {
-        this.model.validate();
+        this.collection.fetch({data: {email: this.model.get('email')}})
+        .done(this.nextStepSuccess.bind(this))
+        .fail(this.nextStepError.bind(this));
       }
     },
 
-    showErrors: function(errors) {
-      FormBaseView.prototype.showErrors.call(this, _.pick(errors,'email'));
+    keypress: function(e) {
+      if (e.which == 13) {
+        this.nextStep(e);
+      }
     },
 
     createStep: function(e) {

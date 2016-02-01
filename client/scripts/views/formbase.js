@@ -16,36 +16,59 @@ define(function(require) {
   return BaseView.extend({
 
     initialize: function() {
+      this.errorCollection = new Backbone.Collection();
       if (this.model) {
-        Backbone.Validation.bind(this);
-        this.listenTo(this.model, 'validated:invalid', this.handleErrors);
+        Backbone.Validation.bind(this, {
+          valid: this.clearError.bind(this),
+          invalid: this.showError.bind(this)
+        });
         this.listenTo(this.model, 'sync', this.saveCompleted);
         this.listenTo(this.model, 'error', this.saveFailed);
         this.listenTo(this, 'uploaded', this.fileuploadCompleted);
       }
     },
 
-    handleErrors: function(model, errors) {
-      // restore the model
-      model.set(model.previousAttributes());
-      this.delegateEvents();
-      this.showErrors(errors);
+    onClose: function() {
+      if (this.model) {
+        Backbone.Validation.unbind(this);
+      }
     },
 
-    showErrors: function(errors) {
-      if (_.keys(errors).length > 0) {
-        // show the errors in an alert area
-        this.addSubView({
-          view: new AlertView({errors: errors}),
-          selector: '#alert'
-        });
-
-        // highlight the fields with errors
-        for (var key in errors) {
-          if (errors.hasOwnProperty(key)) {
-            this.$('#' + key).parent().addClass('has-error');
-          }
+    showError: function(view, attr, error) {
+      var field = this.$('[name="' + attr + '"]');
+      if (field.length > 0) {
+        if (this.errorCollection.length === 0) {
+          this.showErrors({collection: this.errorCollection});
         }
+        this.errorCollection.add({id: attr, error: error});
+        field.parent().addClass('has-error');
+      }
+    },
+
+    handleErrors: function(model, errors) {
+      this.showErrors({errors: errors});
+    },
+
+    showErrors: function(options) {
+      this.errorView = new AlertView(options);
+      this.addSubView({
+        view: this.errorView,
+        selector: '#alert'
+      });
+      if (this.primaryButton) {
+        this.primaryButton.target.text(this.primaryButton.oldText);
+        this.primaryButton = null;
+      }
+    },
+
+    clearError: function(view, attr) {
+      var field = this.$('[name="' + attr + '"]');
+      if (field.length > 0) {
+        this.errorCollection.remove(attr);
+        if (this.errorCollection.length === 0 && this.errorView) {
+          this.errorView.close();
+        }
+        field.parent().removeClass('has-error');
       }
     },
 
@@ -76,9 +99,11 @@ define(function(require) {
 
     saveButton: function(e) {
       e.preventDefault();
-      $(e.target).text('saving...');
-      this.undelegateEvents();
-      this.removeSubViews();
+      this.primaryButton = {
+        target: $(e.target),
+        oldText: $(e.target).text()
+      };
+      this.primaryButton.target.text('saving...');
       this.model.save(this.getFormData());
     },
 
@@ -95,7 +120,6 @@ define(function(require) {
     },
 
     fileuploadCompleted: function() {
-      this.delegateEvents();
       this.routeSuccessfulResult();
     },
 
