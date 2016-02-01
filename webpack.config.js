@@ -68,7 +68,7 @@ var envConfig = {};
 
 if (env === 'development') {
   envConfig = {
-    devtool: 'eval-source-map',
+    devtool: 'eval',
     entry: [
       'webpack-hot-middleware/client?reload=true',
       './client/index'
