@@ -8,7 +8,7 @@ var resolveBower = function(module) {
 };
 
 var globalsPlugin = new webpack.ProvidePlugin({
-  _: 'lodash',
+  _: 'underscore',
   $: 'jquery',
   jQuery: 'jquery',
   'window.jQuery': 'jquery'
